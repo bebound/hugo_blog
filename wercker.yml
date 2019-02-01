@@ -13,3 +13,5 @@ deploy:
         token: $GIT_TOKEN
         domain: blog.fromkk.com
         basedir: public
+        branch: master
+        repo: bebound/bebound.github.io
