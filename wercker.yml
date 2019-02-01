@@ -1,6 +1,12 @@
 box: debian
 build:
   steps:
+    - install-packages:
+        packages: git
+    - script:
+        code: |
+            cd /pipeline/source/
+            git submodule update --init --recursive
     - arjen/hugo-build:
         version: "0.53"
         theme: hugo-nuo
