@@ -4,7 +4,6 @@ build:
     - arjen/hugo-build:
         version: "0.53"
         theme: hugo-nuo
-
 deploy:
   steps:
     - install-packages:
