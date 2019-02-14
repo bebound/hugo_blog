@@ -2,16 +2,13 @@
 title = "Start"
 author = ["kk"]
 date = 2017-04-18T15:46:00+08:00
+lastmod = 2019-02-14T23:37:45+08:00
 draft = false
-weight = 3002
 noauthor = true
 nocomment = true
 nodate = true
 nopaging = true
 noread = true
-[menu.home]
-  weight = 3002
-  identifier = "start"
 +++
 
 Over the years, I have read so many programmers’ blogs, which has  helped me a lot. Now I think it’s the time to start my own blog.

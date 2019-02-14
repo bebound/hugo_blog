@@ -2,17 +2,14 @@
 title = "TextCNN with Pytorch and Torchtext on Colab"
 author = ["kk"]
 date = 2018-12-03T15:47:00+08:00
+lastmod = 2019-02-14T23:37:43+08:00
 tags = ["machine learning", "TextCNN"]
 draft = false
-weight = 3006
 noauthor = true
 nocomment = true
 nodate = true
 nopaging = true
 noread = true
-[menu.home]
-  weight = 3006
-  identifier = "textcnn-with-pytorch-and-torchtext-on-colab"
 +++
 
 [PyTorch](https://pytorch.org) is a really powerful framework to build the machine learning models. Although some some features is missing when compared with TensorFlow (For example, the early stop fucntion, History to draw plot), its code style is more intuitive.

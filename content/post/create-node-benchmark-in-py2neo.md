@@ -2,17 +2,14 @@
 title = "Create Node Benchmark in Py2neo"
 author = ["kk"]
 date = 2018-11-05T15:55:00+08:00
+lastmod = 2019-02-14T23:37:43+08:00
 tags = ["Python"]
 draft = false
-weight = 3001
 noauthor = true
 nocomment = true
 nodate = true
 nopaging = true
 noread = true
-[menu.home]
-  weight = 3001
-  identifier = "create-node-benchmark-in-py2neo"
 +++
 
 Recently, I'm working on a neo4j project. I use `Py2neo` to interact with graph db. Alghough `Py2neo` is a very pythonic and easy to use, its performance is really poor. Sometimes I have to manually write cypher statement by myself if I can't bear with the slow excution. Here is a small script which I use to compare the performance of 4 diffrent ways to insert nodes.

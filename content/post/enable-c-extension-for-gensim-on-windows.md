@@ -2,17 +2,14 @@
 title = "Enable C Extension for gensim on Windows"
 author = ["kk"]
 date = 2017-06-10T14:43:00+08:00
+lastmod = 2019-02-14T23:37:44+08:00
 tags = ["Python"]
 draft = false
-weight = 3004
 noauthor = true
 nocomment = true
 nodate = true
 nopaging = true
 noread = true
-[menu.home]
-  weight = 3004
-  identifier = "enable-c-extension-for-gensim-on-windows"
 +++
 
 These days, I’m working on some text classification works, and I use `gensim=’s =doc2vec` function.

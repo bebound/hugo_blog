@@ -1,18 +1,15 @@
 +++
-title = "Using Chinese characters in Matplotlib"
+title = "Using Chinese Characters in Matplotlib"
 author = ["kk"]
 date = 2018-10-04T15:53:00+08:00
+lastmod = 2019-02-14T23:37:45+08:00
 tags = ["Python", "Matplotlib"]
 draft = false
-weight = 3005
 noauthor = true
 nocomment = true
 nodate = true
 nopaging = true
 noread = true
-[menu.home]
-  weight = 3005
-  identifier = "using-chinese-characters-in-matplotlib"
 +++
 
 After searching from Google, here is easiest solution. This should also works on other languages:

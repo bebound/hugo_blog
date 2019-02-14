@@ -1,15 +1,13 @@
 #+STARTUP: content
 #+AUTHOR: kk
 #+HUGO_BASE_DIR: ./
+#+hugo_auto_set_lastmod: t
 
 * Posts
   :PROPERTIES:
   :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
-  :EXPORT_HUGO_MENU: :menu home
   :EXPORT_HUGO_SECTION: post
-  :EXPORT_HUGO_WEIGHT: auto
   :END:
-  
 ** Machine Learning                                       :machine__learning:
 *** DONE Brief Introduction of Label Propagation Algorithm :Label__Propagetion:
 CLOSED: [2017-07-16 Sun 21:45]
@@ -49,7 +47,6 @@ In short, let the nearest label has larger weight, then calculate each label's n
 Ref:
 
 1. [[http://mlg.eng.cam.ac.uk/zoubin/papers/CMU-CALD-02-107.pdf][Learning from Labeled and Unlabeled Data with Label Propagation]]
-
 2. [[http://blog.csdn.net/zouxy09/article/details/49105265][标签传播算法（Label Propagation）及Python实现]]
 
 *** DONE LSTM and GRU                                              :LSTM:GRU:
@@ -92,6 +89,10 @@ h_t&=(1-z_t)\ast h_{t-1}+z_t \ast \tilde{h_t}
 $z_t$ is update gate, $r_t$ is reset gate, $\tilde{h_t}$ is candidate activation, $h_t$ is activation.
 
 Compare with LSTM, GRU merge cell state and hidden state to one hiddent state, and use $z_t$ to decide how to update the state rather than $f_t$ and $i_t$.
+
+Ref:
+1. [[http://colah.github.io/posts/2015-08-Understanding-LSTMs/][Understanding LSTM Networks]]
+
 *** DONE Models and Architechtures in Word2vec                     :word2vec:
 CLOSED: [2018-01-05 Fri 15:14]
    :PROPERTIES:
@@ -198,7 +199,6 @@ CLOSED: [2017-08-03 Thu 15:20]
    :EXPORT_FILE_NAME: parameters-in-dov2vec
    :END:
 Here are some parameter in =gensim='s =doc2vec= class.
-
 ***** window
 window is the maximum distance between the predicted word and context words used for prediction within a document. It will look behind and ahead.
 
@@ -218,8 +218,6 @@ where $z(w_i)$ is the frequency of the word and $s$ is the sample rate.
 This is the plot when =sample= is 1e-3.
 [[file:/images/doc2vec_negative_sample.png]]
 
-
-
 ***** negative
 Usually, when training a neural network, for each training sample, all of the weights in the neural network need to be tweaked. For example, if the word pair is ('fox', 'quick'), then only the word quick's neurons should output 1, and all of the other word neurons should output 0.
 
@@ -237,6 +235,7 @@ Ref:
 
 - [Word2Vec Tutorial - The Skip-Gram Model](http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/)
 - [Word2Vec Tutorial Part 2 - Negative Sampling](http://mccormickml.com/2017/01/11/word2vec-tutorial-part-2-negative-sampling/)
+
 *** DONE Semi-supervised text classification using doc2vec and label spreading :doc2vec:
 CLOSED: [2017-09-10 Sun 15:29]
    :PROPERTIES:
@@ -262,7 +261,6 @@ Keyword based classification is a simple but effective method. Extracting the ta
 Finally, we can use the keywords to classify the text and get the train data. 
 
 ***** Classification by =doc2vec= and Label Spreading
-
 Keyword-based classification sometimes produces the wrong result, as it can't using the symantic information in the text. Fortunately, Google has open sourced =word2vec=, which can be used to produce semantically meaningful word embeddings. Furthermore, sentences can also be converted to vectors by using =doc2vec=. Sentences which has closed meaning also have short vector distance.
 
 So the problem is how to classify these vectors.
@@ -270,6 +268,7 @@ So the problem is how to classify these vectors.
 1. Using corpus to train the =doc2vec= model.
 2. Using =doc2vec= model to convert sentence into vector.
 3. Using label spreading algorithm to train a classify model to classify the vectors.
+
 *** DONE TextCNN with Pytorch and Torchtext on Colab                :TextCNN:
 CLOSED: [2018-12-03 Mon 15:47]
    :PROPERTIES:
@@ -739,7 +738,7 @@ If this output a none =-1= digit, then it's fine.
 from gensim.models import word2vec
 print(word2vec.FAST_VERSION)
 ```
-*** DONE Using Chinese characters in Matplotlib                  :Matplotlib:
+*** DONE Using Chinese Characters in Matplotlib                  :Matplotlib:
 CLOSED: [2018-10-04 Thu 15:53]
    :PROPERTIES:
    :EXPORT_FILE_NAME: using-chinese-characters-in-matplotlib
@@ -761,6 +760,49 @@ plt.show()
 
 Output:
 [[file:/images/matplot_chinese.png]]
+*** TODO Python Dictinary Implementation
+
+**** Overview
+1. CPython allocation memory to save dictinary, the initial table size is 8, entries are saved as =<hash,key,value>= in each slot(The slot content changed after Python 3.6).
+2. When a new key is added, python use =i = hash(key) & mask= where =mask=table_size-1= to calculate which slot it should be placed. If the slot is occupied, CPython using a probing algorithm to find the empty slot to store new item.
+3. When 2/3 of the table is full, the table will be resized.
+4. When getting item from dictionary, both =hash= and =key= must be equal.
+
+***** Resizing
+When elements size is below 50000, the table size will increase by a factor of 4. Otherwise, it will increase by a factor of 2.
+***** Probing
+CPython used a modified *random probing* algorithm to choose the empty slot. This algorithm can taval all of the slots in a pseudo random order.
+
+The travel order can be calculated by this formula: =j = ((5*j) + 1) mod 2**i=, where =j= is slot index.
+
+For example, if table size is 8, and the calculate slot index is 2, then the traversal order should be:
+
+=2 -> (5*2+1) mod 8 = 3 -> (5*3+1) mod 8 = 0 -> (5*0+1) mod 8 = 1 -> ...=
+
+CPython changed this formula by adding =perturb= and =PERTUB_SHIFT= variables.
+
+#+BEGIN_SRC 
+j = (5*j) + 1 + perturb;
+perturb >>= PERTURB_SHIFT;
+j = j % 2**i
+#+END_SRC
+
+***** Dictionary improvement after 3.6
+
+
+Ref:
+
+1. [[https://stackoverflow.com/questions/327311/how-are-pythons-built-in-dictionaries-implemented][How are Python's Built In Dictionaries Implemented]]
+2. [[https://hg.python.org/cpython/file/52f68c95e025/Objects/dictobject.c#l33][cpython]]
+3. [[https://stackoverflow.com/questions/3020514/is-it-possible-to-give-a-python-dict-an-initial-capacity-and-is-it-useful/3020810][Is it possible to give a python dict an initial capacity (and is it useful)]]
+4. [[http://www.laurentluce.com/posts/python-dictionary-implementation/][Python dictionary implementation]]
+
+**** TODO Circular Import in Python
+
+Ref:
+
+1. [[https://stackabuse.com/python-circular-imports/][Python Circular Imports]]
+
 ** Misc
 *** DONE Some Useful Shell Tools                                      :shell:
 CLOSED: [2017-05-07 Sun 15:34]

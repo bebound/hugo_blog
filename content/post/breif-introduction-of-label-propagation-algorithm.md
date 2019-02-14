@@ -2,17 +2,14 @@
 title = "Brief Introduction of Label Propagation Algorithm"
 author = ["kk"]
 date = 2017-07-16T21:45:00+08:00
+lastmod = 2019-02-14T23:37:42+08:00
 tags = ["machine learning", "Label Propagetion"]
 draft = false
-weight = 3001
 noauthor = true
 nocomment = true
 nodate = true
 nopaging = true
 noread = true
-[menu.home]
-  weight = 3001
-  identifier = "brief-introduction-of-label-propagation-algorithm"
 +++
 
 As I said before, I'm working on a text classification project. I use `doc2vec` to convert text into vectors, then I use LPA to classify the vectors.
@@ -45,5 +42,4 @@ In short, let the nearest label has larger weight, then calculate each label's n
 Ref:
 
 1.  [Learning from Labeled and Unlabeled Data with Label Propagation](http://mlg.eng.cam.ac.uk/zoubin/papers/CMU-CALD-02-107.pdf)
-
 2.  [标签传播算法（Label Propagation）及Python实现](http://blog.csdn.net/zouxy09/article/details/49105265)

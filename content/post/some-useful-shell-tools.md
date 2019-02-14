@@ -2,17 +2,14 @@
 title = "Some Useful Shell Tools"
 author = ["kk"]
 date = 2017-05-07T15:34:00+08:00
+lastmod = 2019-02-14T23:37:45+08:00
 tags = ["shell"]
 draft = false
-weight = 3001
 noauthor = true
 nocomment = true
 nodate = true
 nopaging = true
 noread = true
-[menu.home]
-  weight = 3001
-  identifier = "some-useful-shell-tools"
 +++
 
 Here are some shell tools I use, which can boost your productivity.

@@ -2,17 +2,14 @@
 title = "Deploy Nikola OrgMode on Travis"
 author = ["kk"]
 date = 2018-11-03T14:22:00+08:00
+lastmod = 2019-02-14T23:37:44+08:00
 tags = ["Python", "Nikola", "orgmode"]
 draft = false
-weight = 3003
 noauthor = true
 nocomment = true
 nodate = true
 nopaging = true
 noread = true
-[menu.home]
-  weight = 3003
-  identifier = "deploy-nikola-orgmode-on-travis"
 +++
 
 Recently, I enjoy using `Spacemacs`, so I decided to switch to org file from Markdown for writing blog. After several attempts, I managed to let Travis convert org file to HTML. Here are the steps.

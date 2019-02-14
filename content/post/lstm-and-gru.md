@@ -2,17 +2,14 @@
 title = "LSTM and GRU"
 author = ["kk"]
 date = 2018-04-22T14:39:00+08:00
+lastmod = 2019-02-14T23:37:42+08:00
 tags = ["machine learning", "LSTM", "GRU"]
 draft = false
-weight = 3002
 noauthor = true
 nocomment = true
 nodate = true
 nopaging = true
 noread = true
-[menu.home]
-  weight = 3002
-  identifier = "lstm-and-gru"
 +++
 
 ## LSTM {#lstm}
@@ -52,3 +49,7 @@ h\_t&=(1-z\_t)\ast h\_{t-1}+z\_t \ast \tilde{h\_t}
 \\(z\_t\\) is update gate, \\(r\_t\\) is reset gate, \\(\tilde{h\_t}\\) is candidate activation, \\(h\_t\\) is activation.
 
 Compare with LSTM, GRU merge cell state and hidden state to one hiddent state, and use \\(z\_t\\) to decide how to update the state rather than \\(f\_t\\) and \\(i\_t\\).
+
+Ref:
+
+1.  [Understanding LSTM Networks](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)

@@ -2,17 +2,14 @@
 title = "CSRF in Django"
 author = ["kk"]
 date = 2018-11-07T13:58:00+08:00
+lastmod = 2019-02-14T23:37:44+08:00
 tags = ["Python", "Django"]
 draft = false
-weight = 3002
 noauthor = true
 nocomment = true
 nodate = true
 nopaging = true
 noread = true
-[menu.home]
-  weight = 3002
-  identifier = "csrf-in-django"
 +++
 
 CSRF(Cross-site request forgery) is a way to generate fake user request to target website. For example, on a malicious website A, there is a button, click it will send request to www.B.com/logout. When the user click this button, he will logout from website B unconsciously. Logout is not a big problem, but malicious website can generate more dangerous request like money transfer.
