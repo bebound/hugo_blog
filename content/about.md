@@ -1,20 +1,12 @@
 ---
 title: "About"
-date: "2014-04-09"
+date: "2019-02-01"
 layout: "about"
 menu: "main"
 weight: 50
 ---
 
-Hugo is a static site engine written in Go.
+This blog is powered by [hugo](https://gohugo.io), and the theme is [hugo-nuo](https://github.com/laozhu/hugo-nuo/).
 
-
-It makes use of a variety of open source projects including:
-
-* [Cobra](https://github.com/spf13/cobra)
-* [Viper](https://github.com/spf13/viper)
-* [J Walter Weatherman](https://github.com/spf13/jWalterWeatherman)
-* [Cast](https://github.com/spf13/cast)
-
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+I use [Spacemacs](https://spacemacs.org) and [org-mode](https://orgmode.org) to write post. Then use [ox-hugo](https://ox-hugo.scripter.co) to export org file to markdown. Finally [wercker](http://app.wercker.com) will build the blog automatically after I push changes to GitHub.
 
