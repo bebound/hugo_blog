@@ -769,7 +769,9 @@ Output:
 4. When getting item from dictionary, both =hash= and =key= must be equal.
 
 ***** Resizing
-When elements size is below 50000, the table size will increase by a factor of 4. Otherwise, it will increase by a factor of 2.
+When elements size is below 50000, the table size will increase by a factor of 4 based on used slots. Otherwise, it will increase by a factor of 2.
+
+So the table size increase like this: 8->8*2/3*4=24->24*2/3*4=64->...
 ***** Probing
 CPython used a modified *random probing* algorithm to choose the empty slot. This algorithm can taval all of the slots in a pseudo random order.
 
@@ -828,7 +830,7 @@ Here are the official usage example:
 ***** [[https://github.com/monochromegane/the_platinum_searcher][pt]]
 A fast code search tool similar to =ack=.
 ***** [[https://github.com/junegunn/fzf][fzf]] 
-A great fuzzy finder, it can also integrate with vim by [fzf.vim](https://github.com/junegunn/fzf.vim)
+A great fuzzy finder, it can also integrate with vim by [[fzf.vim][https://github.com/junegunn/fzf.vim]]
 [[file:/images/shell_fzf.gif]]
 ***** [[https://github.com/nvbn/thefuck][thefuck]] 
 Magnificent app which corrects your previous console command.
