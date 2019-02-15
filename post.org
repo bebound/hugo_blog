@@ -830,7 +830,7 @@ Here are the official usage example:
 ***** [[https://github.com/monochromegane/the_platinum_searcher][pt]]
 A fast code search tool similar to =ack=.
 ***** [[https://github.com/junegunn/fzf][fzf]] 
-A great fuzzy finder, it can also integrate with vim by [[fzf.vim][https://github.com/junegunn/fzf.vim]]
+A great fuzzy finder, it can also integrate with vim by [[https://github.com/junegunn/fzf.vim][fzf.vim]]
 [[file:/images/shell_fzf.gif]]
 ***** [[https://github.com/nvbn/thefuck][thefuck]] 
 Magnificent app which corrects your previous console command.
