@@ -1,7 +1,6 @@
 #+STARTUP: content
 #+AUTHOR: kk
 #+HUGO_BASE_DIR: ./
-#+hugo_auto_set_lastmod: t
 
 * Posts
   :PROPERTIES:

@@ -2,7 +2,6 @@
 title = "Enable C Extension for gensim on Windows"
 author = ["kk"]
 date = 2017-06-10T14:43:00+08:00
-lastmod = 2019-02-14T23:37:44+08:00
 tags = ["Python"]
 draft = false
 noauthor = true

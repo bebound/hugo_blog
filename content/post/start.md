@@ -2,7 +2,6 @@
 title = "Start"
 author = ["kk"]
 date = 2017-04-18T15:46:00+08:00
-lastmod = 2019-02-14T23:37:45+08:00
 draft = false
 noauthor = true
 nocomment = true

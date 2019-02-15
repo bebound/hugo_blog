@@ -2,7 +2,6 @@
 title = "TextCNN with Pytorch and Torchtext on Colab"
 author = ["kk"]
 date = 2018-12-03T15:47:00+08:00
-lastmod = 2019-02-14T23:37:43+08:00
 tags = ["machine learning", "TextCNN"]
 draft = false
 noauthor = true

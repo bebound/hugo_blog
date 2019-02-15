@@ -2,7 +2,6 @@
 title = "Brief Introduction of Label Propagation Algorithm"
 author = ["kk"]
 date = 2017-07-16T21:45:00+08:00
-lastmod = 2019-02-14T23:37:42+08:00
 tags = ["machine learning", "Label Propagetion"]
 draft = false
 noauthor = true

@@ -2,7 +2,6 @@
 title = "LSTM and GRU"
 author = ["kk"]
 date = 2018-04-22T14:39:00+08:00
-lastmod = 2019-02-14T23:37:42+08:00
 tags = ["machine learning", "LSTM", "GRU"]
 draft = false
 noauthor = true

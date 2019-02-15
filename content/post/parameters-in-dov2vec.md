@@ -2,7 +2,6 @@
 title = "Parameters in dov2vec"
 author = ["kk"]
 date = 2017-08-03T15:20:00+08:00
-lastmod = 2019-02-14T23:37:42+08:00
 tags = ["machine learning", "doc2vec"]
 draft = false
 noauthor = true

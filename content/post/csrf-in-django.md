@@ -2,7 +2,6 @@
 title = "CSRF in Django"
 author = ["kk"]
 date = 2018-11-07T13:58:00+08:00
-lastmod = 2019-02-14T23:37:44+08:00
 tags = ["Python", "Django"]
 draft = false
 noauthor = true

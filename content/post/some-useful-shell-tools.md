@@ -2,7 +2,6 @@
 title = "Some Useful Shell Tools"
 author = ["kk"]
 date = 2017-05-07T15:34:00+08:00
-lastmod = 2019-02-14T23:37:45+08:00
 tags = ["shell"]
 draft = false
 noauthor = true
@@ -43,7 +42,7 @@ A fast code search tool similar to `ack`.
 
 ## [fzf](https://github.com/junegunn/fzf) {#fzf}
 
-A great fuzzy finder, it can also integrate with vim by [fzf.vim](<https://github.com/junegunn/fzf.vim>)
+A great fuzzy finder, it can also integrate with vim by [fzf.vim](https://github.com/junegunn/fzf.vim)
 ![](/images/shell_fzf.gif)
 
 
