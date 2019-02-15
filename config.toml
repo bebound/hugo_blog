@@ -48,6 +48,7 @@ copyright = "© This post is licensed under a Creative Commons Attribution-NonCo
   # Choose your social networks
   email = "bebound gm@il.com"
   github = "bebound"
+  rss = "/post/index.xml"
   # twitter = "twitter_username"
   # linkedin = "linkedin_username"
   # weibo = "weibo_username"
