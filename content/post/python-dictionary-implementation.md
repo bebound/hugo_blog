@@ -64,9 +64,10 @@ For example, if the table size is 8, and there is an item in slot 1, the **index
 
 And the **real data** is:
 
+```nil
 | hash | key  | value |
-|------|------|-------|
 | xxx1 | yyy1 | zzz1  |
+```
 
 0 represents the items index on **real data**. If another item is added in slot 3, the new **index** become this:
 
@@ -74,14 +75,17 @@ And the **real data** is:
 
 The **real data** become this:
 
+```nil
 | hash | key  | value |
-|------|------|-------|
 | xxx1 | yyy1 | zzz1  |
 | xxx2 | yyy2 | zzz2  |
+```
+
+This saves memory, especially when table is not full.
 
 Ref:
 
 1.  [How are Python's Built In Dictionaries Implemented](https://stackoverflow.com/questions/327311/how-are-pythons-built-in-dictionaries-implemented)
-2.  [cpython](https://hg.python.org/cpython/file/52f68c95e025/Objects/dictobject.c#l33)
+2.  [cpython source code](https://hg.python.org/cpython/file/52f68c95e025/Objects/dictobject.c#l33)
 3.  [Is it possible to give a python dict an initial capacity (and is it useful)](https://stackoverflow.com/questions/3020514/is-it-possible-to-give-a-python-dict-an-initial-capacity-and-is-it-useful/3020810)
 4.  [Python dictionary implementation](http://www.laurentluce.com/posts/python-dictionary-implementation/)

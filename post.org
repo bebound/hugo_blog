@@ -807,23 +807,28 @@ For example, if the table size is 8, and there is an item in slot 1, the *index*
 =[null, 0, null, null, null, null, null, null]=
 
 And the *real data* is:
+#+BEGIN_SRC 
 | hash | key  | value |
 | xxx1 | yyy1 | zzz1  |
+#+END_SRC
 
 0 represents the items index on *real data*. If another item is added in slot 3, the new *index* become this:
 
 =[null, 0, null, 1, null, null, null, null]=
 
 The *real data* become this:
+#+BEGIN_SRC 
 | hash | key  | value |
 | xxx1 | yyy1 | zzz1  |
 | xxx2 | yyy2 | zzz2  |
+#+END_SRC
+This saves memory, especially when table is not full.
 
 
 Ref:
 
 1. [[https://stackoverflow.com/questions/327311/how-are-pythons-built-in-dictionaries-implemented][How are Python's Built In Dictionaries Implemented]]
-2. [[https://hg.python.org/cpython/file/52f68c95e025/Objects/dictobject.c#l33][cpython]]
+2. [[https://hg.python.org/cpython/file/52f68c95e025/Objects/dictobject.c#l33][cpython source code]]
 3. [[https://stackoverflow.com/questions/3020514/is-it-possible-to-give-a-python-dict-an-initial-capacity-and-is-it-useful/3020810][Is it possible to give a python dict an initial capacity (and is it useful)]]
 4. [[http://www.laurentluce.com/posts/python-dictionary-implementation/][Python dictionary implementation]]
 
