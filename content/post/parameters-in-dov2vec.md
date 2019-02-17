@@ -45,11 +45,11 @@ Usually, when training a neural network, for each training sample, all of the we
 
 But it would takes a lot of time to do this when we have billions of training samples. So, instead of update all of the weight, we random choose a small number of "negative" words (default value is 5) to update the weight.(Update their wight to output 0).
 
-So when dealing with word pair ('fox','quick'), we update quick's weight to output 1, and other 5 random words' wight to output 1.
+So when dealing with word pair ('fox','quick'), we update quick's weight to output 1, and other 5 random words' weight to output 1.
 
 The probability of selecting word \\(\omega\_i\\) is \\(P(\omega\_i)\\):
 
-\\[P(\omega\_i) = \frac{  {f(\omega\_i)}^{3/4}  }{\sum\_{j=0}^{n}\left(  {f(\omega\_j)}^{3/4} \right) }\\]
+\\[P(\omega\_i)=\frac{{f(\omega\_i)}^{{3}/{4}}}{\sum\_{j=0}^{n}\left({f(\omega\_j)}^{{3}/{4}}\right)}\\]
 
 \\(f(\omega\_j)\\) is the frequency of word \\(\omega\_j\\).
 
