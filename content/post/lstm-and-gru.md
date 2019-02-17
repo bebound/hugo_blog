@@ -47,7 +47,7 @@ h\_t&=(1-z\_t)\ast h\_{t-1}+z\_t \ast \tilde{h\_t}
 
 \\(z\_t\\) is update gate, \\(r\_t\\) is reset gate, \\(\tilde{h\_t}\\) is candidate activation, \\(h\_t\\) is activation.
 
-Compare with LSTM, GRU merge cell state and hidden state to one hiddent state, and use \\(z\_t\\) to decide how to update the state rather than \\(f\_t\\) and \\(i\_t\\).
+Compare with LSTM, GRU merge cell state and hidden state to one hidden state, and use \\(z\_t\\) to decide how to update the state rather than \\(f\_t\\) and \\(i\_t\\).
 
 Ref:
 

@@ -8,19 +8,19 @@
   :EXPORT_HUGO_SECTION: post
   :END:
 ** Machine Learning                                       :machine__learning:
-*** DONE Brief Introduction of Label Propagation Algorithm :Label__Propagetion:
+*** DONE Brief Introduction of Label Propagation Algorithm :Label__Propagation:
 CLOSED: [2017-07-16 Sun 21:45]
    :PROPERTIES:
-   :EXPORT_FILE_NAME: breif-introduction-of-label-propagation-algorithm
+   :EXPORT_FILE_NAME: brief-introduction-of-label-propagation-algorithm
    :END:
 As I said before, I'm working on a text classification project. I use =doc2vec= to convert text into vectors, then I use LPA to classify the vectors.
 
-LPA is a simple, effective semi-supervised algotithm. It can use the density of unlabeled data to find a hyperplane to split the data.
+LPA is a simple, effective semi-supervised algorithm. It can use the density of unlabeled data to find a hyperplane to split the data.
 
 Here are the main stop of the algorithm:
 
-0. Let $ (x_1,y1)...(x_l,y_l)$ be labeled data, $Y_L = \{y_1...y_l\} $ are the class labels. Let $(x_{l+1},y_{l+u})$ be unlabeled data where $Y_U = \{y_{l+1}...y_{l+u}\}$ are unobserved, useally $l \ll u$. Let $X=\{x_1...x_{l+u}\}$ where $x_i\in R^D$. The problem is to estimate $Y_U$ for $X$ and $Y_L$.
-1. Calculate the similarity of the data points. The most simple metric is Euclidean distance. Use a parameter $\sigma$ to cotrol the weights.
+0. Let $ (x_1,y1)...(x_l,y_l)$ be labeled data, $Y_L = \{y_1...y_l\} $ are the class labels. Let $(x_{l+1},y_{l+u})$ be unlabeled data where $Y_U = \{y_{l+1}...y_{l+u}\}$ are unobserved, usually $l \ll u$. Let $X=\{x_1...x_{l+u}\}$ where $x_i\in R^D$. The problem is to estimate $Y_U$ for $X$ and $Y_L$.
+1. Calculate the similarity of the data points. The most simple metric is Euclidean distance. Use a parameter $\sigma$ to control the weights.
 
 $$w_{ij}= exp(-\frac{d^2_{ij}}{\sigma^2})=exp(-\frac{\sum^D_{d=1}{(x^d_i-x^d_j})^2}{\sigma^2})$$
 
@@ -32,7 +32,7 @@ Larger weight allow labels to travel through easier.
 $$T_{ij}=P(j \rightarrow i)=\frac{w_{ij}}{\sum^{l+u}_{k=1}w_{kj}}$$
 
 
-$T_{ij}$ is the probability to jump from node $j$ to $i$. If there are $C$ classes, we can define a $(l+u)*C$ label matrix $Y$, to represent the probability of a label belong to class $c$. The initialiation of unlabeled data points is not important.
+$T_{ij}$ is the probability to jump from node $j$ to $i$. If there are $C$ classes, we can define a $(l+u)*C$ label matrix $Y$, to represent the probability of a label belong to class $c$. The initialization of unlabeled data points is not important.
 
 
 3. Propagate $Y \leftarrow TY$
@@ -87,12 +87,12 @@ h_t&=(1-z_t)\ast h_{t-1}+z_t \ast \tilde{h_t}
 
 $z_t$ is update gate, $r_t$ is reset gate, $\tilde{h_t}$ is candidate activation, $h_t$ is activation.
 
-Compare with LSTM, GRU merge cell state and hidden state to one hiddent state, and use $z_t$ to decide how to update the state rather than $f_t$ and $i_t$.
+Compare with LSTM, GRU merge cell state and hidden state to one hidden state, and use $z_t$ to decide how to update the state rather than $f_t$ and $i_t$.
 
 Ref:
 1. [[http://colah.github.io/posts/2015-08-Understanding-LSTMs/][Understanding LSTM Networks]]
 
-*** DONE Models and Architechtures in Word2vec                     :word2vec:
+*** DONE Models and Architectures in Word2vec                     :word2vec:
 CLOSED: [2018-01-05 Fri 15:14]
    :PROPERTIES:
    :EXPORT_FILE_NAME: models-and-architechtures-in-word2vec
@@ -153,7 +153,7 @@ Minimize $J$ is expensive, as the summation is over $\lvert V \rvert$. There are
 
 ***** Hierarchical Softmax
 
-Encode words into a huffman tree, then each word has a Huffman code. The probability of it's probability $P(w\lvert Context(\omega))$ can change to choose the right path from root the che leaf node, each node is a binary classification. Suppose code $0$ is a possitive label, $1$ is negative label. If the probability of a possitive classification is 
+Encode words into a huffman tree, then each word has a Huffman code. The probability of it's probability $P(w\lvert Context(\omega))$ can change to choose the right path from root the the leaf node, each node is a binary classification. Suppose code $0$ is a positive label, $1$ is negative label. If the probability of a positive classification is 
 $$\sigma(X^T_\omega \theta)=\frac{1}{1+e^{-X^T_\omega}}$$
 
 Then the probability of negative classification is
@@ -168,7 +168,7 @@ p(d^\omega_4\lvert X_\omega,\theta^\omega_3&=\sigma(X^T_\omega \theta^\omega_3))
 p(d^\omega_5\lvert X_\omega,\theta^\omega_4&=1-\sigma(X^T_\omega \theta^\omega_4))\\
 \end{aligned}$$
 
-where $\theta$ is prarameter in the node.
+where $\theta$ is parameter in the node.
 
 The probability of the =足球= is the production of these equation.
 
@@ -178,9 +178,9 @@ $$p(\omega\lvert Context(\omega))=\prod_{j=2}^{l\omega}p(d^\omega_j\lvert X_\ome
 
 ***** Negative Sampling
 
-Choose some negitive sample, add the probability of the negative word into loss function. Maximize the positive words' probability and minimize the negitive words' probability.
+Choose some negative sample, add the probability of the negative word into loss function. Maximize the positive words' probability and minimize the negative words' probability.
 
-Let $P(D=0 \lvert \omega,c)$ be the probability that $(\omega,c)$ did not come from the corpus data. Then the objective funtion will be
+Let $P(D=0 \lvert \omega,c)$ be the probability that $(\omega,c)$ did not come from the corpus data. Then the objective function will be
 
 $$\theta = \text{argmax} \prod_{(\omega,c)\in D} P(D=1\lvert \omega,c,\theta) \prod_{(\omega,c)\in \tilde{D}} P(D=0\lvert \omega,c,\theta)$$
 
@@ -245,15 +245,15 @@ Here is a simple way to classify text without much human effort and get a impres
 
 It can be divided into two steps:
 
-1. Get train data by using keyword classificaton
+1. Get train data by using keyword classification
 2. Generate a more accurate classification model by using doc2vec and label spreading
 
 ***** Keyword-based Classification
-Keyword based classification is a simple but effective method. Extracting the target keyword is a monotonous work. I use this method to automatic extract keyword candicate.
+Keyword based classification is a simple but effective method. Extracting the target keyword is a monotonous work. I use this method to automatic extract keyword candidate.
 
 
 1. Find some most common words to classify the text.
-2. Use this equition to calculate the score of each word appears in the text.
+2. Use this equation to calculate the score of each word appears in the text.
    $$ score(i) = \frac{count(i)}{all\\_count(i)^{0.3}}$$
    which $all\\_count(i)$ is the word i's word count in all corpus, and $count(i)$ is the word i's word count in positive corpus.
 3. Check the top words, add it to the final keyword list. Repeat this process.
@@ -261,7 +261,7 @@ Keyword based classification is a simple but effective method. Extracting the ta
 Finally, we can use the keywords to classify the text and get the train data. 
 
 ***** Classification by =doc2vec= and Label Spreading
-Keyword-based classification sometimes produces the wrong result, as it can't using the symantic information in the text. Fortunately, Google has open sourced =word2vec=, which can be used to produce semantically meaningful word embeddings. Furthermore, sentences can also be converted to vectors by using =doc2vec=. Sentences which has closed meaning also have short vector distance.
+Keyword-based classification sometimes produces the wrong result, as it can't using the semantic information in the text. Fortunately, Google has open sourced =word2vec=, which can be used to produce semantically meaningful word embeddings. Furthermore, sentences can also be converted to vectors by using =doc2vec=. Sentences which has closed meaning also have short vector distance.
 
 So the problem is how to classify these vectors.
 
@@ -274,24 +274,24 @@ CLOSED: [2018-12-03 Mon 15:47]
    :PROPERTIES:
    :EXPORT_FILE_NAME: textcnn-with-pytorch-and-torchtext-on-colab
    :END:
-[[https://pytorch.org][PyTorch]] is a really powerful framework to build the machine learning models. Although some some features is missing when compared with TensorFlow (For example, the early stop fucntion, History to draw plot), its code style is more intuitive. 
+[[https://pytorch.org][PyTorch]] is a really powerful framework to build the machine learning models. Although some features is missing when compared with TensorFlow (For example, the early stop function, History to draw plot), its code style is more intuitive. 
 
 [[https://github.com/pytorch/text][Torchtext]] is a NLP package which is also made by ==pytorch== team. It provide a way to read text, processing and iterate the texts.
 
-[[https://colab.research.google.com][Google Colab]] is a Jypyter notebook environment host by Google, you can use free GPU and TPU to run your modal.
+[[https://colab.research.google.com][Google Colab]] is a Jupyter notebook environment host by Google, you can use free GPU and TPU to run your modal.
 
 Here is a simple tuturial to build a TextCNN modal and run it on Colab.
 
 The [[https://arxiv.org/abs/1408.5882][TextCNN paper]] was published by Kim in 2014. The model's idea is pretty simple, but the performance is impressive. If you trying to solve the text classificaton problem, this model is a good choice to start with.
 
-The main architechture is shown below:
+The main architecture is shown below:
 [[file:/images/textcnn.png]]
 
-It uses different kenels to extract text features, then use the softmax regerission to classify text base on the featrues.
+It uses different kernels to extract text features, then use the softmax regression to classify text base on the featues.
 
 Now we can build this model step by step.
 
-First build the model. The model I use is CNN-multichannel, which contains two sets of word emmbedding. Both of them is the copy of word embedding generate from corpus, but only one set will update embedding during training.
+First build the model. The model I use is CNN-multichannel, which contains two sets of word embedding. Both of them is the copy of word embedding generate from corpus, but only one set will update embedding during training.
 
 The code is below:
 #+BEGIN_SRC python
@@ -352,7 +352,7 @@ batch_first – Whether to produce tensors with the batch dimension first. Defau
 
 ==datasets.SST.splits== will load the ==SST== datasets, and split into train, validation, and test Dataset objects.
 
-==build_vocab== will create the Vocab object for Field, which contains the information to convert word into word index and vice versa. Also, the word embedding will save as ==Field.Vocab.vectors==. ==vectors== contains all of the word embedding. Torchtext can download some pretrained vectors automaticaly, such as ==glove.840B.300d==, ==fasttext.en.300d==. You can also load your vectors in this way, ==xxx.vec== should be the standard word2vec format.
+==build_vocab== will create the Vocab object for Field, which contains the information to convert word into word index and vice versa. Also, the word embedding will save as ==Field.Vocab.vectors==. ==vectors== contains all of the word embedding. Torchtext can download some pretrained vectors automatically, such as ==glove.840B.300d==, ==fasttext.en.300d==. You can also load your vectors in this way, ==xxx.vec== should be the standard word2vec format.
 #+BEGIN_SRC python
 from torchtext.vocab import Vectors
 
@@ -363,7 +363,7 @@ TEXT.build_vocab(train, val, test, vectors=vectors)
 ==data.BucketIterator.splits== will returns iterators that loads batches of data from datasets, and the text in same batch has similar lengths.
 
 
-Now, we can start to train the model. First we wrap some parameters into ==args==, it contains settings like output class, learning rate, log inverval and so on.
+Now, we can start to train the model. First we wrap some parameters into ==args==, it contains settings like output class, learning rate, log interval and so on.
 
 #+BEGIN_SRC python
 args={}
@@ -533,7 +533,7 @@ Using unwind
 100000
 #+END_SRC
 
-The above result is baed on =http= protocal. An very interesting result is that, =bolt= protocal will decrease the time of the first method, but double the time of sencond method. That's wired, maybe =py2neo= has some special opitimusation when doing batch insert on =bolt= protocal? But I have no idea why insert one by one with cypher is 2x slower. Here is the result of =bolt= protocal.
+The above result is based on =http= protocol. A very interesting result is that, =bolt= protocol will decrease the time of the first method, but double the time of sencond method. That's wired, maybe =py2neo= has some special opitimization when doing batch insert on =bolt= protocol? But I have no idea why insert one by one with cypher is 2x slower. Here is the result of =bolt= protocol.
 #+BEGIN_SRC text
 testing create
 Using py2neo one by one
@@ -827,7 +827,7 @@ Ref:
 3. [[https://stackoverflow.com/questions/3020514/is-it-possible-to-give-a-python-dict-an-initial-capacity-and-is-it-useful/3020810][Is it possible to give a python dict an initial capacity (and is it useful)]]
 4. [[http://www.laurentluce.com/posts/python-dictionary-implementation/][Python dictionary implementation]]
 
-**** TODO Circular Import in Python
+*** TODO Circular Import in Python
 
 Ref:
 
@@ -868,6 +868,6 @@ CLOSED: [2017-04-18 Tue 15:46]
    :PROPERTIES:
    :EXPORT_FILE_NAME: start
    :END:
-Over the years, I have read so many programmers’ blogs, which has  helped me a lot. Now I think it’s the time to start my own blog.
+Over the years, I have read so many programmers’ blogs, which has helped me a lot. Now I think it’s the time to start my own blog.
 
 I hope this can enforce myself to review what I have learned, and it would even be better if someone can benefit from it.

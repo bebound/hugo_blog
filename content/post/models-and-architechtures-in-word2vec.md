@@ -1,5 +1,5 @@
 +++
-title = "Models and Architechtures in Word2vec"
+title = "Models and Architectures in Word2vec"
 author = ["kk"]
 date = 2018-01-05T15:14:00+08:00
 tags = ["machine learning", "word2vec"]
@@ -69,7 +69,7 @@ Minimize \\(J\\) is expensive, as the summation is over \\(\lvert V \rvert\\). T
 
 ### Hierarchical Softmax {#hierarchical-softmax}
 
-Encode words into a huffman tree, then each word has a Huffman code. The probability of it's probability \\(P(w\lvert Context(\omega))\\) can change to choose the right path from root the che leaf node, each node is a binary classification. Suppose code \\(0\\) is a possitive label, \\(1\\) is negative label. If the probability of a possitive classification is
+Encode words into a huffman tree, then each word has a Huffman code. The probability of it's probability \\(P(w\lvert Context(\omega))\\) can change to choose the right path from root the the leaf node, each node is a binary classification. Suppose code \\(0\\) is a positive label, \\(1\\) is negative label. If the probability of a positive classification is
 \\[\sigma(X^T\_\omega \theta)=\frac{1}{1+e^{-X^T\_\omega}}\\]
 
 Then the probability of negative classification is
@@ -84,7 +84,7 @@ p(d^\omega\_4\lvert X\_\omega,\theta^\omega\_3&=\sigma(X^T\_\omega \theta^\omega
 p(d^\omega\_5\lvert X\_\omega,\theta^\omega\_4&=1-\sigma(X^T\_\omega \theta^\omega\_4))\\\\\\
 \end{aligned}\\]
 
-where \\(\theta\\) is prarameter in the node.
+where \\(\theta\\) is parameter in the node.
 
 The probability of the `足球` is the production of these equation.
 
@@ -95,9 +95,9 @@ Generally,
 
 ### Negative Sampling {#negative-sampling}
 
-Choose some negitive sample, add the probability of the negative word into loss function. Maximize the positive words' probability and minimize the negitive words' probability.
+Choose some negative sample, add the probability of the negative word into loss function. Maximize the positive words' probability and minimize the negative words' probability.
 
-Let \\(P(D=0 \lvert \omega,c)\\) be the probability that \\((\omega,c)\\) did not come from the corpus data. Then the objective funtion will be
+Let \\(P(D=0 \lvert \omega,c)\\) be the probability that \\((\omega,c)\\) did not come from the corpus data. Then the objective function will be
 
 \\[\theta = \text{argmax} \prod\_{(\omega,c)\in D} P(D=1\lvert \omega,c,\theta) \prod\_{(\omega,c)\in \tilde{D}} P(D=0\lvert \omega,c,\theta)\\]
 

@@ -123,7 +123,7 @@ Using unwind
 100000
 ```
 
-The above result is baed on `http` protocal. An very interesting result is that, `bolt` protocal will decrease the time of the first method, but double the time of sencond method. That's wired, maybe `py2neo` has some special opitimusation when doing batch insert on `bolt` protocal? But I have no idea why insert one by one with cypher is 2x slower. Here is the result of `bolt` protocal.
+The above result is based on `http` protocol. A very interesting result is that, `bolt` protocol will decrease the time of the first method, but double the time of sencond method. That's wired, maybe `py2neo` has some special opitimization when doing batch insert on `bolt` protocol? But I have no idea why insert one by one with cypher is 2x slower. Here is the result of `bolt` protocol.
 
 ```text
 testing create
