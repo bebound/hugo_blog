@@ -23,9 +23,9 @@ noread = true
 
 When elements size is below 50000, the table size will increase by a factor of 4 based on used slots. Otherwise, it will increase by a factor of 2.
 
-Removing item from dictionary doesn't lead to shrink table. The value of the item will marks as null but not empty. To prevent early stopping when looking for other element.
-
 So the table size increase like this: 8->8\*2/3\*4=24->24\*2/3\*4=64->...
+
+Removing item from dictionary doesn't lead to shrink table. The value of the item will marks as null but not empty. To prevent early stopping when looking for other element.
 
 
 ## Probing {#probing}
