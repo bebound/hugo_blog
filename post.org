@@ -105,7 +105,7 @@ Use the context to predict the probability of current word.
 [[file:/images/doc2vec_cbow.png]]
 
 1. Context words' vectors are $\upsilon_{c-n} ... \upsilon_{c+m}$ ($m$ is the window size)
-2. Context vector $ \hat{\upsilon}=\frac{\upsilon_{c-m}+\upsilon_{c-m+1}+...+\upsilon_{c+m}}{2m} $
+2. Context vector $\hat{\upsilon}=\frac{\upsilon_{c-m}+\upsilon_{c-m+1}+...+\upsilon_{c+m}}{2m}$
 3. Score vector $z_i = u_i\hat{\upsilon}$, where $u_i$ is the output vector representation of word $\omega_i$
 4. Turn scores into probabilities $\hat{y}=softmax(z)$
 5. We desire probabilities $\hat{y}$ match the true probabilities $y$.
@@ -135,7 +135,7 @@ Use current word to predict its context.
 
 
 1. We get the input word's vector $\upsilon_c$
-2. Generate $2m$ score vectors, $uc_{c-m},...,u_{c-1},...,u_{c+m}$.
+2. Generate $2m$ score vectors, $u_{c-m},...,u_{c-1},...,u_{c+m}$.
 3. Turn scores into probabilities $\hat{y}=softmax(u)$
 4. We desire probabilities $\hat{y}$ match the true probabilities $y$.
 
@@ -147,7 +147,7 @@ minimize J &=-\log P(\omega_{c-m},...,\omega_{c-1},\omega_{c+1},...\omega_{c+m}\
 &=-\sum_{j=0,j\ne m}^{2m}{u^T_{c-m+j}\upsilon_c+2m\log \sum_{k=1}^{\lvert V \rvert} \exp(u^T_k \upsilon_c)}
 \end{aligned}$$
 
-**** Models
+**** Architectures
 
 Minimize $J$ is expensive, as the summation is over $\lvert V \rvert$. There are two ways to reduce the computation. Hierarchical Softmax and Negative Sampling.
 

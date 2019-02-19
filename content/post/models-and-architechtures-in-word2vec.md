@@ -20,7 +20,7 @@ Use the context to predict the probability of current word.
 ![](/images/doc2vec_cbow.png)
 
 1.  Context words' vectors are \\(\upsilon\_{c-n} ... \upsilon\_{c+m}\\) (\\(m\\) is the window size)
-2.  Context vector $ \hat{\upsilon}=\frac{&upsilon;<sub>c-m</sub>+&upsilon;<sub>c-m+1</sub>+...+&upsilon;<sub>c+m</sub>}{2m} $
+2.  Context vector \\(\hat{\upsilon}=\frac{\upsilon\_{c-m}+\upsilon\_{c-m+1}+...+\upsilon\_{c+m}}{2m}\\)
 3.  Score vector \\(z\_i = u\_i\hat{\upsilon}\\), where \\(u\_i\\) is the output vector representation of word \\(\omega\_i\\)
 4.  Turn scores into probabilities \\(\hat{y}=softmax(z)\\)
 5.  We desire probabilities \\(\hat{y}\\) match the true probabilities \\(y\\).
@@ -49,7 +49,7 @@ Use current word to predict its context.
 ![](/images/doc2vec_skip-gram.png)
 
 1.  We get the input word's vector \\(\upsilon\_c\\)
-2.  Generate \\(2m\\) score vectors, \\(uc\_{c-m},...,u\_{c-1},...,u\_{c+m}\\).
+2.  Generate \\(2m\\) score vectors, \\(u\_{c-m},...,u\_{c-1},...,u\_{c+m}\\).
 3.  Turn scores into probabilities \\(\hat{y}=softmax(u)\\)
 4.  We desire probabilities \\(\hat{y}\\) match the true probabilities \\(y\\).
 
@@ -62,7 +62,7 @@ minimize J &=-\log P(\omega\_{c-m},...,\omega\_{c-1},\omega\_{c+1},...\omega\_{c
 \end{aligned}\\]
 
 
-## Models {#models}
+## Architectures {#architectures}
 
 Minimize \\(J\\) is expensive, as the summation is over \\(\lvert V \rvert\\). There are two ways to reduce the computation. Hierarchical Softmax and Negative Sampling.
 
