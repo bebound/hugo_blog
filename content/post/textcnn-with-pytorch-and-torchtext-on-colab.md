@@ -140,7 +140,7 @@ for epoch in range(1, args['epochs']+1):
         optimizer.step()
 ```
 
-Here is the full colab file: [textcnn.ipynb](https://colab.research.google.com/drive/1iZE5O0aBEOEhkWNpARqK5u151qrlwJq-)
+Here is the full colab file on google drive: [textcnn.ipynb](https://colab.research.google.com/drive/1iZE5O0aBEOEhkWNpARqK5u151qrlwJq-). [Backup Link](/files/textcnn.ipynb)
 
 Ref:
 
