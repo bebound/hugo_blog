@@ -24,7 +24,7 @@ The [TextCNN paper](https://arxiv.org/abs/1408.5882) was published by Kim in 201
 The main architecture is shown below:
 ![](/images/textcnn.png)
 
-It uses different kernels to extract text features, then use the softmax regression to classify text base on the featues.
+It uses different kernels to extract text features, then use the softmax regression to classify text base on the features.
 
 Now we can build this model step by step.
 
@@ -140,7 +140,7 @@ for epoch in range(1, args['epochs']+1):
         optimizer.step()
 ```
 
-Here is the full colab file on google drive: [textcnn.ipynb](https://colab.research.google.com/drive/1iZE5O0aBEOEhkWNpARqK5u151qrlwJq-). [Backup Link](/files/textcnn.ipynb)
+You can found `textcnn.ipynb` [here](https://github.com/bebound/ML-ipynb).
 
 Ref:
 
