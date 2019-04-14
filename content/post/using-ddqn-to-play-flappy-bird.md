@@ -70,13 +70,16 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
     ![](/images/ddqn_cartpole_prioritized.png)
 
 7.  Colab and Kaggle Kernel
-    My MacBook doesn't support CUDA, so I use these two website to train the model. Here are the comparison of them.
 
-|                      | Colab        | Kaggle Kernel |
-|----------------------|--------------|---------------|
-| GPU                  | Tesla K80    | Tesla P100    |
-| Max training time    | 12h          | 9h            |
-| Export trained model | Google Drive | -             |
+    My MacBook doesn't support CUDA, so I use these two website to train the model. Here are the comparison of them. During training, Kaggle seems more stable, Colab usually disconnected after 1h.
+
+    |                      | Colab        | Kaggle Kernel |
+    |----------------------|--------------|---------------|
+    | GPU                  | Tesla K80    | Tesla P100    |
+    | Max training time    | 12h          | 9h            |
+    | Export trained model | Google Drive | -             |
+
+---
 
 The lesson I learnt from this project is patience. It takes a long time(at least thousands of episode) to see whether this model works, and there are so many parameters can effect the final performance. It takes me about 3 weeks to build the final model. So if you want to build your own model, be patient and good luck.
 
@@ -84,16 +87,16 @@ Here are something may help with this task.
 
 -   [Visdom](https://github.com/facebookresearch/visdom)
 
-It's a visualization tool. One of the most common usage is to show some metrics during train. It's more convenient to use it rather than generate graph manually by matplotlib. Besides `reward` and `mean_q`, these variable are also useful when debugging: total frames, TD-error, loss and action\_distribution.
+    It's a visualization tool. One of the most common usage is to show some metrics during train. It's more convenient to use it rather than generate graph manually by matplotlib. Besides `reward` and `mean_q`, these variable are also useful when debugging: total frames, TD-error, loss and action\_distribution.
 
--   Advance image pre-processing
+-   Advanced image pre-processing
 
-In this project, I just grayscalize the image and remove the most common color in backgroud. A more advance technology such as binarize should help.
-![](/images/ddqn_binary_preprocessing.png)
+    In this project, I just grayscalize the image. A more advance technology such as binarize should help agent to filter unimportant detail of game output.
+    ![](/images/ddqn_binary_preprocessing.png)
 
 -   Multiprocessing
 
-Using separate thread to generate memory and another thread to optimize model.
+    Using separate thread to generate memory and another thread to optimize model.
 
 Ref:
 
