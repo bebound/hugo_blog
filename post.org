@@ -494,7 +494,7 @@ The lesson I learnt from this project is patience. It takes a long time(at least
   Here are something may help with this task.
 - [[https://github.com/facebookresearch/visdom][Visdom]]
 
-  It's a visualization tool. One of the most common usage is to show some metrics during train. It's more convenient to use it rather than generate graph manually by matplotlib. Besides =reward= and =mean_q=, these variable are also useful when debugging: total frames, TD-error, loss and action_distribution.
+  It's a visualization tool made by FaceBook. It's more convenient to use it rather than generate graph manually by matplotlib. Besides =reward= and =mean_q=, these variable are also useful when debugging: total frames, TD-error, loss and action_distribution.
   
 - Advanced image pre-processing
 
