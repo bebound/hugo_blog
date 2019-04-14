@@ -1,0 +1,104 @@
++++
+title = "Using Dueling DQN to Play Flappy Bird"
+author = ["kk"]
+date = 2019-04-14T17:10:00+08:00
+tags = ["machine learning"]
+draft = false
+noauthor = true
+nocomment = true
+nodate = true
+nopaging = true
+noread = true
++++
+
+PyTorch provide a simple DQN implementation to solve the cartpole game. However, the code is incorrect, it diverges after training (It has been discussed [here](https://discuss.pytorch.org/t/dqn-example-from-pytorch-diverged/4123)).
+
+The official code's training data is below, it's high score is about 50 and finally diverges.
+
+{{< figure src="/images/ddqn_official.png" >}}
+
+There are many reason that lead to divergence.
+
+First it use the difference of two frame as input in the tutorial, not only it loss the cart's absolute information(This information is useful, as game will terminate if cart moves too far from centre), but also confused the agent when difference is the same but the state is varied.
+
+Second, small replay memory. If the memory is too small, the agent will forget the strategy it has token in some state. I'm not sure whether `10000` memory is big enough, but I suggest using a higher value.
+
+Third, the parameters. `learning_rate`, `target_update_interval` may cause fluctuation. Here is a example on [stackoverflow](https://stackoverflow.com/questions/49837204/performance-fluctuates-as-it-is-trained-with-dqn). I also met this problem when training cartpole agent. The reward stops growing after 1000 episode.
+
+{{< figure src="/images/ddqn_cartpole_fluctuate.png" >}}
+
+After doing some research on the cartpole DNQ code, I managed to made a model to play the flappy bird. Here are the changes from the original cartpole code. Most of the technology can be found in this papers: [Playing Atari with Deep Reinforcement Learning](https://arxiv.org/abs/1312.5602)
+
+1.  Dueling DQN
+
+    I use a advanced model : Dueling DQN. It has two estimator, one estimate the score of current state, another estimate the action score.
+
+    \\(Q(S,A,w,\alpha, \beta) = V(S,w,\alpha) + A(S,A,w,\beta)\\)
+
+    In order to distinguish the score of the actions, the return the Q-value will minus the mean action score:
+
+    `x=val+adv-adv.mean(1,keepdim=True)`
+
+    {{< figure src="/images/ddqn_duel_dqn.png" >}}
+
+    Double DQN is another variant of DQN. It first calculate which action has the max Q-value, then calculate the Q-value of this action.
+
+    \\(a^{max}(S'\_j, w) = \arg\max\_{a'}Q(\phi(S'\_j),a,w)\\)
+
+    \\(y\_j = R\_j + \gamma Q'(\phi(S'\_j),a^{max}(S'\_j, w),w')\\)
+
+2.  Image processing
+
+    I grayscale the image, then remove the background color.
+
+3.  Stack frames
+
+    I use the last 4 frame as the input. This should help the agent to know the change of environment.
+
+4.  Extra FC before last layer
+
+    I add a FC between the image features and the FC for calculate Q-Value.
+
+5.  Frame Skipping
+
+    Frame-skipping means agent sees and selects actions on every k frame instead of every frame, the last action is repeated on skipped frames. In this game, k=2, when k=4, the agent's max reward will stay at 0. This method will accelerate the training procedure. More details can be found [here](https://danieltakeshi.github.io/2016/11/25/frame-skipping-and-preprocessing-for-deep-q-networks-on-atari-2600-games/).
+
+6.  Prioritized Experience Replay
+
+    This idea was published [here](https://arxiv.org/abs/1511.05952). It's a very simple idea: replay high TD error experience more frequently. My code implementation is not efficient. But in cartpole game, this technology help the agent converge faster. Here is the result on cartpole. The formoer one is uniform replay, the later is prioritized replay.
+    ![](/images/ddqn_cartpole_normal.png)
+    ![](/images/ddqn_cartpole_prioritized.png)
+
+7.  Colab and Kaggle Kernel
+    My MacBook doesn't support CUDA, so I use these two website to train the model. Here are the comparison of them.
+
+|                      | Colab        | Kaggle Kernel |
+|----------------------|--------------|---------------|
+| GPU                  | Tesla K80    | Tesla P100    |
+| Max training time    | 12h          | 9h            |
+| Export trained model | Google Drive | -             |
+
+The lesson I learnt from this project is patience. It takes a long time(at least thousands of episode) to see whether this model works, and there are so many parameters can effect the final performance. It takes me about 3 weeks to build the final model. So if you want to build your own model, be patient and good luck.
+
+Here are something may help with this task.
+
+-   [Visdom](https://github.com/facebookresearch/visdom)
+
+It's a visualization tool. One of the most common usage is to show some metrics during train. It's more convenient to use it rather than generate graph manually by matplotlib. Besides `reward` and `mean_q`, these variable are also useful when debugging: total frames, TD-error, loss and action\_distribution.
+
+-   Advance image pre-processing
+
+In this project, I just grayscalize the image and remove the most common color in backgroud. A more advance technology such as binarize should help.
+![](/images/ddqn_binary_preprocessing.png)
+
+-   Multiprocessing
+
+Using separate thread to generate memory and another thread to optimize model.
+
+Ref:
+
+1.  [PyTorch REINFORCEMENT LEARNING (DQN) TUTORIAL](https://pytorch.org/tutorials/intermediate/reinforcement%5Fq%5Flearning.html)
+2.  [强化学习](https://www.cnblogs.com/pinard/category/1254674.html) (A series of Chinese post about reinforcement learning)
+3.  [Deep Reinforcement Learning for Flappy Bird](http://cs229.stanford.edu/proj2015/362%5Freport.pdf)
+4.  [Flappy-Bird-Double-DQN-Pytorch](https://github.com/ttaoREtw/Flappy-Bird-Double-DQN-Pytorch)
+5.  [DeepRL-Tutorials](https://github.com/qfettes/DeepRL-Tutorials)
