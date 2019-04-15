@@ -405,7 +405,7 @@ Finally, we can train the model.
           optimizer.step()
 #+END_SRC
 
-You can found =textcnn.ipynb= [[https://github.com/bebound/ML-ipynb][here]].
+You can found =textcnn.ipynb= [[https://github.com/bebound/textcnn][here]].
 
 
 Ref:
@@ -440,7 +440,16 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
 
 1. Dueling DQN
    
-   I use a advanced model : Dueling DQN. It has two estimator, one estimate the score of current state, another estimate the action score. 
+   The vanilla DQN has the overestimate problem. As the =max= function will accumulate the noise when training. This leads to converging at suboptimal point. Two following architectures are submitted to solve this problem. 
+
+   Double DQN was published two year later DQN. It has two value function, one is used to choose the action with max Q value, another one is used to calculate the Q value of this action.
+
+   $a^{max}(S'_j, w) = \arg\max_{a'}Q(\phi(S'_j),a,w)$
+
+   $y_j = R_j + \gamma Q'(\phi(S'_j),a^{max}(S'_j, w),w')$
+
+
+   Dueling DQN is another solution. It has two estimator, one estimates the score of current state, another estimates the action score. 
 
    $Q(S,A,w,\alpha, \beta) = V(S,w,\alpha) + A(S,A,w,\beta)$
 
@@ -449,12 +458,9 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
    =x=val+adv-adv.mean(1,keepdim=True)=
 
    [[file:/images/ddqn_duel_dqn.png]]
+   
+   In this project, I use dueling DQN.
 
-   Double DQN is another variant of DQN. It first calculate which action has the max Q-value, then calculate the Q-value of this action.
-
-   $a^{max}(S'_j, w) = \arg\max_{a'}Q(\phi(S'_j),a,w)$
-
-   $y_j = R_j + \gamma Q'(\phi(S'_j),a^{max}(S'_j, w),w')$
 
 2. Image processing
 
@@ -494,16 +500,17 @@ The lesson I learnt from this project is patience. It takes a long time(at least
   Here are something may help with this task.
 - [[https://github.com/facebookresearch/visdom][Visdom]]
 
-  It's a visualization tool made by FaceBook. It's more convenient to use it rather than generate graph manually by matplotlib. Besides =reward= and =mean_q=, these variable are also useful when debugging: total frames, TD-error, loss and action_distribution.
+  It's a visualization tool made by FaceBook. It's more convenient to use it rather than generate graph manually by matplotlib. Besides =reward= and =mean_q=, these variable are also useful when debugging: total frames, TD-error, loss and action_distribution. [[https://github.com/lanpa/tensorboardX][tensorboardX]] is a alternative for those who is familiar with TensorFlow.
   
 - Advanced image pre-processing
 
   In this project, I just grayscalize the image. A more advance technology such as binarize should help agent to filter unimportant detail of game output.
   [[file:/images/ddqn_binary_preprocessing.png]]
+  
+- Other Improvements
 
-- Multiprocessing
-
-  Using separate thread to generate memory and another thread to optimize model. 
+  [[https://arxiv.org/abs/1710.02298][Rainbow]] introduce many extensions to enhance DQN.
+  [[file:/images/ddqn_rainbow.png]]
 
 Ref:
 1. [[https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html][PyTorch REINFORCEMENT LEARNING (DQN) TUTORIAL]]

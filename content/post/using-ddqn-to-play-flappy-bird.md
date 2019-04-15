@@ -31,45 +31,49 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
 
 1.  Dueling DQN
 
-    I use a advanced model : Dueling DQN. It has two estimator, one estimate the score of current state, another estimate the action score.
+    The vanilla DQN has the overestimate problem. As the `max` function will accumulate the noise when training. This leads to converging at suboptimal point. Two following architectures are submitted to solve this problem.
 
-    \\(Q(S,A,w,\alpha, \beta) = V(S,w,\alpha) + A(S,A,w,\beta)\\)
-
-    In order to distinguish the score of the actions, the return the Q-value will minus the mean action score:
-
-    `x=val+adv-adv.mean(1,keepdim=True)`
-
-    {{< figure src="/images/ddqn_duel_dqn.png" >}}
-
-    Double DQN is another variant of DQN. It first calculate which action has the max Q-value, then calculate the Q-value of this action.
+    Double DQN was published two year later DQN. It has two value function, one is used to choose the action with max Q value, another one is used to calculate the Q value of this action.
 
     \\(a^{max}(S'\_j, w) = \arg\max\_{a'}Q(\phi(S'\_j),a,w)\\)
 
     \\(y\_j = R\_j + \gamma Q'(\phi(S'\_j),a^{max}(S'\_j, w),w')\\)
 
-2.  Image processing
+Dueling DQN is another solution. It has two estimator, one estimates the score of current state, another estimates the action score.
+
+\\(Q(S,A,w,\alpha, \beta) = V(S,w,\alpha) + A(S,A,w,\beta)\\)
+
+In order to distinguish the score of the actions, the return the Q-value will minus the mean action score:
+
+`x=val+adv-adv.mean(1,keepdim=True)`
+
+{{< figure src="/images/ddqn_duel_dqn.png" >}}
+
+In this project, I use dueling DQN.
+
+1.  Image processing
 
     I grayscale the image, then remove the background color.
 
-3.  Stack frames
+2.  Stack frames
 
     I use the last 4 frame as the input. This should help the agent to know the change of environment.
 
-4.  Extra FC before last layer
+3.  Extra FC before last layer
 
     I add a FC between the image features and the FC for calculate Q-Value.
 
-5.  Frame Skipping
+4.  Frame Skipping
 
     Frame-skipping means agent sees and selects actions on every k frame instead of every frame, the last action is repeated on skipped frames. In this game, k=2, when k=4, the agent's max reward will stay at 0. This method will accelerate the training procedure. More details can be found [here](https://danieltakeshi.github.io/2016/11/25/frame-skipping-and-preprocessing-for-deep-q-networks-on-atari-2600-games/).
 
-6.  Prioritized Experience Replay
+5.  Prioritized Experience Replay
 
     This idea was published [here](https://arxiv.org/abs/1511.05952). It's a very simple idea: replay high TD error experience more frequently. My code implementation is not efficient. But in cartpole game, this technology help the agent converge faster. Here is the result on cartpole. The formoer one is uniform replay, the later is prioritized replay.
     ![](/images/ddqn_cartpole_normal.png)
     ![](/images/ddqn_cartpole_prioritized.png)
 
-7.  Colab and Kaggle Kernel
+6.  Colab and Kaggle Kernel
 
     My MacBook doesn't support CUDA, so I use these two website to train the model. Here are the comparison of them. During training, Kaggle seems more stable, Colab usually disconnected after 1h.
 
@@ -87,16 +91,17 @@ Here are something may help with this task.
 
 -   [Visdom](https://github.com/facebookresearch/visdom)
 
-    It's a visualization tool made by FaceBook. It's more convenient to use it rather than generate graph manually by matplotlib. Besides `reward` and `mean_q`, these variable are also useful when debugging: total frames, TD-error, loss and action\_distribution.
+    It's a visualization tool made by FaceBook. It's more convenient to use it rather than generate graph manually by matplotlib. Besides `reward` and `mean_q`, these variable are also useful when debugging: total frames, TD-error, loss and action\_distribution. [tensorboardX](https://github.com/lanpa/tensorboardX) is a alternative for those who is familiar with TensorFlow.
 
 -   Advanced image pre-processing
 
     In this project, I just grayscalize the image. A more advance technology such as binarize should help agent to filter unimportant detail of game output.
     ![](/images/ddqn_binary_preprocessing.png)
 
--   Multiprocessing
+-   Other Improvements
 
-    Using separate thread to generate memory and another thread to optimize model.
+    [Rainbow](https://arxiv.org/abs/1710.02298) introduce many extensions to enhance DQN.
+    ![](/images/ddqn_rainbow.png)
 
 Ref:
 

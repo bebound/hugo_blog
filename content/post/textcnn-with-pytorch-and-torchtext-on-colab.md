@@ -140,7 +140,7 @@ for epoch in range(1, args['epochs']+1):
         optimizer.step()
 ```
 
-You can found `textcnn.ipynb` [here](https://github.com/bebound/ML-ipynb).
+You can found `textcnn.ipynb` [here](https://github.com/bebound/textcnn).
 
 Ref:
 
