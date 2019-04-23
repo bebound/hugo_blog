@@ -65,7 +65,7 @@ In this project, I use dueling DQN.
 
 4.  Frame Skipping
 
-    Frame-skipping means agent sees and selects actions on every k frame instead of every frame, the last action is repeated on skipped frames. In this game, k=2, when k=4, the agent's max reward will stay at 0. This method will accelerate the training procedure. More details can be found [here](https://danieltakeshi.github.io/2016/11/25/frame-skipping-and-preprocessing-for-deep-q-networks-on-atari-2600-games/).
+    Frame-skipping means agent sees and selects actions on every k frame instead of every frame, the last action is repeated on skipped frames. This method will accelerate the training procedure. I have tried different frame skipping values. When `frame=1`, I got max reward, about 100. When `frame=2`, the max reward drop to 50. When k=4, the agent failed to play the game, and max reward stays at 0. Although frame skipping is not working with flappy bird, someone has prove that it does work in many cases. More details can be found in this [post](https://danieltakeshi.github.io/2016/11/25/frame-skipping-and-preprocessing-for-deep-q-networks-on-atari-2600-games/).
 
 5.  Prioritized Experience Replay
 
@@ -85,13 +85,16 @@ In this project, I use dueling DQN.
 
 ---
 
-The lesson I learnt from this project is patience. It takes a long time(at least thousands of episode) to see whether this model works, and there are so many parameters can effect the final performance. It takes me about 3 weeks to build the final model. So if you want to build your own model, be patient and good luck.
+The lesson I learnt from this project is patience. It takes a long time(maybe hundreds of thousand steps) to see whether this model works, and there are so many parameters can effect the final performance. It takes me about 3 weeks to build the final model. So if you want to build your own model, be patient and good luck. Here are two articles talking about the debugging and hyperparameter tuning in DQN:
+
+-   [DQN debugging using Open AI gym Cartpole](https://adgefficiency.com/dqn-debugging/)
+-   [DDQN hyperparameter tuning using Open AI gym Cartpole](https://adgefficiency.com/dqn-tuning/)
 
 Here are something may help with this task.
 
 -   [Visdom](https://github.com/facebookresearch/visdom)
 
-    It's a visualization tool made by FaceBook. It's more convenient to use it rather than generate graph manually by matplotlib. Besides `reward` and `mean_q`, these variable are also useful when debugging: total frames, TD-error, loss and action\_distribution. [tensorboardX](https://github.com/lanpa/tensorboardX) is a alternative for those who is familiar with TensorFlow.
+    It's a visualization tool made by FaceBook. It's more convenient to use it rather than generate graph manually by matplotlib. Besides `reward` and `mean_q`, these variable are also useful when debugging: total frames, TD-error, loss and action\_distribution. [tensorboardX](https://github.com/lanpa/tensorboardX) is a alternative for those who has experience in TensorFlow.
 
 -   Advanced image pre-processing
 
@@ -100,8 +103,10 @@ Here are something may help with this task.
 
 -   Other Improvements
 
-    [Rainbow](https://arxiv.org/abs/1710.02298) introduce many extensions to enhance DQN.
+    [Rainbow](https://arxiv.org/abs/1710.02298) introduce many other extensions to enhance DQN, some of them have been discussed in this post.
     ![](/images/ddqn_rainbow.png)
+
+I'm still trying to find better solution. I've uploaded code to this [repo](https://github.com/bebound/flappy%5Fbird%5Fdqn/).
 
 Ref:
 
