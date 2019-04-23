@@ -448,7 +448,6 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
 
    $y_j = R_j + \gamma Q'(\phi(S'_j),a^{max}(S'_j, w),w')$
 
-
    Dueling DQN is another solution. It has two estimator, one estimates the score of current state, another estimates the action score. 
 
    $Q(S,A,w,\alpha, \beta) = V(S,w,\alpha) + A(S,A,w,\beta)$
@@ -460,7 +459,6 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
    [[file:/images/ddqn_duel_dqn.png]]
    
    In this project, I use dueling DQN.
-
 
 2. Image processing
 
@@ -476,7 +474,7 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
 
 5. Frame Skipping
    
-   Frame-skipping means agent sees and selects actions on every k frame instead of every frame, the last action is repeated on skipped frames. This method will accelerate the training procedure. I have tried different frame skipping values. When =k=1=, I got max reward, about 100. When =k=2=, the max reward drop to 50. When k=4, the agent failed to play the game, and max reward stays at 0. Although frame skipping is not working with flappy bird, someone has prove that it does work in many cases. More details can be found in this [[https://danieltakeshi.github.io/2016/11/25/frame-skipping-and-preprocessing-for-deep-q-networks-on-atari-2600-games/][post]].
+   Frame-skipping means agent sees and selects actions on every k frame instead of every frame, the last action is repeated on skipped frames. This method will accelerate the training procedure. I have tried different frame skipping values. When =frame=1=, I got max reward, about 100. When =frame=2=, the max reward drop to 50. When k=4, the agent failed to play the game, and max reward stays at 0. Although frame skipping is not working with flappy bird, someone has prove that it does work in many cases. More details can be found in this [[https://danieltakeshi.github.io/2016/11/25/frame-skipping-and-preprocessing-for-deep-q-networks-on-atari-2600-games/][post]].
 
 6. Prioritized Experience Replay
    

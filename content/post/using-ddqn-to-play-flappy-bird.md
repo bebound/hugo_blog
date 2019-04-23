@@ -39,41 +39,41 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
 
     \\(y\_j = R\_j + \gamma Q'(\phi(S'\_j),a^{max}(S'\_j, w),w')\\)
 
-Dueling DQN is another solution. It has two estimator, one estimates the score of current state, another estimates the action score.
+    Dueling DQN is another solution. It has two estimator, one estimates the score of current state, another estimates the action score.
 
-\\(Q(S,A,w,\alpha, \beta) = V(S,w,\alpha) + A(S,A,w,\beta)\\)
+    \\(Q(S,A,w,\alpha, \beta) = V(S,w,\alpha) + A(S,A,w,\beta)\\)
 
-In order to distinguish the score of the actions, the return the Q-value will minus the mean action score:
+    In order to distinguish the score of the actions, the return the Q-value will minus the mean action score:
 
-`x=val+adv-adv.mean(1,keepdim=True)`
+    `x=val+adv-adv.mean(1,keepdim=True)`
 
-{{< figure src="/images/ddqn_duel_dqn.png" >}}
+    {{< figure src="/images/ddqn_duel_dqn.png" >}}
 
-In this project, I use dueling DQN.
+    In this project, I use dueling DQN.
 
-1.  Image processing
+2.  Image processing
 
     I grayscale the image, then remove the background color.
 
-2.  Stack frames
+3.  Stack frames
 
     I use the last 4 frame as the input. This should help the agent to know the change of environment.
 
-3.  Extra FC before last layer
+4.  Extra FC before last layer
 
     I add a FC between the image features and the FC for calculate Q-Value.
 
-4.  Frame Skipping
+5.  Frame Skipping
 
     Frame-skipping means agent sees and selects actions on every k frame instead of every frame, the last action is repeated on skipped frames. This method will accelerate the training procedure. I have tried different frame skipping values. When `frame=1`, I got max reward, about 100. When `frame=2`, the max reward drop to 50. When k=4, the agent failed to play the game, and max reward stays at 0. Although frame skipping is not working with flappy bird, someone has prove that it does work in many cases. More details can be found in this [post](https://danieltakeshi.github.io/2016/11/25/frame-skipping-and-preprocessing-for-deep-q-networks-on-atari-2600-games/).
 
-5.  Prioritized Experience Replay
+6.  Prioritized Experience Replay
 
     This idea was published [here](https://arxiv.org/abs/1511.05952). It's a very simple idea: replay high TD error experience more frequently. My code implementation is not efficient. But in cartpole game, this technology help the agent converge faster. Here is the result on cartpole. The formoer one is uniform replay, the later is prioritized replay.
     ![](/images/ddqn_cartpole_normal.png)
     ![](/images/ddqn_cartpole_prioritized.png)
 
-6.  Colab and Kaggle Kernel
+7.  Colab and Kaggle Kernel
 
     My MacBook doesn't support CUDA, so I use these two website to train the model. Here are the comparison of them. During training, Kaggle seems more stable, Colab usually disconnected after 1h.
 
