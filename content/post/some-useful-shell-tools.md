@@ -17,7 +17,8 @@ Here are some shell tools I use, which can boost your productivity.
 ## [Prezto](https://github.com/sorin-ionescu/prezto) {#prezto}
 
 A zsh configuration framework. Provides auto completion, prompt theme and lots of modules to work with other useful tools. I extremely love the `agnoster` theme.
-![](/images/shell_agnoster.png)
+
+{{< figure src="/images/shell_agnoster.png" width="400" >}}
 
 
 ## [Fasd](https://github.com/clvv/fasd) {#fasd}
@@ -43,10 +44,12 @@ A fast code search tool similar to `ack`.
 ## [fzf](https://github.com/junegunn/fzf) {#fzf}
 
 A great fuzzy finder, it can also integrate with vim by [fzf.vim](https://github.com/junegunn/fzf.vim)
-![](/images/shell_fzf.gif)
+
+{{< figure src="/images/shell_fzf.gif" width="400" >}}
 
 
 ## [thefuck](https://github.com/nvbn/thefuck) {#thefuck}
 
 Magnificent app which corrects your previous console command.
-![](/images/shell_thefuck.gif)
+
+{{< figure src="/images/shell_thefuck.gif" width="400" >}}

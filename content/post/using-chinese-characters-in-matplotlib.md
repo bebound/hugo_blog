@@ -27,4 +27,5 @@ plt.show()
 ```
 
 Output:
-![](/images/matplot_chinese.png)
+
+{{< figure src="/images/matplot_chinese.png" width="400" >}}

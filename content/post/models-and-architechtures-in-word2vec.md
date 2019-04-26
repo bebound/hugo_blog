@@ -17,7 +17,8 @@ noread = true
 ### CBOW (Continuous Bag of Words) {#cbow--continuous-bag-of-words}
 
 Use the context to predict the probability of current word.
-![](/images/doc2vec_cbow.png)
+
+{{< figure src="/images/doc2vec_cbow.png" width="400" >}}
 
 1.  Context words' vectors are \\(\upsilon\_{c-n} ... \upsilon\_{c+m}\\) (\\(m\\) is the window size)
 2.  Context vector \\(\hat{\upsilon}=\frac{\upsilon\_{c-m}+\upsilon\_{c-m+1}+...+\upsilon\_{c+m}}{2m}\\)
@@ -46,7 +47,8 @@ minimize\ J &=-\log P(\omega\_c\lvert \omega\_{c-m},...,\omega\_{c-1},...,\omega
 ### Skip-Gram {#skip-gram}
 
 Use current word to predict its context.
-![](/images/doc2vec_skip-gram.png)
+
+{{< figure src="/images/doc2vec_skip-gram.png" width="400" >}}
 
 1.  We get the input word's vector \\(\upsilon\_c\\)
 2.  Generate \\(2m\\) score vectors, \\(u\_{c-m},...,u\_{c-1},...,u\_{c+m}\\).
@@ -74,7 +76,8 @@ Encode words into a huffman tree, then each word has a Huffman code. The probabi
 
 Then the probability of negative classification is
 \\[1-\sigma(X^T\_\omega \theta)\\]
-![](/images/doc2vec_hierarchical_softmax.png)
+
+<img src="/images/doc2vec_hierarchical_softmax.png" alt="doc2vec_hierarchical_softmax.png" width="400" />
 足球's Huffman code is \\(1001\\), then it's probability in each node are
 
 \\[\begin{aligned}

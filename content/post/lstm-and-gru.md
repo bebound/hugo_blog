@@ -16,7 +16,8 @@ noread = true
 The avoid the problem of vanishing gradient and exploding gradient in vanilla RNN, LSTM was published, which can remember information for longer periods of time.
 
 Here is the structure of LSTM:
-![](/images/LSTM_LSTM.png)
+
+{{< figure src="/images/LSTM_LSTM.png" width="400" >}}
 
 The calculate procedure are:
 
@@ -36,7 +37,7 @@ Use \\(f\_t\\) and \\(i\_t\\) to update \\(C\_t\\), use \\(o\_t\\) to decide whi
 
 ## GRU {#gru}
 
-{{< figure src="/images/LSTM_GRU.png" >}}
+{{< figure src="/images/LSTM_GRU.png" width="400" >}}
 
 \\[\begin{aligned}
 z\_t&=\sigma(W\_z\cdot[h\_{t-1},x\_t])\\\\\\

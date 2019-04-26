@@ -19,7 +19,8 @@ Here are some parameter in `gensim`'s `doc2vec` class.
 window is the maximum distance between the predicted word and context words used for prediction within a document. It will look behind and ahead.
 
 In `skip-gram` model, if the window size is 2, the training samples will be this:(the blue word is the input word)
-![](/images/doc2vec_window.png)
+
+{{< figure src="/images/doc2vec_window.png" width="400" >}}
 
 
 ## min\_count {#min-count}
@@ -36,7 +37,8 @@ High frequency word like `the` is useless for training. `sample` is a threshold 
 where \\(z(w\_i)\\) is the frequency of the word and \\(s\\) is the sample rate.
 
 This is the plot when `sample` is 1e-3.
-![](/images/doc2vec_negative_sample.png)
+
+{{< figure src="/images/doc2vec_negative_sample.png" width="400" >}}
 
 
 ## negative {#negative}

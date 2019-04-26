@@ -15,7 +15,7 @@ PyTorch provide a simple DQN implementation to solve the cartpole game. However,
 
 The official code's training data is below, it's high score is about 50 and finally diverges.
 
-{{< figure src="/images/ddqn_official.png" >}}
+{{< figure src="/images/ddqn_official.png" width="400" >}}
 
 There are many reason that lead to divergence.
 
@@ -25,7 +25,7 @@ Second, small replay memory. If the memory is too small, the agent will forget t
 
 Third, the parameters. `learning_rate`, `target_update_interval` may cause fluctuation. Here is a example on [stackoverflow](https://stackoverflow.com/questions/49837204/performance-fluctuates-as-it-is-trained-with-dqn). I also met this problem when training cartpole agent. The reward stops growing after 1000 episode.
 
-{{< figure src="/images/ddqn_cartpole_fluctuate.png" >}}
+{{< figure src="/images/ddqn_cartpole_fluctuate.png" width="400" >}}
 
 After doing some research on the cartpole DNQ code, I managed to made a model to play the flappy bird. Here are the changes from the original cartpole code. Most of the technology can be found in this papers: [Playing Atari with Deep Reinforcement Learning](https://arxiv.org/abs/1312.5602)
 
@@ -47,7 +47,7 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
 
     `x=val+adv-adv.mean(1,keepdim=True)`
 
-    {{< figure src="/images/ddqn_duel_dqn.png" >}}
+    {{< figure src="/images/ddqn_duel_dqn.png" width="400" >}}
 
     In this project, I use dueling DQN.
 
@@ -70,8 +70,9 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
 6.  Prioritized Experience Replay
 
     This idea was published [here](https://arxiv.org/abs/1511.05952). It's a very simple idea: replay high TD error experience more frequently. My code implementation is not efficient. But in cartpole game, this technology help the agent converge faster. Here is the result on cartpole. The formoer one is uniform replay, the later is prioritized replay.
-    ![](/images/ddqn_cartpole_normal.png)
-    ![](/images/ddqn_cartpole_prioritized.png)
+
+    <img src="/images/ddqn_cartpole_normal.png" alt="ddqn_cartpole_normal.png" width="400" />
+    <img src="/images/ddqn_cartpole_prioritized.png" alt="ddqn_cartpole_prioritized.png" width="400" />
 
 7.  Colab and Kaggle Kernel
 
@@ -104,7 +105,8 @@ Here are something may help with this task.
 -   Other Improvements
 
     [Rainbow](https://arxiv.org/abs/1710.02298) introduce many other extensions to enhance DQN, some of them have been discussed in this post.
-    ![](/images/ddqn_rainbow.png)
+
+    {{< figure src="/images/ddqn_rainbow.png" width="400" >}}
 
 I'm still trying to find better solution. I've uploaded code to this [repo](https://github.com/bebound/flappy%5Fbird%5Fdqn/).
 
@@ -115,3 +117,7 @@ Ref:
 3.  [Deep Reinforcement Learning for Flappy Bird](http://cs229.stanford.edu/proj2015/362%5Freport.pdf)
 4.  [Flappy-Bird-Double-DQN-Pytorch](https://github.com/ttaoREtw/Flappy-Bird-Double-DQN-Pytorch)
 5.  [DeepRL-Tutorials](https://github.com/qfettes/DeepRL-Tutorials)
+
+Update 19-04-26:
+
+Colab's GPU has upgrade to Tesla T4, now it becomes my best bet.

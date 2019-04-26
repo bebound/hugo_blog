@@ -36,7 +36,7 @@ Larger weight allow labels to travel through easier.
 
 In short, let the nearest label has larger weight, then calculate each label's new label, reset labeled data's label, repeat.
 
-{{< figure src="/images/label_spreading.png" >}}
+{{< figure src="/images/label_spreading.png" width="400" >}}
 
 Ref:
 

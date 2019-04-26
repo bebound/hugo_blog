@@ -22,7 +22,8 @@ Here is a simple tuturial to build a TextCNN modal and run it on Colab.
 The [TextCNN paper](https://arxiv.org/abs/1408.5882) was published by Kim in 2014. The model's idea is pretty simple, but the performance is impressive. If you trying to solve the text classificaton problem, this model is a good choice to start with.
 
 The main architecture is shown below:
-![](/images/textcnn.png)
+
+{{< figure src="/images/textcnn.png" width="400" >}}
 
 It uses different kernels to extract text features, then use the softmax regression to classify text base on the features.
 
