@@ -40,7 +40,7 @@ $T_{ij}$ is the probability to jump from node $j$ to $i$. If there are $C$ class
 5. Reset labeled data's Y. Repeat 3 until Y converges.
 
 In short, let the nearest label has larger weight, then calculate each label's new label, reset labeled data's label, repeat.
-
+#+attr_html: :width 400
 [[file:/images/label_spreading.png]]
 
 Ref:
@@ -58,6 +58,8 @@ CLOSED: [2018-04-22 Sun 14:39]
 The avoid the problem of vanishing gradient and exploding gradient in vanilla RNN, LSTM was published, which can remember information for longer periods of time.
 
 Here is the structure of LSTM:
+
+#+attr_html: :width 400
 [[file:/images/LSTM_LSTM.png]]
 
 The calculate procedure are:
@@ -76,6 +78,8 @@ $f_t$,$i_t$,$o_t$ are forget gate, input gate and output gate respectively. $\ti
 Use $f_t$ and $i_t$ to update $C_t$, use $o_t$ to decide which part of hidden state should be outputted.
 
 **** GRU
+
+#+attr_html: :width 400
 [[file:/images/LSTM_GRU.png]]
 
 $$\begin{aligned}
@@ -102,6 +106,7 @@ CLOSED: [2018-01-05 Fri 15:14]
 ***** CBOW (Continuous Bag of Words)
 
 Use the context to predict the probability of current word.
+#+attr_html: :width 400
 [[file:/images/doc2vec_cbow.png]]
 
 1. Context words' vectors are $\upsilon_{c-n} ... \upsilon_{c+m}$ ($m$ is the window size)
@@ -131,6 +136,8 @@ minimize\ J &=-\log P(\omega_c\lvert \omega_{c-m},...,\omega_{c-1},...,\omega_{c
 ***** Skip-Gram
 
 Use current word to predict its context.
+
+#+attr_html: :width 400
 [[file:/images/doc2vec_skip-gram.png]]
 
 
@@ -158,6 +165,7 @@ $$\sigma(X^T_\omega \theta)=\frac{1}{1+e^{-X^T_\omega}}$$
 
 Then the probability of negative classification is
 $$1-\sigma(X^T_\omega \theta)$$
+#+attr_html: :width 400
 [[file:/images/doc2vec_hierarchical_softmax.png]]
 足球's Huffman code is $1001$, then it's probability in each node are
 
@@ -202,6 +210,8 @@ Here are some parameter in =gensim='s =doc2vec= class.
 window is the maximum distance between the predicted word and context words used for prediction within a document. It will look behind and ahead.
 
 In =skip-gram= model, if the window size is 2, the training samples will be this:(the blue word is the input word)
+
+#+attr_html: :width 400
 [[file:/images/doc2vec_window.png]]
 
 ***** min_count
@@ -215,6 +225,8 @@ $$P(w_i) = (\sqrt{\frac{z(\omega_i)}{s}} + 1) \cdot \frac{s}{z(\omega_i)}$$
 where $z(w_i)$ is the frequency of the word and $s$ is the sample rate.
 
 This is the plot when =sample= is 1e-3.
+
+#+attr_html: :width 400
 [[file:/images/doc2vec_negative_sample.png]]
 
 ***** negative
@@ -285,6 +297,8 @@ Here is a simple tuturial to build a TextCNN modal and run it on Colab.
 The [[https://arxiv.org/abs/1408.5882][TextCNN paper]] was published by Kim in 2014. The model's idea is pretty simple, but the performance is impressive. If you trying to solve the text classificaton problem, this model is a good choice to start with.
 
 The main architecture is shown below:
+
+#+attr_html: :width 400
 [[file:/images/textcnn.png]]
 
 It uses different kernels to extract text features, then use the softmax regression to classify text base on the features.
@@ -435,6 +449,7 @@ Second, small replay memory. If the memory is too small, the agent will forget t
 
 Third, the parameters. =learning_rate=, =target_update_interval= may cause fluctuation. Here is a example on [[https://stackoverflow.com/questions/49837204/performance-fluctuates-as-it-is-trained-with-dqn][stackoverflow]]. I also met this problem when training cartpole agent. The reward stops growing after 1000 episode.
 
+#+attr_html: :width 400
 [[file:/images/ddqn_cartpole_fluctuate.png]]
 
 After doing some research on the cartpole DNQ code, I managed to made a model to play the flappy bird. Here are the changes from the original cartpole code. Most of the technology can be found in this papers: [[https://arxiv.org/abs/1312.5602][Playing Atari with Deep Reinforcement Learning]]
@@ -481,7 +496,7 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
 6. Prioritized Experience Replay
    
    This idea was published [[https://arxiv.org/abs/1511.05952][here]]. It's a very simple idea: replay high TD error experience more frequently. My code implementation is not efficient. But in cartpole game, this technology help the agent converge faster. Here is the result on cartpole. The formoer one is uniform replay, the later is prioritized replay.
-  #+attr_html: :width 400
+   #+attr_html: :width 400
    [[file:/images/ddqn_cartpole_normal.png]]
    [[file:/images/ddqn_cartpole_prioritized.png]]
 
@@ -490,7 +505,7 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
    My MacBook doesn't support CUDA, so I use these two website to train the model. Here are the comparison of them. During training, Kaggle seems more stable, Colab usually disconnected after 1h.
 
   |                      | Colab        | Kaggle Kernel |
-  | GPU                  | Tesla K80    | Tesla P100    |
+  | GPU                  | Tesla T4     | Tesla P100    |
   | Max training time    | 12h          | 9h            |
   | Export trained model | Google Drive | -             |
 
@@ -530,7 +545,7 @@ Ref:
 
 Update 19-04-26:
 
-Colab's GPU has upgrade to Tesla T4, now it becomes my best bet.
+Colab's GPU has upgrade to Tesla T4 from K80, now it becomes my best bet.
 
 *** TODO Attention
 Ref:
@@ -881,6 +896,8 @@ plt.show()
 #+END_SRC
 
 Output:
+
+#+attr_html: :width 400
 [[file:/images/matplot_chinese.png]]
 *** DONE Python Dictionary Implementation
 CLOSED: [2019-02-17 Sun 21:48]
@@ -1028,6 +1045,7 @@ CLOSED: [2017-05-07 Sun 15:34]
 Here are some shell tools I use, which can boost your productivity.
 ***** [[https://github.com/sorin-ionescu/prezto][Prezto]] 
 A zsh configuration framework. Provides auto completion, prompt theme and lots of modules to work with other useful tools. I extremely love the =agnoster= theme.
+#+attr_html: :width 400
 [[file:/images/shell_agnoster.png]]
 ***** [[https://github.com/clvv/fasd][Fasd]]
 Help you to navigate between folders and launch application.
@@ -1045,9 +1063,13 @@ Here are the official usage example:
 A fast code search tool similar to =ack=.
 ***** [[https://github.com/junegunn/fzf][fzf]] 
 A great fuzzy finder, it can also integrate with vim by [[https://github.com/junegunn/fzf.vim][fzf.vim]]
+
+#+attr_html: :width 400
 [[file:/images/shell_fzf.gif]]
 ***** [[https://github.com/nvbn/thefuck][thefuck]] 
 Magnificent app which corrects your previous console command.
+
+#+attr_html: :width 400
 [[file:/images/shell_thefuck.gif]]
 *** DONE Start
 CLOSED: [2017-04-18 Tue 15:46]

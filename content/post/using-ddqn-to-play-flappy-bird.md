@@ -80,7 +80,7 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
 
     |                      | Colab        | Kaggle Kernel |
     |----------------------|--------------|---------------|
-    | GPU                  | Tesla K80    | Tesla P100    |
+    | GPU                  | Tesla T4     | Tesla P100    |
     | Max training time    | 12h          | 9h            |
     | Export trained model | Google Drive | -             |
 
@@ -120,4 +120,4 @@ Ref:
 
 Update 19-04-26:
 
-Colab's GPU has upgrade to Tesla T4, now it becomes my best bet.
+Colab's GPU has upgrade to Tesla T4 from K80, now it becomes my best bet.
