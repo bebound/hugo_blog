@@ -424,6 +424,7 @@ PyTorch provide a simple DQN implementation to solve the cartpole game. However,
 
 The official code's training data is below, it's high score is about 50 and finally diverges.
 
+#+attr_html: :width 400
 [[file:/images/ddqn_official.png]]
 
 There are many reason that lead to divergence.
@@ -455,7 +456,8 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
    In order to distinguish the score of the actions, the return the Q-value will minus the mean action score:
 
    =x=val+adv-adv.mean(1,keepdim=True)=
-
+   
+   #+attr_html: :width 400
    [[file:/images/ddqn_duel_dqn.png]]
    
    In this project, I use dueling DQN.
@@ -479,6 +481,7 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
 6. Prioritized Experience Replay
    
    This idea was published [[https://arxiv.org/abs/1511.05952][here]]. It's a very simple idea: replay high TD error experience more frequently. My code implementation is not efficient. But in cartpole game, this technology help the agent converge faster. Here is the result on cartpole. The formoer one is uniform replay, the later is prioritized replay.
+  #+attr_html: :width 400
    [[file:/images/ddqn_cartpole_normal.png]]
    [[file:/images/ddqn_cartpole_prioritized.png]]
 
@@ -511,6 +514,7 @@ The lesson I learnt from this project is patience. It takes a long time(maybe hu
 - Other Improvements
 
   [[https://arxiv.org/abs/1710.02298][Rainbow]] introduce many other extensions to enhance DQN, some of them have been discussed in this post.
+  #+attr_html: :width 400
   [[file:/images/ddqn_rainbow.png]]
 
 
@@ -522,6 +526,11 @@ Ref:
 3. [[http://cs229.stanford.edu/proj2015/362_report.pdf][Deep Reinforcement Learning for Flappy Bird]]
 4. [[https://github.com/ttaoREtw/Flappy-Bird-Double-DQN-Pytorch][Flappy-Bird-Double-DQN-Pytorch]]
 5. [[https://github.com/qfettes/DeepRL-Tutorials][DeepRL-Tutorials]]
+
+
+Update 19-04-26:
+
+Colab's GPU has upgrade to Tesla T4, now it becomes my best bet.
 
 *** TODO Attention
 Ref:
