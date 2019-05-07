@@ -118,6 +118,12 @@ Ref:
 4.  [Flappy-Bird-Double-DQN-Pytorch](https://github.com/ttaoREtw/Flappy-Bird-Double-DQN-Pytorch)
 5.  [DeepRL-Tutorials](https://github.com/qfettes/DeepRL-Tutorials)
 
-Update 19-04-26:
+<!--listend-->
 
-Colab's GPU has upgrade to Tesla T4 from K80, now it becomes my best bet.
+-   Update 19-04-26:
+
+    Colab's GPU has upgrade to Tesla T4 from K80, now it becomes my best bet.
+
+-   Update 19-05-07
+
+    With PyTorch 1.1.0, TensorBoard is now natively supported in PyTorch.

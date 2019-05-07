@@ -553,6 +553,15 @@ Ref:
 1. [[http://cnyah.com/2017/08/01/attention-variants/][Attention Variants]]
 2. [[https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html][Attention? Attention!]]
 3. [[https://towardsdatascience.com/attention-seq2seq-with-pytorch-learning-to-invert-a-sequence-34faf4133e53][Attention Seq2Seq with PyTorch: learning to invert a sequence]]
+*** TODO Transformer
+
+Ref:
+
+1. [[http://nlp.seas.harvard.edu/2018/04/03/attention.html][The Annotated Transformer]]
+2. [[http://jalammar.github.io/illustrated-transformer/][The Illustrated Transformer]]
+3. [[https://mchromiak.github.io/articles/2017/Sep/12/Transformer-Attention-is-all-you-need/#.XMb3ZC97FPs][The Transformer – Attention is all you need]]
+4. [[https://medium.com/@bgg/seq2seq-pay-attention-to-self-attention-part-2-cf81bf32c73d][Seq2seq pay Attention to Self Attention: Part 2]]
+
 ** Python                                                            :Python:
 *** DONE Create Node Benchmark in Py2neo
 CLOSED: [2018-11-05 Mon 15:55]
