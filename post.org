@@ -543,9 +543,14 @@ Ref:
 5. [[https://github.com/qfettes/DeepRL-Tutorials][DeepRL-Tutorials]]
 
 
-Update 19-04-26:
+- Update 19-04-26:
 
-Colab's GPU has upgrade to Tesla T4 from K80, now it becomes my best bet.
+  Colab's GPU has upgrade to Tesla T4 from K80, now it becomes my best bet.
+
+- Update 19-05-07
+  
+  With PyTorch 1.1.0, TensorBoard is now natively supported in PyTorch.
+
 
 *** TODO Attention
 Ref:
@@ -561,7 +566,6 @@ Ref:
 2. [[http://jalammar.github.io/illustrated-transformer/][The Illustrated Transformer]]
 3. [[https://mchromiak.github.io/articles/2017/Sep/12/Transformer-Attention-is-all-you-need/#.XMb3ZC97FPs][The Transformer – Attention is all you need]]
 4. [[https://medium.com/@bgg/seq2seq-pay-attention-to-self-attention-part-2-cf81bf32c73d][Seq2seq pay Attention to Self Attention: Part 2]]
-
 ** Python                                                            :Python:
 *** DONE Create Node Benchmark in Py2neo
 CLOSED: [2018-11-05 Mon 15:55]
