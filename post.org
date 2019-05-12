@@ -1091,3 +1091,30 @@ CLOSED: [2017-04-18 Tue 15:46]
 Over the years, I have read so many programmers’ blogs, which has helped me a lot. Now I think it’s the time to start my own blog.
 
 I hope this can enforce myself to review what I have learned, and it would even be better if someone can benefit from it.
+*** DONE Preview LaTeX in Org Mode in MacOS
+CLOSED: [2019-05-12 Sun 20:26]
+   :PROPERTIES:
+   :EXPORT_FILE_NAME: preview-latex-in-org-mode-in-macos
+   :END:
+**** Using the right Emacs Version
+I failed to preview LaTeX with =emacs-plus=. If you have installed =d12frosted/emacs-plus=, uninstall it and use =emacs-mac=.
+
+#+begin_src 
+brew tap railwaycat/emacsmacport
+brew install emacs-mac
+#+end_src
+
+If you like the fancy spacemacs icon, install it with cask: =brew cask install emacs-mac-spacemacs-icon=
+
+**** Install Tex
+- Download and install BasicTeX.pkg [[http://www.tug.org/mactex/morepackages.html][here]].
+- Add =/Library/TeX/texbin= to PATH.
+- Install =dvisvgm= by =sudo tlmgr update --self && sudo tlmgr install dvisvgm=
+
+**** Emacs settings
+- Add TeX related bin to path: =(setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin"))=
+- Tell Org Mode to create svg images: =(setq org-latex-create-formula-image-program 'dvisvgm)=
+
+Now you can see the rendered LaTeX equation by calling =org-preview-latex-fragment=. 
+
+If you want to load LaTeX previews automatically at startup, add this at the beginning of org file: =#+STARTUP: latexpreview=.
