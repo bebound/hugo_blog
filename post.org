@@ -2,6 +2,7 @@
 #+AUTHOR: KK
 #+HUGO_BASE_DIR: ./
 #+hugo_auto_set_lastmod: t
+#+STARTUP: latexpreview
 
 * Posts
   :PROPERTIES:
