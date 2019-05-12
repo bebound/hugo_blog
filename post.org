@@ -267,8 +267,8 @@ Keyword based classification is a simple but effective method. Extracting the ta
 
 1. Find some most common words to classify the text.
 2. Use this equation to calculate the score of each word appears in the text.
-   $$ score(i) = \frac{count(i)}{all\\_count(i)^{0.3}}$$
-   which $all\\_count(i)$ is the word i's word count in all corpus, and $count(i)$ is the word i's word count in positive corpus.
+   $$ score(i) = \frac{count(i)}{all_{count(i)}^{0.3}}$$
+   which $all_{count(i)}$ is the word $i$'s word count in all corpus, and $count(i)$ is the word i's word count in positive corpus.
 3. Check the top words, add it to the final keyword list. Repeat this process.
 
 Finally, we can use the keywords to classify the text and get the train data. 
