@@ -2,8 +2,8 @@
 title = "Models and Architectures in Word2vec"
 author = ["KK"]
 date = 2018-01-05T15:14:00+08:00
-lastmod = 2019-05-11T22:53:53+08:00
-tags = ["machine learning", "word2vec"]
+lastmod = 2019-05-12T21:21:57+08:00
+tags = ["Machine Learning", "word2vec"]
 draft = false
 noauthor = true
 nocomment = true

@@ -9,7 +9,7 @@
   :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
   :EXPORT_HUGO_SECTION: post
   :END:
-** Machine Learning                                       :machine__learning:
+** Machine Learning                                       :Machine__Learning:
 *** DONE Brief Introduction of Label Propagation Algorithm :Label__Propagation:
 CLOSED: [2017-07-16 Sun 21:45]
    :PROPERTIES:
@@ -771,7 +771,7 @@ Ref:
 2. [[https://github.com/django/django/blob/master/django/middleware/csrf.py][csrf.py]]
 3. [[https://stackoverflow.com/questions/48002861/whats-the-relationship-between-csrfmiddlewaretoken-and-csrftoken][What's the relationship between csrfmiddlewaretoken and csrftoken?]] 
 
-*** DONE Deploy Nikola Org Mode on Travis                    :Nikola:orgmode:
+*** DONE Deploy Nikola Org Mode on Travis                  :Nikola:Org__Mode:
 CLOSED: [2018-11-03 Sat 14:22]
    :PROPERTIES:
    :EXPORT_FILE_NAME: deploy-nikola-org-mode-on-travis
@@ -1049,7 +1049,7 @@ Ref:
 5. [[https://docs.python.org/3/reference/import.html][Python doc: The import system]]
 
 ** Misc
-*** DONE Some Useful Shell Tools                                      :shell:
+*** DONE Some Useful Shell Tools                                      :Shell:
 CLOSED: [2017-05-07 Sun 15:34]
    :PROPERTIES:
    :EXPORT_FILE_NAME: some-useful-shell-tools
@@ -1091,7 +1091,7 @@ CLOSED: [2017-04-18 Tue 15:46]
 Over the years, I have read so many programmers’ blogs, which has helped me a lot. Now I think it’s the time to start my own blog.
 
 I hope this can enforce myself to review what I have learned, and it would even be better if someone can benefit from it.
-*** DONE Preview LaTeX in Org Mode in MacOS
+*** DONE Preview LaTeX in Org Mode in MacOS           :Emacs:Org__Mode:LaTeX:
 CLOSED: [2019-05-12 Sun 20:26]
    :PROPERTIES:
    :EXPORT_FILE_NAME: preview-latex-in-org-mode-in-macos

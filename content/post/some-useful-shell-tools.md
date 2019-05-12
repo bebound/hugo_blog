@@ -2,8 +2,8 @@
 title = "Some Useful Shell Tools"
 author = ["KK"]
 date = 2017-05-07T15:34:00+08:00
-lastmod = 2019-05-11T22:53:56+08:00
-tags = ["shell"]
+lastmod = 2019-05-12T21:20:29+08:00
+tags = ["Shell"]
 draft = false
 noauthor = true
 nocomment = true
