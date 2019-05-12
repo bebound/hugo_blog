@@ -1,8 +1,8 @@
 +++
-title = "Deploy Nikola OrgMode on Travis"
+title = "Deploy Nikola Org Mode on Travis"
 author = ["KK"]
 date = 2018-11-03T14:22:00+08:00
-lastmod = 2019-05-11T22:53:55+08:00
+lastmod = 2019-05-12T20:36:46+08:00
 tags = ["Python", "Nikola", "orgmode"]
 draft = false
 noauthor = true
@@ -15,14 +15,14 @@ noread = true
 Recently, I enjoy using `Spacemacs`, so I decided to switch to org file from Markdown for writing blog. After several attempts, I managed to let Travis convert org file to HTML. Here are the steps.
 
 
-## Install orgmode plugin {#install-orgmode-plugin}
+## Install Org Mode plugin {#install-org-mode-plugin}
 
-First you need to install orgmode plugin on your computer following the official guide: [Nikola orgmode plugin](https://plugins.getnikola.com/v8/orgmode/).
+First you need to install Org Mode plugin on your computer following the official guide: [Nikola orgmode plugin](https://plugins.getnikola.com/v8/orgmode/).
 
 
 ## Edit `conf.el` {#edit-conf-dot-el}
 
-`OrgMode` will convert to HTML to display on Nikola. Orgmode plugin will call Emacs to do this job. When I run `nikola build`, it shows this message: `Please install htmlize from https://github.com/hniksic/emacs-htmlize`. I'm using `Spacemacs`, the `htmlize` package is already downloaded if the `org` layer is enabled. I just need to add htmlize folder to load-path. So here is the code:
+`Org Mode` will convert to HTML to display on Nikola. Org Mode plugin will call Emacs to do this job. When I run `nikola build`, it shows this message: `Please install htmlize from https://github.com/hniksic/emacs-htmlize`. I'm using `Spacemacs`, the `htmlize` package is already downloaded if the `org` layer is enabled. I just need to add htmlize folder to load-path. So here is the code:
 
 ```elisp
 (setq dir "~/.emacs.d/elpa/27.0/develop/")
@@ -37,7 +37,7 @@ This package is also needed on Travis, the similar approach is required.
 
 ## Modify `.travis.yml` {#modify-dot-travis-dot-yml}
 
-Travis is using ubuntu 14.04, and the default Emacs version is 24, and the orgmode version is below 8.0, which not match the requirements. The easiest solution is to update Emacs to 25. So in the `before_install` section, add these code:
+Travis is using ubuntu 14.04, and the default Emacs version is 24, and the Org Mode version is below 8.0, which not match the requirements. The easiest solution is to update Emacs to 25. So in the `before_install` section, add these code:
 
 ```yaml
 - sudo add-apt-repository ppa:kelleyk/emacs -y

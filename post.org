@@ -104,7 +104,6 @@ CLOSED: [2018-01-05 Fri 15:14]
    :EXPORT_FILE_NAME: models-and-architechtures-in-word2vec
    :END:
 **** Models
-
 ***** CBOW (Continuous Bag of Words)
 
 Use the context to predict the probability of current word.
@@ -133,7 +132,6 @@ minimize\ J &=-\log P(\omega_c\lvert \omega_{c-m},...,\omega_{c-1},...,\omega_{c
 &= -\log \frac{\exp(u_c^T\hat{\upsilon})}{\sum_{j=1}^{\lvert V \rvert}\exp (u_j^T\hat{\upsilon})} \\
 &= -u_c^T\hat{\upsilon}+\log \sum_{j=1}^{\lvert V \rvert}\exp (u_j^T\hat{\upsilon})
 \end{aligned}$$
-
 
 ***** Skip-Gram
 
@@ -553,7 +551,6 @@ Ref:
   
   With PyTorch 1.1.0, TensorBoard is now natively supported in PyTorch.
 
-
 *** TODO Attention
 Ref:
 
@@ -774,16 +771,16 @@ Ref:
 2. [[https://github.com/django/django/blob/master/django/middleware/csrf.py][csrf.py]]
 3. [[https://stackoverflow.com/questions/48002861/whats-the-relationship-between-csrfmiddlewaretoken-and-csrftoken][What's the relationship between csrfmiddlewaretoken and csrftoken?]] 
 
-*** DONE Deploy Nikola OrgMode on Travis                     :Nikola:orgmode:
+*** DONE Deploy Nikola Org Mode on Travis                    :Nikola:orgmode:
 CLOSED: [2018-11-03 Sat 14:22]
    :PROPERTIES:
-   :EXPORT_FILE_NAME: deploy-nikola-orgmode-on-travis
+   :EXPORT_FILE_NAME: deploy-nikola-org-mode-on-travis
    :END:
 Recently, I enjoy using =Spacemacs=, so I decided to switch to org file from Markdown for writing blog. After several attempts, I managed to let Travis convert org file to HTML. Here are the steps.
-**** Install orgmode plugin
-First you need to install orgmode plugin on your computer following the official guide: [[https://plugins.getnikola.com/v8/orgmode/][Nikola orgmode plugin]].
+**** Install Org Mode plugin
+First you need to install Org Mode plugin on your computer following the official guide: [[https://plugins.getnikola.com/v8/orgmode/][Nikola orgmode plugin]].
 **** Edit =conf.el=
-=OrgMode= will convert to HTML to display on Nikola. Orgmode plugin will call Emacs to do this job. When I run =nikola build=, it shows this message: =Please install htmlize from https://github.com/hniksic/emacs-htmlize=. I'm using =Spacemacs=, the =htmlize= package is already downloaded if the =org= layer is enabled. I just need to add htmlize folder to load-path. So here is the code:
+=Org Mode= will convert to HTML to display on Nikola. Org Mode plugin will call Emacs to do this job. When I run =nikola build=, it shows this message: =Please install htmlize from https://github.com/hniksic/emacs-htmlize=. I'm using =Spacemacs=, the =htmlize= package is already downloaded if the =org= layer is enabled. I just need to add htmlize folder to load-path. So here is the code:
 #+BEGIN_SRC elisp
 (setq dir "~/.emacs.d/elpa/27.0/develop/")
 (if(file-directory-p dir)
@@ -795,7 +792,7 @@ First you need to install orgmode plugin on your computer following the official
 This package is also needed on Travis, the similar approach is required.
 
 **** Modify =.travis.yml=
-Travis is using ubuntu 14.04, and the default Emacs version is 24, and the orgmode version is below 8.0, which not match the requirements. The easiest solution is to update Emacs to 25. So in the =before_install= section, add these code:
+Travis is using ubuntu 14.04, and the default Emacs version is 24, and the Org Mode version is below 8.0, which not match the requirements. The easiest solution is to update Emacs to 25. So in the =before_install= section, add these code:
 #+BEGIN_SRC yaml
 - sudo add-apt-repository ppa:kelleyk/emacs -y
 - sudo apt-get update
