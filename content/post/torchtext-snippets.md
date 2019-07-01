@@ -2,7 +2,7 @@
 title = "Torchtext snippets"
 author = ["KK"]
 date = 2019-07-01T21:28:00+08:00
-lastmod = 2019-07-01T21:59:42+08:00
+lastmod = 2019-07-01T22:11:56+08:00
 tags = ["Python", "torchtext", "PyTorch"]
 draft = false
 noauthor = true
