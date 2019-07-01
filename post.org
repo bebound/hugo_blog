@@ -551,7 +551,7 @@ Ref:
   
   With PyTorch 1.1.0, TensorBoard is now natively supported in PyTorch.
 
-*** TODO Attention
+*** TODO Different type of Attention
 Ref:
 
 1. [[http://cnyah.com/2017/08/01/attention-variants/][Attention Variants]]
@@ -1048,6 +1048,61 @@ Ref:
 4. [[https://www.amazon.com/Effective-Python-Specific-Software-Development/dp/0134034287][Effective Python: 59 Specific Ways to Write Better Python]]
 5. [[https://docs.python.org/3/reference/import.html][Python doc: The import system]]
 
+*** DONE Torchtext snippets                               :torchtext:PyTorch:
+CLOSED: [2019-07-01 Mon 21:28]
+   :PROPERTIES:
+   :EXPORT_FILE_NAME: torchtext-snippets
+   :END:
+**** Load separate files
+=data.Field= parameters is [[https://torchtext.readthedocs.io/en/latest/data.html#torchtext.data.Field][here]].
+#+begin_src python
+  INPUT = data.Field(lower=True, batch_first=True)
+  TAG = data.Field(batch_first=True, unk_token=None, is_target=True)
+
+  train, val, test = data.TabularDataset.splits(path=base_dir.as_posix(), train='train_data.csv',
+                                                  validation='val_data.csv', test='test_data.csv',
+                                                  format='tsv',
+                                                  fields=[(None, None), ('input', INPUT), ('tag', TAG)])
+#+end_src
+**** Load single file
+#+begin_src python
+  all_data = data.TabularDataset(path=base_dir / 'gossip_train_data.csv',
+                                 format='tsv',
+                                 fields=[('text', TEXT), ('category', CATEGORY)])
+  train, val, test = all_data.split([0.7, 0.2, 0.1])
+#+end_src
+**** Create iterator
+#+begin_src python
+train_iter, val_iter, test_iter = data.BucketIterator.splits(
+    (train, val, test), batch_sizes=(32, 256, 256), shuffle=True,
+    sort_key=lambda x: x.input)
+#+end_src
+**** Load pretrained vector
+#+begin_src python
+  vectors = Vectors(name='cc.zh.300.vec', cache='./')
+
+  INPUT.build_vocab(train, vectors=vectors)
+  TAG.build_vocab(train, val, test)
+#+end_src
+**** Check vocab sizes
+By default, torchtext will add =<unk>= in vocab, if =sequential=True=, it will add =<pad>= in vocab. You can view vocab index by =vocab.itos=.
+#+begin_src python
+  tag_size = len(TAG.vocab) - 1
+#+end_src
+**** Use field vector in model
+#+begin_src python
+  vec = INPUT.vocab.vectors
+
+  class Model:
+    nn.Embedding.from_pretrained(vec, freeze=False)
+#+end_src
+**** Convert text to vector
+#+begin_src python
+  s = ' '.join(segmentize(s))
+  s = INPUT.preprocess(s)
+  vec = INPUT.process([s])
+#+end_src
+
 ** Misc
 *** DONE Some Useful Shell Tools                                      :Shell:
 CLOSED: [2017-05-07 Sun 15:34]
@@ -1055,11 +1110,11 @@ CLOSED: [2017-05-07 Sun 15:34]
    :EXPORT_FILE_NAME: some-useful-shell-tools
    :END:
 Here are some shell tools I use, which can boost your productivity.
-***** [[https://github.com/sorin-ionescu/prezto][Prezto]] 
+**** [[https://github.com/sorin-ionescu/prezto][Prezto]] 
 A zsh configuration framework. Provides auto completion, prompt theme and lots of modules to work with other useful tools. I extremely love the =agnoster= theme.
 #+attr_html: :width 400
 [[file:/images/shell_agnoster.png]]
-***** [[https://github.com/clvv/fasd][Fasd]]
+**** [[https://github.com/clvv/fasd][Fasd]]
 Help you to navigate between folders and launch application.
 
 Here are the official usage example:
@@ -1071,14 +1126,14 @@ Here are the official usage example:
   vim `f rc lo`    =>     vim /etc/rc.local
   vim `f rc conf`  =>     vim /etc/rc.conf
 ```
-***** [[https://github.com/monochromegane/the_platinum_searcher][pt]]
+**** [[https://github.com/monochromegane/the_platinum_searcher][pt]]
 A fast code search tool similar to =ack=.
-***** [[https://github.com/junegunn/fzf][fzf]] 
+**** [[https://github.com/junegunn/fzf][fzf]] 
 A great fuzzy finder, it can also integrate with vim by [[https://github.com/junegunn/fzf.vim][fzf.vim]]
 
 #+attr_html: :width 400
 [[file:/images/shell_fzf.gif]]
-***** [[https://github.com/nvbn/thefuck][thefuck]] 
+**** [[https://github.com/nvbn/thefuck][thefuck]] 
 Magnificent app which corrects your previous console command.
 
 #+attr_html: :width 400
