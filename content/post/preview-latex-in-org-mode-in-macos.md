@@ -2,7 +2,7 @@
 title = "Preview LaTeX in Org Mode in MacOS"
 author = ["KK"]
 date = 2019-05-12T20:26:00+08:00
-lastmod = 2019-05-12T21:23:04+08:00
+lastmod = 2019-07-09T21:34:57+08:00
 tags = ["Emacs", "Org Mode", "LaTeX"]
 draft = false
 noauthor = true
@@ -36,6 +36,6 @@ If you like the fancy spacemacs icon, install it with cask: `brew cask install e
 -   Add TeX related bin to path: `(setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin"))`
 -   Tell Org Mode to create svg images: `(setq org-latex-create-formula-image-program 'dvisvgm)`
 
-Now you can see the rendered LaTeX equation by calling `org-preview-latex-fragment`.
+Now you can see the rendered LaTeX equation by calling `org-preview-latex-fragment` or using shortcut `,Tx`.
 
 If you want to load LaTeX previews automatically at startup, add this at the beginning of org file: `#+STARTUP: latexpreview`.

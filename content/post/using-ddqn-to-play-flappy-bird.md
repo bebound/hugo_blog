@@ -2,7 +2,7 @@
 title = "Using Dueling DQN to Play Flappy Bird"
 author = ["KK"]
 date = 2019-04-14T17:10:00+08:00
-lastmod = 2019-05-12T21:22:09+08:00
+lastmod = 2019-07-09T21:33:48+08:00
 tags = ["Machine Learning"]
 draft = false
 noauthor = true
@@ -34,15 +34,17 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
 
     The vanilla DQN has the overestimate problem. As the `max` function will accumulate the noise when training. This leads to converging at suboptimal point. Two following architectures are submitted to solve this problem.
 
+    \\[ Q(s, a) = r + \gamma \max\_{a'}[Q(s', a')] \\]
+
     Double DQN was published two year later DQN. It has two value function, one is used to choose the action with max Q value, another one is used to calculate the Q value of this action.
 
-    \\(a^{max}(S'\_j, w) = \arg\max\_{a'}Q(\phi(S'\_j),a,w)\\)
+    \\[ a^{max}(S'\_j, w) = \arg\max\_{a'}Q(\phi(S'\_j),a,w) \\]
 
-    \\(y\_j = R\_j + \gamma Q'(\phi(S'\_j),a^{max}(S'\_j, w),w')\\)
+    \\[ Q(s,a) = r + \gamma Q'(\phi(S'\_j),a^{max}(S'\_j, w),w') \\]
 
     Dueling DQN is another solution. It has two estimator, one estimates the score of current state, another estimates the action score.
 
-    \\(Q(S,A,w,\alpha, \beta) = V(S,w,\alpha) + A(S,A,w,\beta)\\)
+    \\[ Q(S,A,w,\alpha, \beta) = V(S,w,\alpha) + A(S,A,w,\beta) \\]
 
     In order to distinguish the score of the actions, the return the Q-value will minus the mean action score:
 

@@ -457,16 +457,18 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
 1. Dueling DQN
    
    The vanilla DQN has the overestimate problem. As the =max= function will accumulate the noise when training. This leads to converging at suboptimal point. Two following architectures are submitted to solve this problem. 
+   
+   $$ Q(s, a) = r + \gamma \max_{a'}[Q(s', a')] $$
 
    Double DQN was published two year later DQN. It has two value function, one is used to choose the action with max Q value, another one is used to calculate the Q value of this action.
 
-   $a^{max}(S'_j, w) = \arg\max_{a'}Q(\phi(S'_j),a,w)$
+   $$ a^{max}(S'_j, w) = \arg\max_{a'}Q(\phi(S'_j),a,w) $$
 
-   $y_j = R_j + \gamma Q'(\phi(S'_j),a^{max}(S'_j, w),w')$
+   $$ Q(s,a) = r + \gamma Q'(\phi(S'_j),a^{max}(S'_j, w),w') $$
 
    Dueling DQN is another solution. It has two estimator, one estimates the score of current state, another estimates the action score. 
 
-   $Q(S,A,w,\alpha, \beta) = V(S,w,\alpha) + A(S,A,w,\beta)$
+   $$ Q(S,A,w,\alpha, \beta) = V(S,w,\alpha) + A(S,A,w,\beta) $$
 
    In order to distinguish the score of the actions, the return the Q-value will minus the mean action score:
 
@@ -565,6 +567,7 @@ Ref:
 2. [[http://jalammar.github.io/illustrated-transformer/][The Illustrated Transformer]]
 3. [[https://mchromiak.github.io/articles/2017/Sep/12/Transformer-Attention-is-all-you-need/#.XMb3ZC97FPs][The Transformer – Attention is all you need]]
 4. [[https://medium.com/@bgg/seq2seq-pay-attention-to-self-attention-part-2-cf81bf32c73d][Seq2seq pay Attention to Self Attention: Part 2]]
+5. [[http://blog.stupidme.me/transformer-attention-is-all-you-need/][Transformer模型的PyTorch实现]]
 ** Python                                                            :Python:
 *** DONE Create Node Benchmark in Py2neo
 CLOSED: [2018-11-05 Mon 15:55]
@@ -1170,7 +1173,7 @@ If you like the fancy spacemacs icon, install it with cask: =brew cask install e
 - Add TeX related bin to path: =(setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin"))=
 - Tell Org Mode to create svg images: =(setq org-latex-create-formula-image-program 'dvisvgm)=
 
-Now you can see the rendered LaTeX equation by calling =org-preview-latex-fragment=. 
+Now you can see the rendered LaTeX equation by calling =org-preview-latex-fragment= or using shortcut =,Tx=. 
 
 If you want to load LaTeX previews automatically at startup, add this at the beginning of org file: =#+STARTUP: latexpreview=.
 *** DONE Build Your Own Tiny Tiny RSS Service
