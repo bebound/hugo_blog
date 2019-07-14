@@ -2,7 +2,7 @@
 title = "Different types of Attention"
 author = ["KK"]
 date = 2019-07-15T00:16:00+08:00
-lastmod = 2019-07-15T00:27:49+08:00
+lastmod = 2019-07-15T00:42:51+08:00
 tags = ["Machine Learning"]
 draft = false
 noauthor = true
@@ -38,10 +38,15 @@ Here are several popular attention mechanisms:
 \\[score(s\_t,h\_s)=s\_t^Th\_s\\]
 
 
-#### Scaled Dot-product {#scaled-dot-product}
+#### Scaled Dot-Product {#scaled-dot-product}
 
 \\[score(s\_t,h\_s)=\frac{s\_t^Th\_s}{\sqrt{n}}\\]
-Google's Transformer has similar scaling factor: \\(socre=\frac{KQ^T}{\sqrt{n}}\\)
+Google's Transformer has similar scaling factor: \\(score=\frac{KQ^T}{\sqrt{n}}\\)
+
+
+#### Location-Base {#location-base}
+
+\\[socre(s\_t,h\_s)=softmax(W\_as\_t)\\]
 
 
 #### General {#general}

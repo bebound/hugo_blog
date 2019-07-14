@@ -580,9 +580,13 @@ Here are several popular attention mechanisms:
 ****** Dot-Product
 $$score(s_t,h_s)=s_t^Th_s$$
 
-****** Scaled Dot-product
+****** Scaled Dot-Product
 $$score(s_t,h_s)=\frac{s_t^Th_s}{\sqrt{n}}$$
-Google's Transformer has similar scaling factor: $socre=\frac{KQ^T}{\sqrt{n}}$
+Google's Transformer has similar scaling factor: $score=\frac{KQ^T}{\sqrt{n}}$
+
+****** Location-Base
+
+$$socre(s_t,h_s)=softmax(W_as_t)$$
 
 ****** General
 
