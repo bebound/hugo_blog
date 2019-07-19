@@ -2,7 +2,7 @@
 title = "Using Dueling DQN to Play Flappy Bird"
 author = ["KK"]
 date = 2019-04-14T17:10:00+08:00
-lastmod = 2019-07-09T21:33:48+08:00
+lastmod = 2019-07-19T22:59:08+08:00
 tags = ["Machine Learning"]
 draft = false
 noauthor = true
@@ -120,6 +120,7 @@ Ref:
 3.  [Deep Reinforcement Learning for Flappy Bird](http://cs229.stanford.edu/proj2015/362%5Freport.pdf)
 4.  [Flappy-Bird-Double-DQN-Pytorch](https://github.com/ttaoREtw/Flappy-Bird-Double-DQN-Pytorch)
 5.  [DeepRL-Tutorials](https://github.com/qfettes/DeepRL-Tutorials)
+6.  [Speeding up DQN on PyTorch: how to solve Pong in 30 minutes](https://medium.com/mlreview/speeding-up-dqn-on-pytorch-solving-pong-in-30-minutes-81a1bd2dff55)
 
 <!--listend-->
 
@@ -129,4 +130,4 @@ Ref:
 
 -   Update 19-05-07
 
-    With PyTorch 1.1.0, TensorBoard is now natively supported in PyTorch.
+    TensorBoard is now natively supported in PyTorch after version 1.1

@@ -543,6 +543,7 @@ Ref:
 3. [[http://cs229.stanford.edu/proj2015/362_report.pdf][Deep Reinforcement Learning for Flappy Bird]]
 4. [[https://github.com/ttaoREtw/Flappy-Bird-Double-DQN-Pytorch][Flappy-Bird-Double-DQN-Pytorch]]
 5. [[https://github.com/qfettes/DeepRL-Tutorials][DeepRL-Tutorials]]
+6. [[https://medium.com/mlreview/speeding-up-dqn-on-pytorch-solving-pong-in-30-minutes-81a1bd2dff55][Speeding up DQN on PyTorch: how to solve Pong in 30 minutes]] 
 
 
 - Update 19-04-26:
@@ -550,19 +551,19 @@ Ref:
   Colab's GPU has upgrade to Tesla T4 from K80, now it becomes my best bet.
 
 - Update 19-05-07
-  
-  With PyTorch 1.1.0, TensorBoard is now natively supported in PyTorch.
+
+  TensorBoard is now natively supported in PyTorch after version 1.1
 
 *** DONE Different types of Attention
 CLOSED: [2019-07-15 Mon 00:16]
    :PROPERTIES:
    :EXPORT_FILE_NAME: different-types-of-attention
    :END:
-$h_s$ and $h_t$ are source hidden states and target hidden state, the shape is =(n,1)=. $c_t$ is the final context vector, and $\alpha_{t,s}$ is alignment score.
+$s_t$ and $h_i$ are source hidden states and target hidden state, the shape is =(n,1)=. $c_t$ is the final context vector, and $\alpha_{t,s}$ is alignment score.
 
 $$\begin{aligned}
 c_t&=\sum_{i=1}^n \alpha_{t,s}h_i \\
-\alpha_{t,s}&= \frac{\exp(score(s_t,h_s))}{\sum_{i=1}^n \exp(score(s_t,h_i))}
+\alpha_{t,s}&= \frac{\exp(score(s_t,h_i))}{\sum_{i=1}^n \exp(score(s_t,h_i))}
 \end{aligned}
 $$
 
@@ -578,27 +579,27 @@ Here are several popular attention mechanisms:
 
 
 ****** Dot-Product
-$$score(s_t,h_s)=s_t^Th_s$$
+$$score(s_t,h_i)=s_t^Th_i$$
 
 ****** Scaled Dot-Product
-$$score(s_t,h_s)=\frac{s_t^Th_s}{\sqrt{n}}$$
+$$score(s_t,h_i)=\frac{s_t^Th_i}{\sqrt{n}}$$
 Google's Transformer has similar scaling factor: $score=\frac{KQ^T}{\sqrt{n}}$
 
 ****** Location-Base
 
-$$socre(s_t,h_s)=softmax(W_as_t)$$
+$$socre(s_t,h_i)=softmax(W_as_t)$$
 
 ****** General
 
-$$score(s_t,h_s)=s_t^TW_ah_s$$
+$$score(s_t,h_i)=s_t^TW_ah_i$$
 
-$Wa$ 'shape is =(n,n)=
+$Wa$'s shape is =(n,n)=
 
 ****** Concat
 
-$$score(s_t,h_s)=v_a^Ttanh(W_a[s_t,h_s])$$
+$$score(s_t,h_i)=v_a^Ttanh(W_a[s_t,h_i])$$
 
-$v_a$ 'shape is =(x,1)=, and $Wa$ 's shape is =(x,x)=. This is similar to a neural network with one hidden layer.
+$v_a$'s shape is =(x,1)=, and $Wa$ 's shape is =(x,x)=. This is similar to a neural network with one hidden layer.
 
 
 When I doing a slot filling project, I compare these mechanisms. *Concat* attention produce the best result.
