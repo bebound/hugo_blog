@@ -2,7 +2,7 @@
 title = "Different types of Attention"
 author = ["KK"]
 date = 2019-07-15T00:16:00+08:00
-lastmod = 2019-07-19T22:59:19+08:00
+lastmod = 2019-07-24T21:21:59+08:00
 tags = ["Machine Learning"]
 draft = false
 noauthor = true
@@ -41,7 +41,7 @@ Here are several popular attention mechanisms:
 #### Scaled Dot-Product {#scaled-dot-product}
 
 \\[score(s\_t,h\_i)=\frac{s\_t^Th\_i}{\sqrt{n}}\\]
-Google's Transformer has similar scaling factor: \\(score=\frac{KQ^T}{\sqrt{n}}\\)
+where n is the vectors dimension. Google's Transformer model has similar scaling factor when calculate self-attention: \\(score=\frac{KQ^T}{\sqrt{n}}\\)
 
 
 #### Location-Base {#location-base}

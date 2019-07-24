@@ -288,7 +288,7 @@ CLOSED: [2018-12-03 Mon 15:47]
    :END:
 [[https://pytorch.org][PyTorch]] is a really powerful framework to build the machine learning models. Although some features is missing when compared with TensorFlow (For example, the early stop function, History to draw plot), its code style is more intuitive. 
 
-[[https://github.com/pytorch/text][Torchtext]] is a NLP package which is also made by ==pytorch== team. It provide a way to read text, processing and iterate the texts.
+[[https://github.com/pytorch/text][Torchtext]] is a NLP package which is also made by =pytorch= team. It provide a way to read text, processing and iterate the texts.
 
 [[https://colab.research.google.com][Google Colab]] is a Jupyter notebook environment host by Google, you can use free GPU and TPU to run your modal.
 
@@ -352,7 +352,7 @@ train_iter, val_iter, test_iter = data.BucketIterator.splits(
 
 #+END_SRC
 
-==Field== defines how to process text, here is the most common parameters:
+=Field= defines how to process text, here is the most common parameters:
 
 #+BEGIN_QUOTE
 sequential – Whether the datatype represents sequential data. If False, no tokenization is applied. Default: True.
@@ -364,9 +364,9 @@ preprocessing – The Pipeline that will be applied to examples using this field
 batch_first – Whether to produce tensors with the batch dimension first. Default: False.
 #+END_QUOTE
 
-==datasets.SST.splits== will load the ==SST== datasets, and split into train, validation, and test Dataset objects.
+=datasets.SST.splits= will load the =SST= datasets, and split into train, validation, and test Dataset objects.
 
-==build_vocab== will create the Vocab object for Field, which contains the information to convert word into word index and vice versa. Also, the word embedding will save as ==Field.Vocab.vectors==. ==vectors== contains all of the word embedding. Torchtext can download some pretrained vectors automatically, such as ==glove.840B.300d==, ==fasttext.en.300d==. You can also load your vectors in this way, ==xxx.vec== should be the standard word2vec format.
+=build_vocab= will create the Vocab object for Field, which contains the information to convert word into word index and vice versa. Also, the word embedding will save as =Field.Vocab.vectors=. =vectors= contains all of the word embedding. Torchtext can download some pretrained vectors automatically, such as =glove.840B.300d=, =fasttext.en.300d=. You can also load your vectors in this way, =xxx.vec= should be the standard word2vec format.
 #+BEGIN_SRC python
 from torchtext.vocab import Vectors
 
@@ -374,10 +374,10 @@ vectors = Vectors(name='xxx.vec', cache='./')
 TEXT.build_vocab(train, val, test, vectors=vectors)
 #+END_SRC
 
-==data.BucketIterator.splits== will returns iterators that loads batches of data from datasets, and the text in same batch has similar lengths.
+=data.BucketIterator.splits= will returns iterators that loads batches of data from datasets, and the text in same batch has similar lengths.
 
 
-Now, we can start to train the model. First we wrap some parameters into ==args==, it contains settings like output class, learning rate, log interval and so on.
+Now, we can start to train the model. First we wrap some parameters into =args=, it contains settings like output class, learning rate, log interval and so on.
 
 #+BEGIN_SRC python
 args={}
@@ -583,7 +583,7 @@ $$score(s_t,h_i)=s_t^Th_i$$
 
 ****** Scaled Dot-Product
 $$score(s_t,h_i)=\frac{s_t^Th_i}{\sqrt{n}}$$
-Google's Transformer has similar scaling factor: $score=\frac{KQ^T}{\sqrt{n}}$
+where n is the vectors dimension. Google's Transformer model has similar scaling factor when calculate self-attention: $score=\frac{KQ^T}{\sqrt{n}}$
 
 ****** Location-Base
 
@@ -609,7 +609,9 @@ Ref:
 1. [[http://cnyah.com/2017/08/01/attention-variants/][Attention Variants]]
 2. [[https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html][Attention? Attention!]]
 3. [[https://towardsdatascience.com/attention-seq2seq-with-pytorch-learning-to-invert-a-sequence-34faf4133e53][Attention Seq2Seq with PyTorch: learning to invert a sequence]]
-*** TODO Transformer
+*** TODO The Annotated /The Annotated Transformer/
+Thanks for the articles I list at the end of this post, I understand how transformers works. I'll write down points that confused me.
+
 
 Ref:
 
@@ -618,6 +620,9 @@ Ref:
 3. [[https://mchromiak.github.io/articles/2017/Sep/12/Transformer-Attention-is-all-you-need/#.XMb3ZC97FPs][The Transformer – Attention is all you need]]
 4. [[https://medium.com/@bgg/seq2seq-pay-attention-to-self-attention-part-2-cf81bf32c73d][Seq2seq pay Attention to Self Attention: Part 2]]
 5. [[http://blog.stupidme.me/transformer-attention-is-all-you-need/][Transformer模型的PyTorch实现]]
+6. [[https://towardsdatascience.com/how-to-code-the-transformer-in-pytorch-24db27c8f9ec][How to code The Transformer in Pytorch]]
+
+
 ** Python                                                            :Python:
 *** DONE Create Node Benchmark in Py2neo
 CLOSED: [2018-11-05 Mon 15:55]
@@ -763,9 +768,9 @@ CSRF(Cross-site request forgery) is a way to generate fake user request to targe
 
 Each web framework has different approach to do CSRF protection. In Django, the  validation process is below:
 
-1. When user login for the first time, Django generate a ==csrf_secret==, add random salt and encrypt it as A, save A to cookie ==csrftoken==.
-2. When Django processing tag =={{ csrf_token }}== or =={% csrf_token %}==, it read ==csrftoken== cookie A, reverse it to ==csrf_secret==, add random salt and encrypt it as B, return corresponding HTML.
-3. When Django receive POST request, it will retrive cookie ==csrftoken== as A, and tries to get ==csrfmiddlewaretoken== value B from POST data, if it does not exist, it will get header ==X-CSRFToken== value as B. Then A and B will be reversed to ==csrf_secret==. If the values are identical, the validation is passed. Otherwise, a 403 error will raise.
+1. When user login for the first time, Django generate a =csrf_secret=, add random salt and encrypt it as A, save A to cookie =csrftoken=.
+2. When Django processing tag ={{ csrf_token }}= or ={% csrf_token %}=, it read =csrftoken= cookie A, reverse it to =csrf_secret=, add random salt and encrypt it as B, return corresponding HTML.
+3. When Django receive POST request, it will retrive cookie =csrftoken= as A, and tries to get =csrfmiddlewaretoken= value B from POST data, if it does not exist, it will get header =X-CSRFToken= value as B. Then A and B will be reversed to =csrf_secret=. If the values are identical, the validation is passed. Otherwise, a 403 error will raise.
 
 **** Django CSRF Usage
 

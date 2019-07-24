@@ -2,7 +2,7 @@
 title = "TextCNN with PyTorch and Torchtext on Colab"
 author = ["KK"]
 date = 2018-12-03T15:47:00+08:00
-lastmod = 2019-05-12T21:22:06+08:00
+lastmod = 2019-07-24T21:23:05+08:00
 tags = ["Machine Learning", "TextCNN"]
 draft = false
 noauthor = true
@@ -14,7 +14,7 @@ noread = true
 
 [PyTorch](https://pytorch.org) is a really powerful framework to build the machine learning models. Although some features is missing when compared with TensorFlow (For example, the early stop function, History to draw plot), its code style is more intuitive.
 
-[Torchtext](https://github.com/pytorch/text) is a NLP package which is also made by `=pytorch=` team. It provide a way to read text, processing and iterate the texts.
+[Torchtext](https://github.com/pytorch/text) is a NLP package which is also made by `pytorch` team. It provide a way to read text, processing and iterate the texts.
 
 [Google Colab](https://colab.research.google.com) is a Jupyter notebook environment host by Google, you can use free GPU and TPU to run your modal.
 
@@ -78,7 +78,7 @@ train_iter, val_iter, test_iter = data.BucketIterator.splits(
 
 ```
 
-`=Field=` defines how to process text, here is the most common parameters:
+`Field` defines how to process text, here is the most common parameters:
 
 > sequential – Whether the datatype represents sequential data. If False, no tokenization is applied. Default: True.
 >
@@ -88,9 +88,9 @@ train_iter, val_iter, test_iter = data.BucketIterator.splits(
 >
 > batch\_first – Whether to produce tensors with the batch dimension first. Default: False.
 
-`=datasets.SST.splits=` will load the `=SST=` datasets, and split into train, validation, and test Dataset objects.
+`datasets.SST.splits` will load the `SST` datasets, and split into train, validation, and test Dataset objects.
 
-`=build_vocab=` will create the Vocab object for Field, which contains the information to convert word into word index and vice versa. Also, the word embedding will save as `=Field.Vocab.vectors=`. `=vectors=` contains all of the word embedding. Torchtext can download some pretrained vectors automatically, such as `=glove.840B.300d=`, `=fasttext.en.300d=`. You can also load your vectors in this way, `=xxx.vec=` should be the standard word2vec format.
+`build_vocab` will create the Vocab object for Field, which contains the information to convert word into word index and vice versa. Also, the word embedding will save as `Field.Vocab.vectors`. `vectors` contains all of the word embedding. Torchtext can download some pretrained vectors automatically, such as `glove.840B.300d`, `fasttext.en.300d`. You can also load your vectors in this way, `xxx.vec` should be the standard word2vec format.
 
 ```python
 from torchtext.vocab import Vectors
@@ -99,9 +99,9 @@ vectors = Vectors(name='xxx.vec', cache='./')
 TEXT.build_vocab(train, val, test, vectors=vectors)
 ```
 
-`=data.BucketIterator.splits=` will returns iterators that loads batches of data from datasets, and the text in same batch has similar lengths.
+`data.BucketIterator.splits` will returns iterators that loads batches of data from datasets, and the text in same batch has similar lengths.
 
-Now, we can start to train the model. First we wrap some parameters into `=args=`, it contains settings like output class, learning rate, log interval and so on.
+Now, we can start to train the model. First we wrap some parameters into `args`, it contains settings like output class, learning rate, log interval and so on.
 
 ```python
 args={}
