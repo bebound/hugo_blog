@@ -506,10 +506,11 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
    
    My MacBook doesn't support CUDA, so I use these two website to train the model. Here are the comparison of them. During training, Kaggle seems more stable, Colab usually disconnected after 1h.
 
-  |                      | Colab        | Kaggle Kernel |
-  | GPU                  | Tesla T4     | Tesla P100    |
-  | Max training time    | 12h          | 9h            |
-  | Export trained model | Google Drive | -             |
+  |                      | Colab         | Kaggle Kernel   |
+  | GPU                  | Tesla T4(16G) | Tesla P100(16G) |
+  | RAM                  | 13G           | 13G             |
+  | Max training time    | 12h           | 9h              |
+  | Export trained model | Google Drive  | -               |
 
 ---
 
@@ -553,6 +554,10 @@ Ref:
 - Update 19-05-07
 
   TensorBoard is now natively supported in PyTorch after version 1.1
+
+- Update 19-07-26
+
+  If you run out of RAM in Colab, it will show up an option to double the RAM.
 
 *** DONE Different types of Attention
 CLOSED: [2019-07-15 Mon 00:16]
@@ -610,8 +615,9 @@ Ref:
 2. [[https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html][Attention? Attention!]]
 3. [[https://towardsdatascience.com/attention-seq2seq-with-pytorch-learning-to-invert-a-sequence-34faf4133e53][Attention Seq2Seq with PyTorch: learning to invert a sequence]]
 *** TODO The Annotated /The Annotated Transformer/
-Thanks for the articles I list at the end of this post, I understand how transformers works. I'll write down points that confused me.
+Thanks for the articles I list at the end of this post, I understand how transformers works. These posts are comprehensive, but there are some points that confused me.
 
+First, this is the graph that was referenced by almost all of the post related to Transformer.
 
 Ref:
 
@@ -621,6 +627,7 @@ Ref:
 4. [[https://medium.com/@bgg/seq2seq-pay-attention-to-self-attention-part-2-cf81bf32c73d][Seq2seq pay Attention to Self Attention: Part 2]]
 5. [[http://blog.stupidme.me/transformer-attention-is-all-you-need/][Transformer模型的PyTorch实现]]
 6. [[https://towardsdatascience.com/how-to-code-the-transformer-in-pytorch-24db27c8f9ec][How to code The Transformer in Pytorch]]
+7. [[https://towardsdatascience.com/deconstructing-bert-part-2-visualizing-the-inner-workings-of-attention-60a16d86b5c1][Deconstructing BERT, Part 2: Visualizing the Inner Workings of Attention]]
 
 
 ** Python                                                            :Python:

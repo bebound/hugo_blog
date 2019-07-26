@@ -2,7 +2,7 @@
 title = "Using Dueling DQN to Play Flappy Bird"
 author = ["KK"]
 date = 2019-04-14T17:10:00+08:00
-lastmod = 2019-07-19T22:59:08+08:00
+lastmod = 2019-07-26T23:38:41+08:00
 tags = ["Machine Learning"]
 draft = false
 noauthor = true
@@ -81,11 +81,12 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
 
     My MacBook doesn't support CUDA, so I use these two website to train the model. Here are the comparison of them. During training, Kaggle seems more stable, Colab usually disconnected after 1h.
 
-    |                      | Colab        | Kaggle Kernel |
-    |----------------------|--------------|---------------|
-    | GPU                  | Tesla T4     | Tesla P100    |
-    | Max training time    | 12h          | 9h            |
-    | Export trained model | Google Drive | -             |
+    |                      | Colab         | Kaggle Kernel   |
+    |----------------------|---------------|-----------------|
+    | GPU                  | Tesla T4(16G) | Tesla P100(16G) |
+    | RAM                  | 13G           | 13G             |
+    | Max training time    | 12h           | 9h              |
+    | Export trained model | Google Drive  | -               |
 
 ---
 
@@ -131,3 +132,7 @@ Ref:
 -   Update 19-05-07
 
     TensorBoard is now natively supported in PyTorch after version 1.1
+
+-   Update 19-07-26
+
+    If you run out of RAM in Colab, it will show up an option to double the RAM.
