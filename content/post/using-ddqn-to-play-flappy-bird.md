@@ -2,7 +2,7 @@
 title = "Using Dueling DQN to Play Flappy Bird"
 author = ["KK"]
 date = 2019-04-14T17:10:00+08:00
-lastmod = 2019-07-26T23:38:41+08:00
+lastmod = 2019-07-31T23:46:12+08:00
 tags = ["Machine Learning"]
 draft = false
 noauthor = true
@@ -123,7 +123,7 @@ Ref:
 5.  [DeepRL-Tutorials](https://github.com/qfettes/DeepRL-Tutorials)
 6.  [Speeding up DQN on PyTorch: how to solve Pong in 30 minutes](https://medium.com/mlreview/speeding-up-dqn-on-pytorch-solving-pong-in-30-minutes-81a1bd2dff55)
 
-<!--listend-->
+---
 
 -   Update 19-04-26:
 
