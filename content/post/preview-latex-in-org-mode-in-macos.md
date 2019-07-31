@@ -2,7 +2,7 @@
 title = "Preview LaTeX in Org Mode in MacOS"
 author = ["KK"]
 date = 2019-05-12T20:26:00+08:00
-lastmod = 2019-07-09T21:34:57+08:00
+lastmod = 2019-07-31T23:47:00+08:00
 tags = ["Emacs", "Org Mode", "LaTeX"]
 draft = false
 noauthor = true
@@ -28,7 +28,7 @@ If you like the fancy spacemacs icon, install it with cask: `brew cask install e
 
 -   Download and install BasicTeX.pkg [here](http://www.tug.org/mactex/morepackages.html).
 -   Add `/Library/TeX/texbin` to PATH.
--   Install `dvisvgm` by `sudo tlmgr update --self && sudo tlmgr install dvisvgm`
+-   Install `dvisvgm` by `sudo tlmgr update --self && sudo tlmgr install dvisvgm collection-fontsrecommended`
 
 
 ## Emacs settings {#emacs-settings}
@@ -39,3 +39,11 @@ If you like the fancy spacemacs icon, install it with cask: `brew cask install e
 Now you can see the rendered LaTeX equation by calling `org-preview-latex-fragment` or using shortcut `,Tx`.
 
 If you want to load LaTeX previews automatically at startup, add this at the beginning of org file: `#+STARTUP: latexpreview`.
+
+---
+
+-   update 19-07-31
+
+    `_` and `...` are not displayed in Emacs, as some fonts are missing. `tlmgr install collection-fontsrecommended` should fix this.
+
+    `Org Preview Latex` buffer also warns `processing of PostScript specials is disabled (Ghostscript not found)`, remove this message by `brew install ghostscript`.
