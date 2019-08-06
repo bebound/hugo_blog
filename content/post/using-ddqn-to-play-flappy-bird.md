@@ -2,7 +2,7 @@
 title = "Using Dueling DQN to Play Flappy Bird"
 author = ["KK"]
 date = 2019-04-14T17:10:00+08:00
-lastmod = 2019-07-31T23:46:12+08:00
+lastmod = 2019-08-06T21:11:06+08:00
 tags = ["Machine Learning"]
 draft = false
 noauthor = true
@@ -28,7 +28,11 @@ Third, the parameters. `learning_rate`, `target_update_interval` may cause fluct
 
 {{< figure src="/images/ddqn_cartpole_fluctuate.png" width="400" >}}
 
-After doing some research on the cartpole DNQ code, I managed to made a model to play the flappy bird. Here are the changes from the original cartpole code. Most of the technology can be found in this papers: [Playing Atari with Deep Reinforcement Learning](https://arxiv.org/abs/1312.5602)
+After doing some research on the cartpole DNQ code, I managed to made a model to play the flappy bird. Here are the changes from the original cartpole code. Most of the technology can be found in these two papers: [Playing Atari with Deep Reinforcement Learning](https://arxiv.org/abs/1312.5602) and [Rainbow: Combining Improvements in Deep Reinforcement Learning](https://arxiv.org/abs/1710.02298).
+
+Here is the model architecture:
+
+{{< figure src="/images/ddqn_model.png" width="600" >}}
 
 1.  Dueling DQN
 
