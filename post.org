@@ -452,7 +452,16 @@ Third, the parameters. =learning_rate=, =target_update_interval= may cause fluct
 #+attr_html: :width 400
 [[file:/images/ddqn_cartpole_fluctuate.png]]
 
-After doing some research on the cartpole DNQ code, I managed to made a model to play the flappy bird. Here are the changes from the original cartpole code. Most of the technology can be found in this papers: [[https://arxiv.org/abs/1312.5602][Playing Atari with Deep Reinforcement Learning]]
+After doing some research on the cartpole DNQ code, I managed to made a model to play the flappy bird. Here are the changes from the original cartpole code. Most of the technology can be found in these two papers: [[https://arxiv.org/abs/1312.5602][Playing Atari with Deep Reinforcement Learning]] and [[https://arxiv.org/abs/1710.02298][Rainbow: Combining Improvements in Deep Reinforcement Learning]].
+
+Here is the model architecture:
+#+attr_html: :width 600
+[[file:/images/ddqn_model.png]]
+
+Here is a trained result:
+
+{{% youtube "NV82ZUQynuQ"%}}
+
 
 1. Dueling DQN
    
@@ -481,7 +490,7 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
 
 2. Image processing
 
-   I grayscale the image, then remove the background color.
+   I grayscale and crop the image.
 
 3. Stack frames
    
@@ -493,14 +502,11 @@ After doing some research on the cartpole DNQ code, I managed to made a model to
 
 5. Frame Skipping
    
-   Frame-skipping means agent sees and selects actions on every k frame instead of every frame, the last action is repeated on skipped frames. This method will accelerate the training procedure. I have tried different frame skipping values. When =frame=1=, I got max reward, about 100. When =frame=2=, the max reward drop to 50. When k=4, the agent failed to play the game, and max reward stays at 0. Although frame skipping is not working with flappy bird, someone has prove that it does work in many cases. More details can be found in this [[https://danieltakeshi.github.io/2016/11/25/frame-skipping-and-preprocessing-for-deep-q-networks-on-atari-2600-games/][post]].
+   Frame-skipping means agent sees and selects actions on every k frame instead of every frame, the last action is repeated on skipped frames. This method will accelerate the training procedure. In this project, I use =frame_skipping=2=, as the more the frame skipping is, the more the bird is likely to hit the pipe. And this method did help the agent to converge faster. More details can be found in this [[https://danieltakeshi.github.io/2016/11/25/frame-skipping-and-preprocessing-for-deep-q-networks-on-atari-2600-games/][post]].
 
 6. Prioritized Experience Replay
    
-   This idea was published [[https://arxiv.org/abs/1511.05952][here]]. It's a very simple idea: replay high TD error experience more frequently. My code implementation is not efficient. But in cartpole game, this technology help the agent converge faster. Here is the result on cartpole. The formoer one is uniform replay, the later is prioritized replay.
-   #+attr_html: :width 400
-   [[file:/images/ddqn_cartpole_normal.png]]
-   [[file:/images/ddqn_cartpole_prioritized.png]]
+   This idea was published [[https://arxiv.org/abs/1511.05952][here]]. It's a very simple idea: replay high TD error experience more frequently. My code implementation is not efficient. But in cartpole game, this technology help the agent converge faster. 
 
 7. Colab and Kaggle Kernel
    
@@ -520,15 +526,22 @@ The lesson I learnt from this project is patience. It takes a long time(maybe hu
 
  
   Here are something may help with this task.
-- [[https://github.com/facebookresearch/visdom][Visdom]]
+- [[https://www.tensorflow.org/guide/summaries_and_tensorboard][TensorBoard]]
 
-  It's a visualization tool made by FaceBook. It's more convenient to use it rather than generate graph manually by matplotlib. Besides =reward= and =mean_q=, these variable are also useful when debugging: total frames, TD-error, loss and action_distribution. [[https://github.com/lanpa/tensorboardX][tensorboardX]] is a alternative for those who has experience in TensorFlow.
+  It's a visualization tool made by TensorFlow Team. It's more convenient to use it rather than generate graph manually by matplotlib. Besides =reward= and =mean_q=, these variable are also useful when debugging: TD-error, loss and action_distribution, avg_priority.
   
 - Advanced image pre-processing
 
   In this project, I just grayscalize the image. A more advance technology such as binarize should help agent to filter unimportant detail of game output.
+  #+attr_html: :width 100 
   [[file:/images/ddqn_binary_preprocessing.png]]
   
+  In [[https://sarvagyavaish.github.io/FlappyBirdRL/][Flappy Bird RL]], the author extract the vertical distance from lower pipe and horizontal distance from next pair of pipes as state. The trained agent can achieve 3000 score.
+  
+  #+attr_html: :width 200 
+  [[file:/images/ddqn_extract_feature.png]]
+  
+
 - Other Improvements
 
   [[https://arxiv.org/abs/1710.02298][Rainbow]] introduce many other extensions to enhance DQN, some of them have been discussed in this post.
@@ -536,7 +549,7 @@ The lesson I learnt from this project is patience. It takes a long time(maybe hu
   [[file:/images/ddqn_rainbow.png]]
 
 
-I'm still trying to find better solution. I've uploaded code to this [[https://github.com/bebound/flappy_bird_dqn/][repo]].
+I've uploaded code to this [[https://github.com/bebound/flappy_bird_dqn/][repo]].
 
 Ref:
 1. [[https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html][PyTorch REINFORCEMENT LEARNING (DQN) TUTORIAL]]
@@ -544,8 +557,13 @@ Ref:
 3. [[http://cs229.stanford.edu/proj2015/362_report.pdf][Deep Reinforcement Learning for Flappy Bird]]
 4. [[https://github.com/ttaoREtw/Flappy-Bird-Double-DQN-Pytorch][Flappy-Bird-Double-DQN-Pytorch]]
 5. [[https://github.com/qfettes/DeepRL-Tutorials][DeepRL-Tutorials]]
-6. [[https://medium.com/mlreview/speeding-up-dqn-on-pytorch-solving-pong-in-30-minutes-81a1bd2dff55][Speeding up DQN on PyTorch: how to solve Pong in 30 minutes]] 
+6. [[https://medium.com/mlreview/speeding-up-dqn-on-pytorch-solving-pong-in-30-minutes-81a1bd2dff55][Speeding up DQN on PyTorch: how to solve Pong in 30 minutes]]
+7. [[https://danieltakeshi.github.io/2016/11/25/frame-skipping-and-preprocessing-for-deep-q-networks-on-atari-2600-games/][Frame Skipping and Pre-Processing for Deep Q-Networks on Atari 2600 Games]]
+8. [[https://openai.com/blog/openai-baselines-dqn/][OpenAI Baselines: DQN]]
+9. [[https://github.com/susantamoh84/Deep-Reinforcement-Learning-Hands-On/][Deep-Reinforcement-Learning-Hands-On]]
+10. [[https://github.com/dennybritz/reinforcement-learning/issues/30][DQN solution results peak at ~35 reward]]
 
+-----
 
 - Update 19-04-26:
 
@@ -558,6 +576,10 @@ Ref:
 - Update 19-07-26
 
   If you run out of RAM in Colab, it will show up an option to double the RAM.
+  
+- Update 19-08-13
+
+  Upload video, update code.
 
 *** DONE Different types of Attention
 CLOSED: [2019-07-15 Mon 00:16]
@@ -614,10 +636,95 @@ Ref:
 1. [[http://cnyah.com/2017/08/01/attention-variants/][Attention Variants]]
 2. [[https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html][Attention? Attention!]]
 3. [[https://towardsdatascience.com/attention-seq2seq-with-pytorch-learning-to-invert-a-sequence-34faf4133e53][Attention Seq2Seq with PyTorch: learning to invert a sequence]]
-*** TODO The Annotated /The Annotated Transformer/
+*** DONE The Annotated /The Annotated Transformer/
+CLOSED: [2019-08-12 Mon 22:11]
+   :PROPERTIES:
+   :EXPORT_FILE_NAME: the-annotated-the-annotated-transformer
+   :END:
 Thanks for the articles I list at the end of this post, I understand how transformers works. These posts are comprehensive, but there are some points that confused me.
 
 First, this is the graph that was referenced by almost all of the post related to Transformer.
+
+#+attr_html: :width 400
+[[file:/images/transformer_main.png]]
+
+Transformer consists of these parts: input, encoder*N, output input, decoder*N, output. I'll explain them step by step.
+
+**** Input
+
+The input word will map to 512 dimension vector. Then generate Positional Encoding(PE) and add it to the original embeddings.
+
+
+
+***** Positional Encoding
+
+The transformer model does not contains recurrence and convolution. In order to let the model capture the sequence of input word, it add PE into embeddings.
+
+#+attr_html: :width 500
+[[file:/images/transformer_add_pe.png]]
+
+
+PE will generate a 512 dimension vector for each position:
+
+$$\begin{align*}
+    PE_{(pos,2i)} = sin(pos / 10000^{2i/d_{model}}) \\
+    PE_{(pos,2i+1)} = cos(pos / 10000^{2i/d_{model}})
+\end{align*}$$
+The even and odd dimension use =sin= and =cos= function respectively.
+
+For example, the second word's PE should be: $sin(2 / 10000^{0 / 512}), cos(2 / 10000^{0 / 512}), sin(2 / 10000^{2 / 512}), cos(2 / 10000^{2 / 512})\text{...}$
+
+The value range of PE is =(-1,1)=, and each position's PE is slight different, as =cos= and =sin= has different frequency. Also, for any fixed offset k, $PE_{pos+k}$ can be represented as a linear function of $PE_{pos}$.
+
+For even dimension, let $10000^{2i/d_{model}}$ be $\alpha$, for even dimension:
+
+$$\begin{aligned}
+PE_{pos+k}&=sin((pos+k)/\alpha) \\
+&=sin(pos/\alpha)cos(k/\alpha)+cos(pos/\alpha)sin(k/\alpha)\\
+&=PE_{pos\_even}A+PE_{pos\_odd}B
+\end{aligned}$$
+
+#+attr_html: :width 500
+[[file:/images/transformer_pe1.png]]
+
+The PE implementation in [[https://github.com/tensorflow/tensor2tensor/blob/5bfe69a7d68b7d61d51fac36c6088f94b9d6fdc6/tensor2tensor/layers/common_attention.py#L457][tensor2tensor]] use =sin= in first half of dimension and =cos= in the rest part of dimension.
+#+attr_html: :width 500
+[[file:/images/transformer_pe2.png]]
+
+
+**** Encoder
+
+There are 6 Encoder layer in Transformer, each layer consists of two sub-layer: Multi-Head Attention and Feed Forward Neural Network.
+
+***** Multi-Head Attention
+
+Let's begin with single head attention. In short, it use a K Q V matrix to calculate the attention.
+
+The input words map to =q= =k= =v= by multiply the Query, Keys Values matrix. Then for the given Query, the attention for each word in sentence will be calculated by this formula: $\mathrm{attention}=\mathrm{softmax}(\frac{qk^T}{\sqrt{d_k}})v$, where =q= =k= =v= is a 64 dimension vector.
+#+attr_html: :width 500
+[[file:/images/transformer_self_attention.png]]
+
+
+Matrix view:
+
+$Attention(Q, K, V) = \mathrm{softmax}(\frac{(XW^Q)(XW^K)^T}{\sqrt{d_k}})(XW^V)$ where $X$ is the input embedding.
+
+The single head attention only output a 64 dimension vector, but the input dimension is 512. How to transform back to 512? That's why transformer has multi-head attention.
+
+Each head has its own $W^Q$ $W^K$ $W^V$ matrix, and produces $Z_0,Z_1...Z_7$,($Z_0$'s shape is =(SEQ_LEN, 64)=) the concat the outputted vectors as $O$. $O$ will multiply a weight matrix $W^O$ ($W^O$'s shape is =(512, 512)=) and the result is $Z$, which will be sent to Feed Forward Network.
+
+#+attr_html: :width 500
+[[file:/images/transformer_multihead.png]]
+
+Multi-head attention allows the model to jointly attend to information from different representation subspaces at different positions.
+
+
+***** Layer Norm
+
+***** Position-wise Feed Forward Network
+
+
+
 
 Ref:
 
@@ -1229,7 +1336,7 @@ If you like the fancy spacemacs icon, install it with cask: =brew cask install e
 **** Install Tex
 - Download and install BasicTeX.pkg [[http://www.tug.org/mactex/morepackages.html][here]].
 - Add =/Library/TeX/texbin= to PATH.
-- Install =dvisvgm= by =sudo tlmgr update --self && sudo tlmgr install dvisvgm=
+- Install =dvisvgm= by =sudo tlmgr update --self && sudo tlmgr install dvisvgm collection-fontsrecommended=
 
 **** Emacs settings
 - Add TeX related bin to path: =(setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin"))=
@@ -1238,6 +1345,15 @@ If you like the fancy spacemacs icon, install it with cask: =brew cask install e
 Now you can see the rendered LaTeX equation by calling =org-preview-latex-fragment= or using shortcut =,Tx=. 
 
 If you want to load LaTeX previews automatically at startup, add this at the beginning of org file: =#+STARTUP: latexpreview=.
+
+-----
+
+- update 19-07-31
+
+  =_= and =...= are not displayed in Emacs, as some fonts are missing. =tlmgr install collection-fontsrecommended= should fix this.
+
+  =Org Preview Latex= buffer also warns =processing of PostScript specials is disabled (Ghostscript not found)=, remove this message by =brew install ghostscript=.
+
 *** DONE Build Your Own Tiny Tiny RSS Service
 CLOSED: [2019-06-10 Mon 00:25]
    :PROPERTIES:

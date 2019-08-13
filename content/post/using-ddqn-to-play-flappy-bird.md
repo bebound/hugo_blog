@@ -2,7 +2,7 @@
 title = "Using Dueling DQN to Play Flappy Bird"
 author = ["KK"]
 date = 2019-04-14T17:10:00+08:00
-lastmod = 2019-08-06T21:11:06+08:00
+lastmod = 2019-08-13T22:27:57+08:00
 tags = ["Machine Learning"]
 draft = false
 noauthor = true
@@ -34,6 +34,10 @@ Here is the model architecture:
 
 {{< figure src="/images/ddqn_model.png" width="600" >}}
 
+Here is a trained result:
+
+{{% youtube "NV82ZUQynuQ"%}}
+
 1.  Dueling DQN
 
     The vanilla DQN has the overestimate problem. As the `max` function will accumulate the noise when training. This leads to converging at suboptimal point. Two following architectures are submitted to solve this problem.
@@ -60,7 +64,7 @@ Here is the model architecture:
 
 2.  Image processing
 
-    I grayscale the image, then remove the background color.
+    I grayscale and crop the image.
 
 3.  Stack frames
 
@@ -72,14 +76,11 @@ Here is the model architecture:
 
 5.  Frame Skipping
 
-    Frame-skipping means agent sees and selects actions on every k frame instead of every frame, the last action is repeated on skipped frames. This method will accelerate the training procedure. I have tried different frame skipping values. When `frame=1`, I got max reward, about 100. When `frame=2`, the max reward drop to 50. When k=4, the agent failed to play the game, and max reward stays at 0. Although frame skipping is not working with flappy bird, someone has prove that it does work in many cases. More details can be found in this [post](https://danieltakeshi.github.io/2016/11/25/frame-skipping-and-preprocessing-for-deep-q-networks-on-atari-2600-games/).
+    Frame-skipping means agent sees and selects actions on every k frame instead of every frame, the last action is repeated on skipped frames. This method will accelerate the training procedure. In this project, I use `frame_skipping=2`, as the more the frame skipping is, the more the bird is likely to hit the pipe. And this method did help the agent to converge faster. More details can be found in this [post](https://danieltakeshi.github.io/2016/11/25/frame-skipping-and-preprocessing-for-deep-q-networks-on-atari-2600-games/).
 
 6.  Prioritized Experience Replay
 
-    This idea was published [here](https://arxiv.org/abs/1511.05952). It's a very simple idea: replay high TD error experience more frequently. My code implementation is not efficient. But in cartpole game, this technology help the agent converge faster. Here is the result on cartpole. The formoer one is uniform replay, the later is prioritized replay.
-
-    <img src="/images/ddqn_cartpole_normal.png" alt="ddqn_cartpole_normal.png" width="400" />
-    <img src="/images/ddqn_cartpole_prioritized.png" alt="ddqn_cartpole_prioritized.png" width="400" />
+    This idea was published [here](https://arxiv.org/abs/1511.05952). It's a very simple idea: replay high TD error experience more frequently. My code implementation is not efficient. But in cartpole game, this technology help the agent converge faster.
 
 7.  Colab and Kaggle Kernel
 
@@ -101,14 +102,21 @@ The lesson I learnt from this project is patience. It takes a long time(maybe hu
 
 Here are something may help with this task.
 
--   [Visdom](https://github.com/facebookresearch/visdom)
+-   [TensorBoard](https://www.tensorflow.org/guide/summaries%5Fand%5Ftensorboard)
 
-    It's a visualization tool made by FaceBook. It's more convenient to use it rather than generate graph manually by matplotlib. Besides `reward` and `mean_q`, these variable are also useful when debugging: total frames, TD-error, loss and action\_distribution. [tensorboardX](https://github.com/lanpa/tensorboardX) is a alternative for those who has experience in TensorFlow.
+    It's a visualization tool made by TensorFlow Team. It's more convenient to use it rather than generate graph manually by matplotlib. Besides `reward` and `mean_q`, these variable are also useful when debugging: TD-error, loss and action\_distribution, avg\_priority.
 
 -   Advanced image pre-processing
 
     In this project, I just grayscalize the image. A more advance technology such as binarize should help agent to filter unimportant detail of game output.
-    ![](/images/ddqn_binary_preprocessing.png)
+
+    {{< figure src="/images/ddqn_binary_preprocessing.png" width="100" >}}
+
+    In [Flappy Bird RL](https://sarvagyavaish.github.io/FlappyBirdRL/), the author extract the vertical distance from lower pipe and horizontal distance from next pair of pipes as state. The trained agent can achieve 3000 score.
+
+    {{< figure src="/images/ddqn_extract_feature.png" width="200" >}}
+
+<!--listend-->
 
 -   Other Improvements
 
@@ -116,7 +124,7 @@ Here are something may help with this task.
 
     {{< figure src="/images/ddqn_rainbow.png" width="400" >}}
 
-I'm still trying to find better solution. I've uploaded code to this [repo](https://github.com/bebound/flappy%5Fbird%5Fdqn/).
+I've uploaded code to this [repo](https://github.com/bebound/flappy%5Fbird%5Fdqn/).
 
 Ref:
 
@@ -126,6 +134,10 @@ Ref:
 4.  [Flappy-Bird-Double-DQN-Pytorch](https://github.com/ttaoREtw/Flappy-Bird-Double-DQN-Pytorch)
 5.  [DeepRL-Tutorials](https://github.com/qfettes/DeepRL-Tutorials)
 6.  [Speeding up DQN on PyTorch: how to solve Pong in 30 minutes](https://medium.com/mlreview/speeding-up-dqn-on-pytorch-solving-pong-in-30-minutes-81a1bd2dff55)
+7.  [Frame Skipping and Pre-Processing for Deep Q-Networks on Atari 2600 Games](https://danieltakeshi.github.io/2016/11/25/frame-skipping-and-preprocessing-for-deep-q-networks-on-atari-2600-games/)
+8.  [OpenAI Baselines: DQN](https://openai.com/blog/openai-baselines-dqn/)
+9.  [Deep-Reinforcement-Learning-Hands-On](https://github.com/susantamoh84/Deep-Reinforcement-Learning-Hands-On/)
+10. [DQN solution results peak at ~35 reward](https://github.com/dennybritz/reinforcement-learning/issues/30)
 
 ---
 
@@ -140,3 +152,7 @@ Ref:
 -   Update 19-07-26
 
     If you run out of RAM in Colab, it will show up an option to double the RAM.
+
+-   Update 19-08-13
+
+    Upload video, update code.
