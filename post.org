@@ -549,7 +549,7 @@ The lesson I learnt from this project is patience. It takes a long time(maybe hu
   [[file:/images/ddqn_rainbow.png]]
 
 
-I've uploaded code to this [[https://github.com/bebound/flappy_bird_dqn/][repo]].
+I've uploaded code to this [[https://github.com/bebound/flappy-bird-dqn][repo]].
 
 Ref:
 1. [[https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html][PyTorch REINFORCEMENT LEARNING (DQN) TUTORIAL]]

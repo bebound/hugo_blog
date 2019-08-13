@@ -2,7 +2,7 @@
 title = "Using Dueling DQN to Play Flappy Bird"
 author = ["KK"]
 date = 2019-04-14T17:10:00+08:00
-lastmod = 2019-08-13T22:27:57+08:00
+lastmod = 2019-08-13T22:38:02+08:00
 tags = ["Machine Learning"]
 draft = false
 noauthor = true
@@ -124,7 +124,7 @@ Here are something may help with this task.
 
     {{< figure src="/images/ddqn_rainbow.png" width="400" >}}
 
-I've uploaded code to this [repo](https://github.com/bebound/flappy%5Fbird%5Fdqn/).
+I've uploaded code to this [repo](https://github.com/bebound/flappy-bird-dqn).
 
 Ref:
 
