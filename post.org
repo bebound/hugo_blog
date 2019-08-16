@@ -718,11 +718,27 @@ Each head has its own $W^Q$ $W^K$ $W^V$ matrix, and produces $Z_0,Z_1...Z_7$,($Z
 
 Multi-head attention allows the model to jointly attend to information from different representation subspaces at different positions.
 
+The whole procedure looks like this:
 
-***** Layer Norm
+#+attr_html: :width 500
+[[file:/images/transformer_multihead_all.png]]
+
+
+
+***** Add & Norm
+
+This layer works like this line of code: =norm(x+dropout(sublayer(x)))= or =x+dropout(sublayer(norm(x)))=
+
+****** Layer Normalization
+
+Layer Norm is similar to Batch Normalization, but it tries to normalize the whole layer rather than each feature. After normalization, each layer's output(=512*SEQ_LEN= vector) has the same mean and standard deviation. More details can be found in this [[https://arxiv.org/abs/1607.06450][paper]].
 
 ***** Position-wise Feed Forward Network
 
+This layer is a Neural Network whose size is =(512, 2048, 512)=. The exact same feed-forward network is independently applied to each position.
+
+#+attr_html: :width 500
+[[file:/images/transformer_encoder.png]]
 
 
 
@@ -735,6 +751,7 @@ Ref:
 5. [[http://blog.stupidme.me/transformer-attention-is-all-you-need/][Transformer模型的PyTorch实现]]
 6. [[https://towardsdatascience.com/how-to-code-the-transformer-in-pytorch-24db27c8f9ec][How to code The Transformer in Pytorch]]
 7. [[https://towardsdatascience.com/deconstructing-bert-part-2-visualizing-the-inner-workings-of-attention-60a16d86b5c1][Deconstructing BERT, Part 2: Visualizing the Inner Workings of Attention]]
+8. [[https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html][Transformer: A Novel Neural Network Architecture for Language Understanding]]
 
 
 ** Python                                                            :Python:
