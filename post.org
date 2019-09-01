@@ -477,7 +477,7 @@ Here is a trained result:
 
    Dueling DQN is another solution. It has two estimator, one estimates the score of current state, another estimates the action score. 
 
-   $$ Q(S,A,w,\alpha, \beta) = V(S,w,\alpha) + A(S,A,w,\beta) $$
+   $$Q(s, a) = r + \gamma( \max_{a’}[A(s',a')+V(s')]$$
 
    In order to distinguish the score of the actions, the return the Q-value will minus the mean action score:
 
@@ -637,7 +637,7 @@ Ref:
 2. [[https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html][Attention? Attention!]]
 3. [[https://towardsdatascience.com/attention-seq2seq-with-pytorch-learning-to-invert-a-sequence-34faf4133e53][Attention Seq2Seq with PyTorch: learning to invert a sequence]]
 *** DONE The Annotated /The Annotated Transformer/
-CLOSED: [2019-08-12 Mon 22:11]
+CLOSED: [2019-09-01 Sun 16:00]
    :PROPERTIES:
    :EXPORT_FILE_NAME: the-annotated-the-annotated-transformer
    :END:
@@ -648,7 +648,7 @@ First, this is the graph that was referenced by almost all of the post related t
 #+attr_html: :width 400
 [[file:/images/transformer_main.png]]
 
-Transformer consists of these parts: input, encoder*N, output input, decoder*N, output. I'll explain them step by step.
+Transformer consists of these parts: Input, Encoder*N, Output Input, Decoder*N, Output. I'll explain them step by step.
 
 **** Input
 
@@ -681,7 +681,7 @@ For even dimension, let $10000^{2i/d_{model}}$ be $\alpha$, for even dimension:
 $$\begin{aligned}
 PE_{pos+k}&=sin((pos+k)/\alpha) \\
 &=sin(pos/\alpha)cos(k/\alpha)+cos(pos/\alpha)sin(k/\alpha)\\
-&=PE_{pos\_even}A+PE_{pos\_odd}B
+&=PE_{pos\_even}K_1+PE_{pos\_odd}K_2
 \end{aligned}$$
 
 #+attr_html: :width 500
@@ -698,7 +698,7 @@ There are 6 Encoder layer in Transformer, each layer consists of two sub-layer: 
 
 ***** Multi-Head Attention
 
-Let's begin with single head attention. In short, it use a K Q V matrix to calculate the attention.
+Let's begin with single head attention. In short, it maps word embeddings to =q= =k= =v= and use =q= =k= =v= vector to calculate the attention.
 
 The input words map to =q= =k= =v= by multiply the Query, Keys Values matrix. Then for the given Query, the attention for each word in sentence will be calculated by this formula: $\mathrm{attention}=\mathrm{softmax}(\frac{qk^T}{\sqrt{d_k}})v$, where =q= =k= =v= is a 64 dimension vector.
 #+attr_html: :width 500
@@ -711,7 +711,7 @@ $Attention(Q, K, V) = \mathrm{softmax}(\frac{(XW^Q)(XW^K)^T}{\sqrt{d_k}})(XW^V)$
 
 The single head attention only output a 64 dimension vector, but the input dimension is 512. How to transform back to 512? That's why transformer has multi-head attention.
 
-Each head has its own $W^Q$ $W^K$ $W^V$ matrix, and produces $Z_0,Z_1...Z_7$,($Z_0$'s shape is =(SEQ_LEN, 64)=) the concat the outputted vectors as $O$. $O$ will multiply a weight matrix $W^O$ ($W^O$'s shape is =(512, 512)=) and the result is $Z$, which will be sent to Feed Forward Network.
+Each head has its own $W^Q$ $W^K$ $W^V$ matrix, and produces $Z_0,Z_1...Z_7$,($Z_0$'s shape is =(512, 64)=) the concat the outputted vectors as $O$. $O$ will multiply a weight matrix $W^O$ ($W^O$'s shape is =(512, 512)=) and the result is $Z$, which will be sent to Feed Forward Network.
 
 #+attr_html: :width 500
 [[file:/images/transformer_multihead.png]]
@@ -727,11 +727,14 @@ The whole procedure looks like this:
 
 ***** Add & Norm
 
-This layer works like this line of code: =norm(x+dropout(sublayer(x)))= or =x+dropout(sublayer(norm(x)))=
+This layer works like this line of code: =norm(x+dropout(sublayer(x)))= or =x+dropout(sublayer(norm(x)))=.
 
 ****** Layer Normalization
 
-Layer Norm is similar to Batch Normalization, but it tries to normalize the whole layer rather than each feature. After normalization, each layer's output(=512*SEQ_LEN= vector) has the same mean and standard deviation. More details can be found in this [[https://arxiv.org/abs/1607.06450][paper]].
+Layer Norm is similar to Batch Normalization, but it tries to normalize the whole layer's features rather than each feature.(*Scale* and *Shift* also apply for each feature) More details can be found in this [[https://arxiv.org/abs/1607.06450][paper]].
+
+#+attr_html: :width 500
+[[file:/images/transformer_layer_norm.png]]
 
 ***** Position-wise Feed Forward Network
 
@@ -740,7 +743,30 @@ This layer is a Neural Network whose size is =(512, 2048, 512)=. The exact same 
 #+attr_html: :width 500
 [[file:/images/transformer_encoder.png]]
 
+**** Output Input
 
+Same as Input.
+
+**** Decoder
+
+The decoder is pretty similar to Encoder. It also has 6 layers, but has 3 sublayers in each Decoder. It add a masked multi-head-attention at the beginning of Decoder.
+
+***** Masked Multi-Head Attention
+
+This layer is used to block future words during training. For example, if the output is =<bos> hello world <eos>=. First, we should use =<bos>= as input to predict =hello=, =hello world <eos>= will be masked to 0.
+
+***** Key and Value in Second Sub-layer
+
+In Encoder, the =q= =k= =v= vector is generated by $XW^Q$, $XW^K$ and $XW^V$. In the second sub-layer of Decoder, =q= =k= =v= was generated by $XW^Q$, $YW^K$ and $YW^V$, where $Y$ is the Encoder's output.
+
+The animation below illustrates how to apply the Transformer to machine translation.
+
+#+attr_html: :width 500
+[[file:/images/transformer_translate.gif]]
+
+**** Output
+
+Using a linear layer to predict the output.
 
 Ref:
 
@@ -748,7 +774,7 @@ Ref:
 2. [[http://jalammar.github.io/illustrated-transformer/][The Illustrated Transformer]]
 3. [[https://mchromiak.github.io/articles/2017/Sep/12/Transformer-Attention-is-all-you-need/#.XMb3ZC97FPs][The Transformer – Attention is all you need]]
 4. [[https://medium.com/@bgg/seq2seq-pay-attention-to-self-attention-part-2-cf81bf32c73d][Seq2seq pay Attention to Self Attention: Part 2]]
-5. [[http://blog.stupidme.me/transformer-attention-is-all-you-need/][Transformer模型的PyTorch实现]]
+5. [[https://juejin.im/post/5b9f1af0e51d450e425eb32d][Transformer模型的PyTorch实现]]
 6. [[https://towardsdatascience.com/how-to-code-the-transformer-in-pytorch-24db27c8f9ec][How to code The Transformer in Pytorch]]
 7. [[https://towardsdatascience.com/deconstructing-bert-part-2-visualizing-the-inner-workings-of-attention-60a16d86b5c1][Deconstructing BERT, Part 2: Visualizing the Inner Workings of Attention]]
 8. [[https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html][Transformer: A Novel Neural Network Architecture for Language Understanding]]
