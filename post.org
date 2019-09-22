@@ -1534,3 +1534,12 @@ If you want a free APP, I suggest [[http://cocoacake.net/apps/fiery/][Fiery Feed
 Ref:
 
 1. [[https://henry.wang/2018/04/25/ttrss-docker-plugins-guide.html][A ttrss setup guide - Start your own RSS aggregator today]]
+*** DONE Jaeger Code Structure                                     :jaeger:
+CLOSED: [2019-09-22 Sun 17:07]
+   :PROPERTIES:
+   :EXPORT_FILE_NAME: jaeger-code-structure
+   :END:
+Here is the main logic for jaeger agent and jaeger collector.
+
+#+attr_html: :width 600
+[[file:/images/jaeger.svg]]
