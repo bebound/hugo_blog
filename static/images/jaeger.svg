@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="-95 41 2295 1808" width="2295" height="1808">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="-95 41 2330 1842" width="2330" height="1842">
   <defs>
     <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
       <font-face-src>
@@ -27,20 +27,28 @@
         <font-face-name name="HelveticaNeue"/>
       </font-face-src>
     </font-face>
-    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker_2" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
-      <g>
-        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
-      </g>
-    </marker>
+    <font-face font-family="Helvetica Neue" font-size="50" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
   </defs>
   <metadata> Produced by OmniGraffle 7.11.3 
-    <dc:date>2019-09-22 08:46:14 +0000</dc:date>
+    <dc:date>2019-09-23 13:29:25 +0000</dc:date>
   </metadata>
   <g id="Canvas_1" fill="none" stroke="none" stroke-dasharray="none" stroke-opacity="1" fill-opacity="1">
     <title>Canvas 1</title>
-    <rect fill="white" x="-95" y="41" width="2295" height="1808"/>
+    <rect fill="white" x="-95" y="41" width="2330" height="1842"/>
     <g id="Canvas_1: Layer 1">
       <title>Layer 1</title>
+      <g id="Graphic_49">
+        <path d="M 2229 737 L -54 737 C -56.761424 737 -59 734.7614 -59 732 L -59 306 C -59 303.23858 -56.761424 301 -54 301 L 2229 301 C 2231.7614 301 2234 303.23858 2234 306 L 2234 732 C 2234 734.7614 2231.7614 737 2229 737 Z" fill="#ccc"/>
+        <path d="M 2229 737 L -54 737 C -56.761424 737 -59 734.7614 -59 732 L -59 306 C -59 303.23858 -56.761424 301 -54 301 L 2229 301 C 2231.7614 301 2234 303.23858 2234 306 L 2234 732 C 2234 734.7614 2231.7614 737 2229 737 Z" stroke="#506fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_50">
+        <path d="M 2224 1882 L -59 1882 C -61.761424 1882 -64 1879.7614 -64 1877 L -64 880.5 C -64 877.7386 -61.761424 875.5 -59 875.5 L 2224 875.5 C 2226.7614 875.5 2229 877.7386 2229 880.5 L 2229 1877 C 2229 1879.7614 2226.7614 1882 2224 1882 Z" fill="#ccc"/>
+        <path d="M 2224 1882 L -59 1882 C -61.761424 1882 -64 1879.7614 -64 1877 L -64 880.5 C -64 877.7386 -61.761424 875.5 -59 875.5 L 2224 875.5 C 2226.7614 875.5 2229 877.7386 2229 880.5 L 2229 1877 C 2229 1879.7614 2226.7614 1882 2224 1882 Z" stroke="#506fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
       <g id="Graphic_4">
         <path d="M 15.125 317.5 L 397.875 317.5 C 400.08414 317.5 401.875 319.29086 401.875 321.5 L 401.875 407 C 401.875 409.20914 400.08414 411 397.875 411 L 15.125 411 C 12.915861 411 11.125 409.20914 11.125 407 L 11.125 321.5 C 11.125 319.29086 12.915861 317.5 15.125 317.5 Z" fill="#c0ffff"/>
         <path d="M 15.125 317.5 L 397.875 317.5 C 400.08414 317.5 401.875 319.29086 401.875 321.5 L 401.875 407 C 401.875 409.20914 400.08414 411 397.875 411 L 15.125 411 C 12.915861 411 11.125 409.20914 11.125 407 L 11.125 321.5 C 11.125 319.29086 12.915861 317.5 15.125 317.5 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
@@ -121,7 +129,7 @@
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" x="0" y="63.448">thrift.</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" y="63.448">TException</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="63.448">)</tspan>
-          <tspan font-family="PingFang SC" font-size="16" font-weight="400" fill="black" x="0" y="83.448">Call AgentProcessorEmitBatch proceed TProtocol</tspan>
+          <tspan font-family="PingFang SC" font-size="16" font-weight="400" fill="black" x="0" y="83.448">Call AgentProcessorEmitBatch process TProtocol</tspan>
         </text>
       </g>
       <g id="Graphic_17">
@@ -261,7 +269,7 @@
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#cc7831" y="63.448">, </tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" y="63.448">error</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="63.448">)</tspan>
-          <tspan font-family="PingFang SC" font-size="16" font-weight="400" fill="black" x="0" y="83.448">Proceed Span</tspan>
+          <tspan font-family="PingFang SC" font-size="16" font-weight="400" fill="black" x="0" y="83.448">Process Span</tspan>
         </text>
       </g>
       <g id="Graphic_36">
@@ -363,7 +371,17 @@
         </text>
       </g>
       <g id="Line_48">
-        <line x1="206.5" y1="1705.75" x2="206.5" y2="1744.6" marker-end="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <line x1="206.5" y1="1705.75" x2="206.5" y2="1744.6" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_52">
+        <text transform="translate(986.6 401)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="50" font-weight="400" fill="black" x="0" y="48">Collector</tspan>
+        </text>
+      </g>
+      <g id="Graphic_54">
+        <text transform="translate(1021.75 1025)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="50" font-weight="400" fill="black" x="0" y="48">Agent</tspan>
+        </text>
       </g>
     </g>
   </g>
