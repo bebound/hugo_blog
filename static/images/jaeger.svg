@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="-95 41 2330 1842" width="2330" height="1842">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="-95 41 2555 1842" width="2555" height="1842">
   <defs>
     <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
       <font-face-src>
@@ -34,11 +34,11 @@
     </font-face>
   </defs>
   <metadata> Produced by OmniGraffle 7.11.3 
-    <dc:date>2019-09-23 13:29:25 +0000</dc:date>
+    <dc:date>2019-10-23 06:48:59 +0000</dc:date>
   </metadata>
-  <g id="Canvas_1" fill="none" stroke="none" stroke-dasharray="none" stroke-opacity="1" fill-opacity="1">
+  <g id="Canvas_1" stroke-dasharray="none" fill="none" stroke="none" stroke-opacity="1" fill-opacity="1">
     <title>Canvas 1</title>
-    <rect fill="white" x="-95" y="41" width="2330" height="1842"/>
+    <rect fill="white" x="-95" y="41" width="2555" height="1842"/>
     <g id="Canvas_1: Layer 1">
       <title>Layer 1</title>
       <g id="Graphic_49">
@@ -64,11 +64,11 @@
         </text>
       </g>
       <g id="Graphic_6">
-        <ellipse cx="206.5" cy="196.25" rx="45.0000719055853" ry="43.750069908208" fill="white"/>
+        <ellipse cx="206.5" cy="196.25" rx="45.0000719055853" ry="43.750069908208" fill="lime"/>
         <ellipse cx="206.5" cy="196.25" rx="45.0000719055853" ry="43.750069908208" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(175.5 177.802)" fill="black">
-          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="13.816" y="15">Port:</tspan>
-          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="13.208" y="33.448">6831</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x=".472" y="15">Port:683</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="26.552" y="33.448">1</tspan>
         </text>
       </g>
       <g id="Line_8">
@@ -129,7 +129,7 @@
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" x="0" y="63.448">thrift.</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" y="63.448">TException</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="63.448">)</tspan>
-          <tspan font-family="PingFang SC" font-size="16" font-weight="400" fill="black" x="0" y="83.448">Call AgentProcessorEmitBatch process TProtocol</tspan>
+          <tspan font-family="PingFang SC" font-size="16" font-weight="400" fill="black" x="0" y="83.448">Call AgentProcessorEmitBatch process bytes</tspan>
         </text>
       </g>
       <g id="Graphic_17">
@@ -219,14 +219,14 @@
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#cc7831" y="63.448">, </tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" y="63.448">error</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="63.448">)</tspan>
-          <tspan font-family="PingFang SC" font-size="16" font-weight="400" fill="black" x="0" y="83.448">Get data from gRPC</tspan>
+          <tspan font-family="PingFang SC" font-size="16" font-weight="400" fill="black" x="0" y="83.448">Get []*model.Span from gRPC</tspan>
         </text>
       </g>
       <g id="Graphic_26">
         <path d="M 108.348 758.75 L 304.652 758.75 C 306.86114 758.75 308.652 760.5409 308.652 762.75 L 308.652 848.25 C 308.652 850.4591 306.86114 852.25 304.652 852.25 L 108.348 852.25 C 106.13886 852.25 104.348 850.4591 104.348 848.25 L 104.348 762.75 C 104.348 760.5409 106.13886 758.75 108.348 758.75 Z" fill="#ff8080"/>
         <path d="M 108.348 758.75 L 304.652 758.75 C 306.86114 758.75 308.652 760.5409 308.652 762.75 L 308.652 848.25 C 308.652 850.4591 306.86114 852.25 304.652 852.25 L 108.348 852.25 C 106.13886 852.25 104.348 850.4591 104.348 848.25 L 104.348 762.75 C 104.348 760.5409 106.13886 758.75 108.348 758.75 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(109.348 796.276)" fill="black">
-          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="76.12" y="15">gRPC</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="32.552" y="15">gRPC(Port:14250)</tspan>
         </text>
       </g>
       <g id="Line_28">
@@ -364,24 +364,125 @@
       <g id="Graphic_47">
         <path d="M 11.674 1754.5 L 401.326 1754.5 C 403.53514 1754.5 405.326 1756.2909 405.326 1758.5 L 405.326 1844 C 405.326 1846.2091 403.53514 1848 401.326 1848 L 11.674 1848 C 9.464861 1848 7.674 1846.2091 7.674 1844 L 7.674 1758.5 C 7.674 1756.2909 9.464861 1754.5 11.674 1754.5 Z" fill="#c0ffff"/>
         <path d="M 11.674 1754.5 L 401.326 1754.5 C 403.53514 1754.5 405.326 1756.2909 405.326 1758.5 L 405.326 1844 C 405.326 1846.2091 403.53514 1848 401.326 1848 L 11.674 1848 C 9.464861 1848 7.674 1846.2091 7.674 1844 L 7.674 1758.5 C 7.674 1756.2909 9.464861 1754.5 11.674 1754.5 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-        <text transform="translate(12.674 1773.578)" fill="black">
-          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="0" y="15">/plugin/storage</tspan>
-          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="0" y="33.448">Call WriteSpan function defined in different storage </tspan>
-          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="0" y="51.895996">plugin</tspan>
+        <text transform="translate(12.674 1782.802)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="0" y="15">Call WriteSpan function implement in different storage </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="0" y="33.448">plugin</tspan>
         </text>
       </g>
       <g id="Line_48">
         <line x1="206.5" y1="1705.75" x2="206.5" y2="1744.6" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Graphic_52">
-        <text transform="translate(986.6 401)" fill="black">
-          <tspan font-family="Helvetica Neue" font-size="50" font-weight="400" fill="black" x="0" y="48">Collector</tspan>
+        <text transform="translate(1021.75 401)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="50" font-weight="400" fill="black" x="0" y="48">Agent</tspan>
         </text>
       </g>
       <g id="Graphic_54">
-        <text transform="translate(1021.75 1025)" fill="black">
-          <tspan font-family="Helvetica Neue" font-size="50" font-weight="400" fill="black" x="0" y="48">Agent</tspan>
+        <text transform="translate(936 1503)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="50" font-weight="400" fill="black" x="0" y="48">Collector</tspan>
         </text>
+      </g>
+      <g id="Graphic_66">
+        <ellipse cx="2414" cy="1091.234" rx="45.000071905585" ry="43.750069908208" fill="lime"/>
+        <ellipse cx="2414" cy="1091.234" rx="45.000071905585" ry="43.750069908208" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2383 1072.786)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x=".472" y="15">Port:941</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="26.552" y="33.448">1</tspan>
+        </text>
+      </g>
+      <g id="Graphic_64">
+        <text transform="translate(2245 1062)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="7247536e-19" y="15">Zipkin JSON</tspan>
+        </text>
+      </g>
+      <g id="Graphic_63">
+        <path d="M 1751 1044.484 L 2140.652 1044.484 C 2142.8611 1044.484 2144.652 1046.2749 2144.652 1048.484 L 2144.652 1133.984 C 2144.652 1136.1931 2142.8611 1137.984 2140.652 1137.984 L 1751 1137.984 C 1748.7909 1137.984 1747 1136.1931 1747 1133.984 L 1747 1048.484 C 1747 1046.2749 1748.7909 1044.484 1751 1044.484 Z" fill="#c0ffff"/>
+        <path d="M 1751 1044.484 L 2140.652 1044.484 C 2142.8611 1044.484 2144.652 1046.2749 2144.652 1048.484 L 2144.652 1133.984 C 2144.652 1136.1931 2142.8611 1137.984 2140.652 1137.984 L 1751 1137.984 C 1748.7909 1137.984 1747 1136.1931 1747 1133.984 L 1747 1048.484 C 1747 1046.2749 1748.7909 1044.484 1751 1044.484 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1752 1045.786)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="0" y="15">/Users/kurtlei/go/src/jaeger/cmd/collector/app/zipkin/</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="0" y="33.448">http_handler.go</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#c7773e" x="0" y="49.895996">func </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="49.895996">(</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#4dade5" y="49.895996">aH </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="49.895996">*</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#6fafbd" y="49.895996">APIHandler</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="49.895996">) </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#e7b163" y="49.895996">saveSpansV2</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="49.895996">(w </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#afbf7e" x="0" y="65.896">http</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="65.896">.</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#6fafbd" y="65.896">ResponseWriter</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#cc7831" y="65.896">, </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="65.896">r *</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#afbf7e" y="65.896">http</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="65.896">.</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#6fafbd" y="65.896">Request</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="65.896">)</tspan>
+          <tspan font-family="PingFang SC" font-size="16" font-weight="400" fill="black" x="0" y="85.896">处理入口</tspan>
+        </text>
+      </g>
+      <g id="Graphic_60">
+        <text transform="translate(1601 1049.484)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="21.184" y="15">convert to </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="0" y="33.448">zipkincore.Span</tspan>
+        </text>
+      </g>
+      <g id="Graphic_59">
+        <path d="M 1163 1044.484 L 1552.652 1044.484 C 1554.8611 1044.484 1556.652 1046.2749 1556.652 1048.484 L 1556.652 1133.984 C 1556.652 1136.1931 1554.8611 1137.984 1552.652 1137.984 L 1163 1137.984 C 1160.7909 1137.984 1159 1136.1931 1159 1133.984 L 1159 1048.484 C 1159 1046.2749 1160.7909 1044.484 1163 1044.484 Z" fill="#c0ffff"/>
+        <path d="M 1163 1044.484 L 1552.652 1044.484 C 1554.8611 1044.484 1556.652 1046.2749 1556.652 1048.484 L 1556.652 1133.984 C 1556.652 1136.1931 1554.8611 1137.984 1552.652 1137.984 L 1163 1137.984 C 1160.7909 1137.984 1159 1136.1931 1159 1133.984 L 1159 1048.484 C 1159 1046.2749 1160.7909 1044.484 1163 1044.484 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1164 1056.786)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="0" y="15">/Users/kurtlei/go/src/jaeger/cmd/collector/app/zipkin/</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="0" y="33.448">http_handler.go</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#c7773e" x="0" y="49.895996">func </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="49.895996">(</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#4dade5" y="49.895996">aH </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="49.895996">*</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#6fafbd" y="49.895996">APIHandler</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="49.895996">) </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#e7b163" y="49.895996">saveThriftSpans</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="49.895996">(tSpans </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" x="0" y="65.896">[]*</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#afbf7e" y="65.896">zipkincore</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="65.896">.</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#6fafbd" y="65.896">Span</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="65.896">)</tspan>
+        </text>
+      </g>
+      <g id="Graphic_58">
+        <path d="M 620 1035.974 L 1009.652 1035.974 C 1011.8611 1035.974 1013.652 1037.7649 1013.652 1039.974 L 1013.652 1142.494 C 1013.652 1144.7031 1011.8611 1146.494 1009.652 1146.494 L 620 1146.494 C 617.79086 1146.494 616 1144.7031 616 1142.494 L 616 1039.974 C 616 1037.7649 617.79086 1035.974 620 1035.974 Z" fill="#c0ffff"/>
+        <path d="M 620 1035.974 L 1009.652 1035.974 C 1011.8611 1035.974 1013.652 1037.7649 1013.652 1039.974 L 1013.652 1142.494 C 1013.652 1144.7031 1011.8611 1146.494 1009.652 1146.494 L 620 1146.494 C 617.79086 1146.494 616 1144.7031 616 1142.494 L 616 1039.974 C 616 1037.7649 617.79086 1035.974 620 1035.974 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(621 1039.562)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="0" y="15">/Users/kurtlei/go/src/jaeger/cmd/collector/app/</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="0" y="33.448">thrift_span_handler.go</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#c7773e" x="0" y="49.895996">func </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="49.895996">(</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#4dade5" y="49.895996">h </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="49.895996">*</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#6fafbd" y="49.895996">zipkinSpanHandler</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="49.895996">) </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#e7b163" x="0" y="65.896">SubmitZipkinBatch</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="65.896">(spans []*</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#afbf7e" y="65.896">zipkincore</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="65.896">.</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#6fafbd" y="65.896">Span</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#cc7831" y="65.896">, </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" x="0" y="81.896">options </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#6fafbd" y="81.896">SubmitBatchOptions</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="81.896">) </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="0" y="99.896">convert to model.Span, call ProcessSpans</tspan>
+        </text>
+      </g>
+      <g id="Line_56">
+        <line x1="1159" y1="1091.234" x2="1023.552" y2="1091.234" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_68">
+        <line x1="2369" y1="1091.234" x2="2154.552" y2="1091.234" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_69">
+        <line x1="1747" y1="1091.234" x2="1566.552" y2="1091.234" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_70">
+        <line x1="616" y1="1090.8307" x2="415.226" y2="1090.4234" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
     </g>
   </g>
