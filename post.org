@@ -1543,3 +1543,13 @@ Here is the main logic for jaeger agent and jaeger collector. (Based on [[https:
 
 #+attr_html: :width 600
 [[file:/images/jaeger.svg]]
+
+
+**** Jaeger Agent
+Collect UDP packet from 6831 port, convert it to =model.Span=, send to collector by gRPC
+
+**** Jaeger Collector
+Process gRPC or process packet from Zipkin(port 9411).
+
+**** Jaeger Query
+Listen gRPC and HTTP request from 16686.
