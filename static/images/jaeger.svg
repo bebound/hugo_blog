@@ -33,10 +33,10 @@
       </font-face-src>
     </font-face>
   </defs>
-  <metadata> Produced by OmniGraffle 7.12 
+  <metadata> Produced by OmniGraffle 7.11.5 
     <dc:date>2019-11-05 13:32:01 +0000</dc:date>
   </metadata>
-  <g id="Canvas_1" fill="none" stroke-opacity="1" stroke="none" stroke-dasharray="none" fill-opacity="1">
+  <g id="Canvas_1" stroke="none" stroke-dasharray="none" stroke-opacity="1" fill-opacity="1" fill="none">
     <title>Canvas 1</title>
     <rect fill="white" x="-95" y="41" width="2555" height="2518"/>
     <g id="Canvas_1: Layer 1">
@@ -129,8 +129,9 @@
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="47.448">) (success </tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" y="47.448">bool</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#cc7831" y="47.448">, </tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="47.448">err thrift.</tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" x="0" y="63.448">TException</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="47.448">err </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" x="0" y="63.448">thrift.</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" y="63.448">TException</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="63.448">)</tspan>
           <tspan font-family="PingFang SC" font-size="16" font-weight="400" fill="black" x="0" y="83.448">Call AgentProcessorEmitBatch process bytes</tspan>
         </text>
@@ -138,29 +139,29 @@
       <g id="Graphic_17">
         <path d="M 908.326 616.5 L 1297.978 616.5 C 1300.1871 616.5 1301.978 618.29086 1301.978 620.5 L 1301.978 713 C 1301.978 715.2091 1300.1871 717 1297.978 717 L 908.326 717 C 906.1169 717 904.326 715.2091 904.326 713 L 904.326 620.5 C 904.326 618.29086 906.1169 616.5 908.326 616.5 Z" fill="#c0ffff"/>
         <path d="M 908.326 616.5 L 1297.978 616.5 C 1300.1871 616.5 1301.978 618.29086 1301.978 620.5 L 1301.978 713 C 1301.978 715.2091 1300.1871 717 1297.978 717 L 908.326 717 C 906.1169 717 904.326 715.2091 904.326 713 L 904.326 620.5 C 904.326 618.29086 906.1169 616.5 908.326 616.5 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-        <text transform="translate(909.326 622.526)" fill="black">
+        <text transform="translate(909.326 614.526)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="0" y="15">thrift-gen/jaeger/agent.go</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#cc7831" x="0" y="31.447998">func </tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="31.447998">(p *</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" y="31.447998">agentProcessorEmitBatch</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="31.447998">) </tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#ffc76d" y="31.447998">Process</tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="31.447998">(se</tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" x="0" y="47.448">qId </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#ffc76d" x="0" y="47.448">Process</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="47.448">(seqId </tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" y="47.448">int32</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#cc7831" y="47.448">, </tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="47.448">iprot</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#cc7831" y="47.448">, </tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="47.448">oprot thrift.</tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" y="47.448">TProtocol</tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="47.448">) </tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" x="0" y="63.448">(success </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="47.448">oprot </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" x="0" y="63.448">thrift.</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" y="63.448">TProtocol</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="63.448">) (success </tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" y="63.448">bool</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#cc7831" y="63.448">, </tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="63.448">err thrift.</tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" y="63.448">TException</tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="63.448">)</tspan>
-          <tspan font-family="PingFang SC" font-size="16" font-weight="400" fill="black" x="0" y="83.448">Get Batch from TProtocol</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="63.448">err </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" x="0" y="79.448">thrift.</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" y="79.448">TException</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="79.448">)</tspan>
+          <tspan font-family="PingFang SC" font-size="16" font-weight="400" fill="black" x="0" y="99.448">Get Batch from TProtocol</tspan>
         </text>
       </g>
       <g id="Graphic_18">
@@ -210,8 +211,9 @@
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" y="31.447998">GRPCHandler</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="31.447998">) </tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#ffc76d" y="31.447998">PostSpans</tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="31.447998">(ctx context.</tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" x="0" y="47.448">Context</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="31.447998">(ctx </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" x="0" y="47.448">context.</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" y="47.448">Context</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#cc7831" y="47.448">, </tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="47.448">r *api_v2.</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" y="47.448">PostSpansRequest</tspan>
@@ -336,8 +338,8 @@
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" y="31.447998">spanProcessor</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="31.447998">) </tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#ffc76d" y="31.447998">saveSpan</tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="31.447998">(span *mod</tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" x="0" y="47.448">el.</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="31.447998">(span </tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" x="0" y="47.448">*model.</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#769aa5" y="47.448">Span</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="47.448">)</tspan>
           <tspan font-family="PingFang SC" font-size="16" font-weight="400" fill="black" x="0" y="67.448">Save span</tspan>
@@ -411,10 +413,9 @@
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="49.895996">) </tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#e7b163" y="49.895996">saveSpansV2</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="49.895996">(w </tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#afbf7e" y="49.895996">http</tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="49.895996">.</tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#6fafbd" y="49.895996">Re</tspan>
-          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#6fafbd" x="0" y="65.896">sponseWriter</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#afbf7e" x="0" y="65.896">http</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="65.896">.</tspan>
+          <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#6fafbd" y="65.896">ResponseWriter</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#cc7831" y="65.896">, </tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#a9b7c7" y="65.896">r *</tspan>
           <tspan font-family="Menlo" font-size="14" font-weight="400" fill="#afbf7e" y="65.896">http</tspan>
