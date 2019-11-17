@@ -2,7 +2,7 @@
 title = "CSRF in Django"
 author = ["KK"]
 date = 2018-11-07T13:58:00+08:00
-lastmod = 2019-07-24T21:23:25+08:00
+lastmod = 2019-11-17T21:20:05+08:00
 tags = ["Python", "Django"]
 draft = false
 noauthor = true
@@ -27,7 +27,7 @@ Each web framework has different approach to do CSRF protection. In Django, the 
 ## Django CSRF Usage {#django-csrf-usage}
 
 
-## Form {#form}
+### Form {#form}
 
 ```html
 <form>
@@ -36,7 +36,7 @@ Each web framework has different approach to do CSRF protection. In Django, the 
 ```
 
 
-## Single AJAX request {#single-ajax-request}
+### Single AJAX request {#single-ajax-request}
 
 ```js
 $.ajax({
@@ -46,7 +46,7 @@ $.ajax({
 ```
 
 
-## Multiple AJAX request {#multiple-ajax-request}
+### Multiple AJAX request {#multiple-ajax-request}
 
 ```js
 function getCookie(name) {
