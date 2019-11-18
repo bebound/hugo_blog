@@ -2,7 +2,7 @@
 title = "Some Useful Shell Tools"
 author = ["KK"]
 date = 2017-05-07T15:34:00+08:00
-lastmod = 2019-05-12T21:20:29+08:00
+lastmod = 2019-11-18T22:24:52+08:00
 tags = ["Shell"]
 draft = false
 noauthor = true
@@ -54,3 +54,16 @@ A great fuzzy finder, it can also integrate with vim by [fzf.vim](https://github
 Magnificent app which corrects your previous console command.
 
 {{< figure src="/images/shell_thefuck.gif" width="400" >}}
+
+
+## [tldr](https://github.com/tldr-pages/tldr) {#tldr}
+
+More concise and user-friendly man pages. (This screenshot uses [powerlevel10k](https://github.com/romkatv/powerlevel10k) theme)
+
+{{< figure src="/images/shell_tldr.png" width="600" >}}
+
+-   update 19-11-18
+
+    Add tldr
+
+    [powerlevel10k](https://github.com/romkatv/powerlevel10k) theme is a fancy ZSH theme

@@ -2,7 +2,7 @@
 title = "Using Dueling DQN to Play Flappy Bird"
 author = ["KK"]
 date = 2019-04-14T17:10:00+08:00
-lastmod = 2019-08-16T21:37:01+08:00
+lastmod = 2019-11-18T22:18:32+08:00
 tags = ["Machine Learning"]
 draft = false
 noauthor = true
@@ -141,7 +141,7 @@ Ref:
 
 ---
 
--   Update 19-04-26:
+-   Update 19-04-26
 
     Colab's GPU has upgrade to Tesla T4 from K80, now it becomes my best bet.
 
