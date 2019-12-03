@@ -7,7 +7,7 @@ build:
         code: |
             git submodule update --init --recursive
     - arjen/hugo-build:
-        version: "0.53"
+        version: "0.58"
         theme: hugo-nuo
 deploy:
   steps:
@@ -15,7 +15,7 @@ deploy:
         packages: git ssh-client
     - lukevivier/gh-pages:
         token: $GIT_TOKEN
-        domain: blog.fromkk.com
+        domain: fromkk.com
         basedir: public
         branch: master
         repo: bebound/bebound.github.io
