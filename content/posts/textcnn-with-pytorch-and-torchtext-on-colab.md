@@ -2,7 +2,7 @@
 title = "TextCNN with PyTorch and Torchtext on Colab"
 author = ["KK"]
 date = 2018-12-03T15:47:00+08:00
-lastmod = 2019-07-24T21:23:05+08:00
+lastmod = 2019-11-29T00:29:05+08:00
 tags = ["Machine Learning", "TextCNN"]
 draft = false
 noauthor = true
@@ -144,7 +144,8 @@ for epoch in range(1, args['epochs']+1):
 
 You can found `textcnn.ipynb` [here](https://github.com/bebound/textcnn).
 
-Ref:
+
+## Ref: {#ref}
 
 1.  [Convolutional Neural Networks for Sentence Classiﬁcation](https://arxiv.org/abs/1408.5882)
 2.  [Understanding Convolutional Neural Networks for NLP](http://www.wildml.com/2015/11/understanding-convolutional-neural-networks-for-nlp/)

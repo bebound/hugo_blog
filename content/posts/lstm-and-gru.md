@@ -2,7 +2,7 @@
 title = "LSTM and GRU"
 author = ["KK"]
 date = 2018-04-22T14:39:00+08:00
-lastmod = 2019-05-12T21:21:54+08:00
+lastmod = 2019-11-29T00:29:04+08:00
 tags = ["Machine Learning", "LSTM", "GRU"]
 draft = false
 noauthor = true
@@ -51,6 +51,7 @@ h\_t&=(1-z\_t)\ast h\_{t-1}+z\_t \ast \tilde{h\_t}
 
 Compare with LSTM, GRU merge cell state and hidden state to one hidden state, and use \\(z\_t\\) to decide how to update the state rather than \\(f\_t\\) and \\(i\_t\\).
 
-Ref:
+
+## Ref: {#ref}
 
 1.  [Understanding LSTM Networks](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)

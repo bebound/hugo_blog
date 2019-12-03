@@ -2,7 +2,7 @@
 title = "Create Node Benchmark in Py2neo"
 author = ["KK"]
 date = 2018-11-05T15:55:00+08:00
-lastmod = 2019-05-11T22:53:54+08:00
+lastmod = 2019-11-29T00:29:06+08:00
 tags = ["Python"]
 draft = false
 noauthor = true

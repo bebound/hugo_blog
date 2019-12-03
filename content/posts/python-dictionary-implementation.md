@@ -2,7 +2,7 @@
 title = "Python Dictionary Implementation"
 author = ["KK"]
 date = 2019-02-17T21:48:00+08:00
-lastmod = 2019-05-11T22:53:56+08:00
+lastmod = 2019-11-29T00:29:08+08:00
 tags = ["Python"]
 draft = false
 noauthor = true
@@ -84,7 +84,8 @@ The **real data** become this:
 
 This saves memory, especially when table is not full.
 
-Ref:
+
+## Ref: {#ref}
 
 1.  [How are Python's Built In Dictionaries Implemented](https://stackoverflow.com/questions/327311/how-are-pythons-built-in-dictionaries-implemented)
 2.  [cpython source code](https://hg.python.org/cpython/file/52f68c95e025/Objects/dictobject.c#l33)

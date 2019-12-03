@@ -2,7 +2,7 @@
 title = "Parameters in dov2vec"
 author = ["KK"]
 date = 2017-08-03T15:20:00+08:00
-lastmod = 2019-05-12T21:22:01+08:00
+lastmod = 2019-11-29T00:29:04+08:00
 tags = ["Machine Learning", "doc2vec"]
 draft = false
 noauthor = true
@@ -15,7 +15,7 @@ noread = true
 Here are some parameter in `gensim`'s `doc2vec` class.
 
 
-## window {#window}
+### window {#window}
 
 window is the maximum distance between the predicted word and context words used for prediction within a document. It will look behind and ahead.
 
@@ -24,12 +24,12 @@ In `skip-gram` model, if the window size is 2, the training samples will be this
 {{< figure src="/images/doc2vec_window.png" width="400" >}}
 
 
-## min\_count {#min-count}
+### min\_count {#min-count}
 
 If the word appears less than this value, it will be skipped
 
 
-## sample {#sample}
+### sample {#sample}
 
 High frequency word like `the` is useless for training. `sample` is a threshold for deleting these higher-frequency words. The probability of keeping the word \\(w\_i\\) is:
 
@@ -42,7 +42,7 @@ This is the plot when `sample` is 1e-3.
 {{< figure src="/images/doc2vec_negative_sample.png" width="400" >}}
 
 
-## negative {#negative}
+### negative {#negative}
 
 Usually, when training a neural network, for each training sample, all of the weights in the neural network need to be tweaked. For example, if the word pair is ('fox', 'quick'), then only the word quick's neurons should output 1, and all of the other word neurons should output 0.
 
@@ -56,7 +56,8 @@ The probability of selecting word \\(\omega\_i\\) is \\(P(\omega\_i)\\):
 
 \\(f(\omega\_j)\\) is the frequency of word \\(\omega\_j\\).
 
-Ref:
 
--   [Word2Vec Tutorial - The Skip-Gram Model](<http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/>)
--   [Word2Vec Tutorial Part 2 - Negative Sampling](<http://mccormickml.com/2017/01/11/word2vec-tutorial-part-2-negative-sampling/>)
+## Ref: {#ref}
+
+1.  [Word2Vec Tutorial - The Skip-Gram Model](<http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/>)
+2.  [Word2Vec Tutorial Part 2 - Negative Sampling](<http://mccormickml.com/2017/01/11/word2vec-tutorial-part-2-negative-sampling/>)

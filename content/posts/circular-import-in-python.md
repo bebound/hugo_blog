@@ -2,7 +2,7 @@
 title = "Circular Import in Python"
 author = ["KK"]
 date = 2019-03-10T10:59:00+08:00
-lastmod = 2019-05-11T22:53:56+08:00
+lastmod = 2019-11-29T00:29:09+08:00
 tags = ["Python"]
 draft = false
 noauthor = true
@@ -71,7 +71,8 @@ In `X.py` line 5, Python add `Y` into `sys.modules` and start execute code in `Y
 -   Wrap function call related to other module into `configure` function, call it manually.
 -   Dynamic import(use import within a function).
 
-Ref:
+
+## Ref: {#ref}
 
 1.  [Python Circular Imports](https://stackabuse.com/python-circular-imports/)
 2.  [StackOverflow: Python Cirluar Importing](https://stackoverflow.com/questions/22187279/python-circular-importing)

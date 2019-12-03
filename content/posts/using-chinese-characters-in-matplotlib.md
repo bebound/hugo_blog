@@ -2,7 +2,7 @@
 title = "Using Chinese Characters in Matplotlib"
 author = ["KK"]
 date = 2018-10-04T15:53:00+08:00
-lastmod = 2019-05-11T22:53:56+08:00
+lastmod = 2019-11-29T00:29:07+08:00
 tags = ["Python", "Matplotlib"]
 draft = false
 noauthor = true

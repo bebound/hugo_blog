@@ -2,7 +2,7 @@
 title = "Different types of Attention"
 author = ["KK"]
 date = 2019-07-15T00:16:00+08:00
-lastmod = 2019-07-24T21:21:59+08:00
+lastmod = 2019-11-29T00:29:06+08:00
 tags = ["Machine Learning"]
 draft = false
 noauthor = true
@@ -64,7 +64,8 @@ where n is the vectors dimension. Google's Transformer model has similar scaling
 
 When I doing a slot filling project, I compare these mechanisms. **Concat** attention produce the best result.
 
-Ref:
+
+## Ref: {#ref}
 
 1.  [Attention Variants](http://cnyah.com/2017/08/01/attention-variants/)
 2.  [Attention? Attention!](https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html)

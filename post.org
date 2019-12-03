@@ -7,7 +7,7 @@
 * Posts
   :PROPERTIES:
   :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
-  :EXPORT_HUGO_SECTION: post
+  :EXPORT_HUGO_SECTION: posts
   :END:
 ** Machine Learning                                       :Machine__Learning:
 *** DONE Brief Introduction of Label Propagation Algorithm :Label__Propagation:
@@ -45,8 +45,7 @@ In short, let the nearest label has larger weight, then calculate each label's n
 #+attr_html: :width 400
 [[file:/images/label_spreading.png]]
 
-Ref:
-
+**** Ref:
 1. [[http://mlg.eng.cam.ac.uk/zoubin/papers/CMU-CALD-02-107.pdf][Learning from Labeled and Unlabeled Data with Label Propagation]]
 2. [[http://blog.csdn.net/zouxy09/article/details/49105265][标签传播算法（Label Propagation）及Python实现]]
 
@@ -95,7 +94,7 @@ $z_t$ is update gate, $r_t$ is reset gate, $\tilde{h_t}$ is candidate activation
 
 Compare with LSTM, GRU merge cell state and hidden state to one hidden state, and use $z_t$ to decide how to update the state rather than $f_t$ and $i_t$.
 
-Ref:
+**** Ref:
 1. [[http://colah.github.io/posts/2015-08-Understanding-LSTMs/][Understanding LSTM Networks]]
 
 *** DONE Models and Architectures in Word2vec                       :word2vec:
@@ -194,11 +193,10 @@ $$\theta = \text{argmax} \prod_{(\omega,c)\in D} P(D=1\lvert \omega,c,\theta) \p
 
 where $\theta$ is the parameters of the model($\upsilon$ and $u$).
 
-Ref:
-
-- [word2vec原理推导与代码分析](http://www.hankcs.com/nlp/word2vec.html)
-- [CS 224D: Deep Learning for NLP Lecture Notes: Part I](http://cs224d.stanford.edu/lecture_notes/notes1.pdf)
-- [word2vec 中的数学原理详解（一）目录和前言](http://blog.csdn.net/itplus/article/details/37969519)
+**** Ref:
+1. [word2vec原理推导与代码分析](http://www.hankcs.com/nlp/word2vec.html)
+2. [CS 224D: Deep Learning for NLP Lecture Notes: Part I](http://cs224d.stanford.edu/lecture_notes/notes1.pdf)
+3. [word2vec 中的数学原理详解（一）目录和前言](http://blog.csdn.net/itplus/article/details/37969519)
 
 *** DONE Parameters in dov2vec                                      :doc2vec:
 CLOSED: [2017-08-03 Thu 15:20]
@@ -243,10 +241,9 @@ $$P(\omega_i)=\frac{{f(\omega_i)}^{{3}/{4}}}{\sum_{j=0}^{n}\left({f(\omega_j)}^{
 
 $f(\omega_j)$ is the frequency of word $\omega_j$.
 
-Ref:
-
-- [Word2Vec Tutorial - The Skip-Gram Model](http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/)
-- [Word2Vec Tutorial Part 2 - Negative Sampling](http://mccormickml.com/2017/01/11/word2vec-tutorial-part-2-negative-sampling/)
+**** Ref:
+1. [Word2Vec Tutorial - The Skip-Gram Model](http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/)
+2. [Word2Vec Tutorial Part 2 - Negative Sampling](http://mccormickml.com/2017/01/11/word2vec-tutorial-part-2-negative-sampling/)
 
 *** DONE Semi-supervised text classification using doc2vec and label spreading :doc2vec:
 CLOSED: [2017-09-10 Sun 15:29]
@@ -422,8 +419,7 @@ Finally, we can train the model.
 You can found =textcnn.ipynb= [[https://github.com/bebound/textcnn][here]].
 
 
-Ref:
-
+**** Ref:
 1. [[https://arxiv.org/abs/1408.5882][Convolutional Neural Networks for Sentence Classiﬁcation]]
 2. [[http://www.wildml.com/2015/11/understanding-convolutional-neural-networks-for-nlp/][Understanding Convolutional Neural Networks for NLP]]
 3. [[https://torchtext.readthedocs.io/en/latest/data.html][Torchtext Docs]]
@@ -460,7 +456,7 @@ Here is the model architecture:
 
 Here is a trained result:
 
-{{% youtube "NV82ZUQynuQ"%}}
+{{< youtube NV82ZUQynuQ >}}
 
 
 1. Dueling DQN
@@ -551,7 +547,7 @@ The lesson I learnt from this project is patience. It takes a long time(maybe hu
 
 I've uploaded code to this [[https://github.com/bebound/flappy-bird-dqn][repo]].
 
-Ref:
+**** Ref:
 1. [[https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html][PyTorch REINFORCEMENT LEARNING (DQN) TUTORIAL]]
 2. [[https://www.cnblogs.com/pinard/category/1254674.html][强化学习]] (A series of Chinese post about reinforcement learning)
 3. [[http://cs229.stanford.edu/proj2015/362_report.pdf][Deep Reinforcement Learning for Flappy Bird]]
@@ -565,7 +561,7 @@ Ref:
 
 -----
 
-- Update 19-04-26:
+- Update 19-04-26
 
   Colab's GPU has upgrade to Tesla T4 from K80, now it becomes my best bet.
 
@@ -631,12 +627,11 @@ $v_a$'s shape is =(x,1)=, and $Wa$ 's shape is =(x,x)=. This is similar to a neu
 
 When I doing a slot filling project, I compare these mechanisms. *Concat* attention produce the best result.
 
-Ref:
-
+**** Ref:
 1. [[http://cnyah.com/2017/08/01/attention-variants/][Attention Variants]]
 2. [[https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html][Attention? Attention!]]
 3. [[https://towardsdatascience.com/attention-seq2seq-with-pytorch-learning-to-invert-a-sequence-34faf4133e53][Attention Seq2Seq with PyTorch: learning to invert a sequence]]
-*** DONE The Annotated /The Annotated Transformer/
+*** DONE The Annotated /The Annotated Transformer/            :Transformer:
 CLOSED: [2019-09-01 Sun 16:00]
    :PROPERTIES:
    :EXPORT_FILE_NAME: the-annotated-the-annotated-transformer
@@ -768,8 +763,7 @@ The animation below illustrates how to apply the Transformer to machine translat
 
 Using a linear layer to predict the output.
 
-Ref:
-
+**** Ref:
 1. [[http://nlp.seas.harvard.edu/2018/04/03/attention.html][The Annotated Transformer]]
 2. [[http://jalammar.github.io/illustrated-transformer/][The Illustrated Transformer]]
 3. [[https://mchromiak.github.io/articles/2017/Sep/12/Transformer-Attention-is-all-you-need/#.XMb3ZC97FPs][The Transformer – Attention is all you need]]
@@ -779,8 +773,96 @@ Ref:
 7. [[https://towardsdatascience.com/deconstructing-bert-part-2-visualizing-the-inner-workings-of-attention-60a16d86b5c1][Deconstructing BERT, Part 2: Visualizing the Inner Workings of Attention]]
 8. [[https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html][Transformer: A Novel Neural Network Architecture for Language Understanding]]
 
+*** DONE Near-duplicate with SimHash                              :SimHash:
+CLOSED: [2019-11-24 Sun 23:35]
+   :PROPERTIES:
+   :EXPORT_FILE_NAME: near-duplicate-with-simhash
+   :END:
+Before talking about *SimHash*, let's review some other methods which can also identify duplication.
 
-** Python                                                            :Python:
+
+**** Longest Common Subsequence(LCS)
+This is the algorithm used by =diff= command. It is also *edit distance* with insertion and deletion as the only two edit operations.
+
+This works good for short strings. However, the algorithm's time complexity is $O(m*n)$, if two strings' lengths are $m$ and $n$ respectively. So it's not suitable for large corpus. Also, if two corpus consists of same paragraph but the order is not same. LCS treat them as different corpus, and that's not we expected.
+
+**** Bag of Words(BoW)
+
+Transform document into the words it contains, then using Jaccard Similarity to calculate the similarity.
+
+For example, if document A contains ={a,b,c}= and B contains ={a,b,d}=, then $$Similarity = \frac{A \cap B}{A \cap B} = \frac{\{a,b\}}{\{a,b,c,d\}}=\frac{1}{2}$$
+
+**** Shingling (n-gram)
+
+BoW drops the word context information. In order to take word context into consideration, we convert sentences into phrases. For instance, =roses are red and violets are blue= will convert to =roses are red=, =are red and=, =red and voilets= ...
+
+**** Hashing
+
+Saving shingling result take k times disk space if using k words phrase. To solve this problem, save phrase's hashing value instead of string.
+
+#+attr_html: :width 600
+[[file:/images/simhash_hashing.png]]
+
+**** MinHash
+
+The larger the document is, the more the hashing needs to compare. Is there a way to map documents to constant value? *MinHash* tackles this problem.
+
+It uses $k$ hashing functions to calculate the phrase hashes. Then for each hashing function, using the minimal hashing result as signature. Finally, we get $k$ hashing value as document's signature. The procedure is shown below.
+
+
+#+attr_html: :width 600
+[[file:/images/simhash_minhash1.png]]
+
+#+attr_html: :width 600
+[[file:/images/simhash_minhash2.png]]
+
+Compare with Hashing, *MinHash* successfully reduce the time complexity and storage complexity to $O(1)$, an improvement over $O(m+n)$ and $O(n)$
+
+**** SimHash 
+
+For a given document, how to find it's most similar document? If using *MinHash*, we need to travel the whole corpus. Is there any more effective method? *SimHash* comes to the rescue.
+
+For a set of input hashes, *SimHash* will generate a fingerprint(f-bits vector) for the input And the produced hashes has a property: similar input hashes generate similar fingerprint. So the dissimilarity of two documents can be calculated by the =XOR= of two fingerprint. In google's [[https://www2007.org/papers/paper215.pdf][Detecting Near-Duplicates for Web Crawling]] paper, they map 8B web-pages to 64 bits. If two bits differ less than *3* bits, then two web-pages are similar.
+
+The calculation of *SimHash* is quiet simple. Given a set of features extracted from the document and their weights, we'll maintain f-bits vector $V$, and initialize it to zero. Each feature will also hash to f-bit value $V_i$. Then each dimension of $V_i$ will multiply by it's weight $W_i$ and add this new value to $V$. If i-th bits if 1, then $V$ is incremented by the weight of that feature. Otherwise $V$ is decremented by the weight. When all features have been processed, $V$ contains positive and negative dimension. Mapping positive values to =1= and negative numbers to =0= to get the final hash value.
+
+$$V = zero\_or\_one(\sum{W_i*inc\_or\_dec(V_i)})$$
+
+***** How to generate features from document
+
+One easy way to do this is to use a window to get sub-string from document. For each sub-string, using the hash value of string as features, and the count of this string as weight.
+
+For example, if we has this sentence: =kk really rocks!=.
+
+First, pre-processing this sentence to =kkreallyrocks=.
+
+Then using a window of 4 to generate sub-string from the sentence. We'll get the sub-string and their count: =(kkre, 1), (krea, 1)=, =(real, 1)= etc.
+
+Suppose we only get these first 3 sub-string and their hash values are =1001=, =0101= and =1101= respectively. Then the final $V$ should be =1101=
+
+#+attr_html: :width 500
+[[file:/images/simhash.png]]
+***** How to find similar document
+
+Iterating over all document and compare with target simhash value is a time consuming operation. Is there any smart way to accomplish this task? In Google's paper, they published a very neat algorithm.
+
+If the hash value is a 64-bit vector, and we want to find the document which is 2-bit differs with the target. Then we can divided the vector to 4 part: $A$, $B$, $C$ and $D$. Then we know that at least two part should be the identical.
+
+Suppose part $A$ and $B$ is identical, if we have sorted the hash by $ABCD$ order, we can easily find all hash that $AB$ part is identical. Then we can compare the rest part $B$ and $C$ and find hash vectors that differs from target at most 2 bit. If you have 8B($2^{33}$) document and documents are distributed uniformly at random, on average, you only need to compare $2^{33-32}=2$ fingerprints.
+
+[[file:/images/simhash_query1.png]]
+
+Besides $AB$, $AC$, $AD$, $BC$, $BD$ and $CD$ may also be identical. So you need to keep $C_4^2=6$ sorted list, and compare 2 fingerprints in each list. You don't need to compare 8B documents anymore, that's a great improvement.
+
+[[file:/images/simhash_query2.png]]
+
+Depending on the fingerprints' bit and documents number, you need to find a optimal number to split the hash value.
+**** Ref:
+1. [[https://moz.com/devblog/near-duplicate-detection][Near-Duplicate Detection]]
+2. [[https://www2007.org/papers/paper215.pdf][Detecting Near-Duplicates for Web Crawling]]
+3. [[https://github.com/seomoz/simhash-py][simhash-py]]
+
+** Python                                                           :Python:
 *** DONE Create Node Benchmark in Py2neo
 CLOSED: [2018-11-05 Mon 15:55]
    :PROPERTIES:
@@ -931,14 +1013,14 @@ Each web framework has different approach to do CSRF protection. In Django, the 
 
 **** Django CSRF Usage
 
-**** Form
+***** Form
 #+BEGIN_SRC html
 <form>
     {% csrf_token %}
 </form>
 #+END_SRC
 
-**** Single AJAX request
+***** Single AJAX request
 
 #+BEGIN_SRC js
 $.ajax({
@@ -947,7 +1029,7 @@ $.ajax({
     },
 #+END_SRC
 
-**** Multiple AJAX request
+***** Multiple AJAX request
 
 #+BEGIN_SRC js
 function getCookie(name) {
@@ -981,13 +1063,13 @@ $.ajaxSetup({
 #+END_SRC
 
 
-Ref:
+**** Ref:
 1. [[https://docs.djangoproject.com/en/2.1/ref/csrf/][Cross Site Request Forgery protection]]
 2. [[https://github.com/django/django/blob/master/django/middleware/csrf.py][csrf.py]]
 3. [[https://stackoverflow.com/questions/48002861/whats-the-relationship-between-csrfmiddlewaretoken-and-csrftoken][What's the relationship between csrfmiddlewaretoken and csrftoken?]] 
 
-*** DONE Deploy Nikola Org Mode on Travis                  :Nikola:Org__Mode:
-CLOSED: [2018-11-03 Sat 14:22]
+*** DONE Deploy Nikola Org Mode on Travis                :Nikola:Org__Mode:
+CLOSED: [2018-11-03 Sun 21:20]
    :PROPERTIES:
    :EXPORT_FILE_NAME: deploy-nikola-org-mode-on-travis
    :END:
@@ -1191,8 +1273,7 @@ The *real data* become this:
 This saves memory, especially when table is not full.
 
 
-Ref:
-
+**** Ref:
 1. [[https://stackoverflow.com/questions/327311/how-are-pythons-built-in-dictionaries-implemented][How are Python's Built In Dictionaries Implemented]]
 2. [[https://hg.python.org/cpython/file/52f68c95e025/Objects/dictobject.c#l33][cpython source code]]
 3. [[https://stackoverflow.com/questions/3020514/is-it-possible-to-give-a-python-dict-an-initial-capacity-and-is-it-useful/3020810][Is it possible to give a python dict an initial capacity (and is it useful)]]
@@ -1255,8 +1336,7 @@ In =X.py= line 5, Python add =Y= into =sys.modules= and start execute code in =Y
 - Wrap function call related to other module into =configure= function, call it manually.
 - Dynamic import(use import within a function).
 
-Ref:
-
+**** Ref:
 1. [[https://stackabuse.com/python-circular-imports/][Python Circular Imports]]
 2. [[https://stackoverflow.com/questions/22187279/python-circular-importing][StackOverflow: Python Cirluar Importing]]
 3. [[https://stackoverflow.com/questions/744373/circular-or-cyclic-imports-in-python][StackOverflow: Circular imports in Python]] 
@@ -1353,6 +1433,17 @@ Magnificent app which corrects your previous console command.
 
 #+attr_html: :width 400
 [[file:/images/shell_thefuck.gif]]
+**** [[https://github.com/tldr-pages/tldr][tldr]]
+More concise and user-friendly man pages. (This screenshot uses [[https://github.com/romkatv/powerlevel10k][powerlevel10k]] theme)
+
+#+attr_html: :width 600
+[[file:/images/shell_tldr.png]]
+
+- update 19-11-18
+  
+  Add tldr
+  
+  [[https://github.com/romkatv/powerlevel10k][powerlevel10k]] theme is a fancy ZSH theme
 *** DONE Start
 CLOSED: [2017-04-18 Tue 15:46]
    :PROPERTIES:
@@ -1531,10 +1622,9 @@ docker-compose up -d
 
 If you want a free APP, I suggest [[http://cocoacake.net/apps/fiery/][Fiery Feeds]]. I stopped using it after ver 2.2, as it's so lagging. If this issue was fixed, I thought it was the biggest competitor for Reeder 4. For more alternative, read this article: [[https://thesweetsetup.com/apps/best-rss-app-ipad/][The Best RSS App for iPhone and iPad]].
 
-Ref:
-
+**** Ref:
 1. [[https://henry.wang/2018/04/25/ttrss-docker-plugins-guide.html][A ttrss setup guide - Start your own RSS aggregator today]]
-*** DONE Jaeger Code Structure                                     :jaeger:
+*** DONE Jaeger Code Structure                                     :Jaeger:
 CLOSED: [2019-09-22 Sun 17:07]
    :PROPERTIES:
    :EXPORT_FILE_NAME: jaeger-code-structure

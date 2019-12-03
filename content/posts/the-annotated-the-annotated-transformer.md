@@ -2,8 +2,8 @@
 title = "The Annotated The Annotated Transformer"
 author = ["KK"]
 date = 2019-09-01T16:00:00+08:00
-lastmod = 2019-09-01T16:16:58+08:00
-tags = ["Machine Learning"]
+lastmod = 2019-11-29T00:31:38+08:00
+tags = ["Machine Learning", "Transformer"]
 draft = false
 noauthor = true
 nocomment = true
@@ -136,7 +136,8 @@ The animation below illustrates how to apply the Transformer to machine translat
 
 Using a linear layer to predict the output.
 
-Ref:
+
+## Ref: {#ref}
 
 1.  [The Annotated Transformer](http://nlp.seas.harvard.edu/2018/04/03/attention.html)
 2.  [The Illustrated Transformer](http://jalammar.github.io/illustrated-transformer/)

@@ -2,7 +2,7 @@
 title = "Using Dueling DQN to Play Flappy Bird"
 author = ["KK"]
 date = 2019-04-14T17:10:00+08:00
-lastmod = 2019-11-18T22:18:32+08:00
+lastmod = 2019-11-29T00:29:06+08:00
 tags = ["Machine Learning"]
 draft = false
 noauthor = true
@@ -36,7 +36,7 @@ Here is the model architecture:
 
 Here is a trained result:
 
-{{% youtube "NV82ZUQynuQ"%}}
+{{< youtube NV82ZUQynuQ >}}
 
 1.  Dueling DQN
 
@@ -126,7 +126,8 @@ Here are something may help with this task.
 
 I've uploaded code to this [repo](https://github.com/bebound/flappy-bird-dqn).
 
-Ref:
+
+## Ref: {#ref}
 
 1.  [PyTorch REINFORCEMENT LEARNING (DQN) TUTORIAL](https://pytorch.org/tutorials/intermediate/reinforcement%5Fq%5Flearning.html)
 2.  [强化学习](https://www.cnblogs.com/pinard/category/1254674.html) (A series of Chinese post about reinforcement learning)

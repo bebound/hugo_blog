@@ -2,7 +2,7 @@
 title = "Brief Introduction of Label Propagation Algorithm"
 author = ["KK"]
 date = 2017-07-16T21:45:00+08:00
-lastmod = 2019-05-12T21:21:51+08:00
+lastmod = 2019-11-29T00:29:04+08:00
 tags = ["Machine Learning", "Label Propagation"]
 draft = false
 noauthor = true
@@ -39,7 +39,8 @@ In short, let the nearest label has larger weight, then calculate each label's n
 
 {{< figure src="/images/label_spreading.png" width="400" >}}
 
-Ref:
+
+## Ref: {#ref}
 
 1.  [Learning from Labeled and Unlabeled Data with Label Propagation](http://mlg.eng.cam.ac.uk/zoubin/papers/CMU-CALD-02-107.pdf)
 2.  [标签传播算法（Label Propagation）及Python实现](http://blog.csdn.net/zouxy09/article/details/49105265)

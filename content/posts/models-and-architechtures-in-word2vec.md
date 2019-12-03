@@ -2,7 +2,7 @@
 title = "Models and Architectures in Word2vec"
 author = ["KK"]
 date = 2018-01-05T15:14:00+08:00
-lastmod = 2019-05-12T21:21:57+08:00
+lastmod = 2019-11-29T00:29:04+08:00
 tags = ["Machine Learning", "word2vec"]
 draft = false
 noauthor = true
@@ -107,8 +107,9 @@ Let \\(P(D=0 \lvert \omega,c)\\) be the probability that \\((\omega,c)\\) did no
 
 where \\(\theta\\) is the parameters of the model(\\(\upsilon\\) and \\(u\\)).
 
-Ref:
 
--   [word2vec原理推导与代码分析](<http://www.hankcs.com/nlp/word2vec.html>)
--   [CS 224D: Deep Learning for NLP Lecture Notes: Part I](<http://cs224d.stanford.edu/lecture%5Fnotes/notes1.pdf>)
--   [word2vec 中的数学原理详解（一）目录和前言](<http://blog.csdn.net/itplus/article/details/37969519>)
+## Ref: {#ref}
+
+1.  [word2vec原理推导与代码分析](<http://www.hankcs.com/nlp/word2vec.html>)
+2.  [CS 224D: Deep Learning for NLP Lecture Notes: Part I](<http://cs224d.stanford.edu/lecture%5Fnotes/notes1.pdf>)
+3.  [word2vec 中的数学原理详解（一）目录和前言](<http://blog.csdn.net/itplus/article/details/37969519>)

@@ -2,7 +2,7 @@
 title = "CSRF in Django"
 author = ["KK"]
 date = 2018-11-07T13:58:00+08:00
-lastmod = 2019-11-17T21:20:05+08:00
+lastmod = 2019-11-29T00:29:07+08:00
 tags = ["Python", "Django"]
 draft = false
 noauthor = true
@@ -79,7 +79,8 @@ $.ajaxSetup({
 });
 ```
 
-Ref:
+
+## Ref: {#ref}
 
 1.  [Cross Site Request Forgery protection](https://docs.djangoproject.com/en/2.1/ref/csrf/)
 2.  [csrf.py](https://github.com/django/django/blob/master/django/middleware/csrf.py)

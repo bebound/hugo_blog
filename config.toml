@@ -1,109 +1,81 @@
 baseURL = "Https://blog.fromkk.com"
 languageCode = "en"
 title = "KK's Blog"
-theme = "hugo-nuo"
+theme = "hugo-coder"
 enableRobotsTXT = true
-PygmentsCodeFences = true
+
+paginate=20
 canonifyurls = true
+
+pygmentsstyle = "monokai"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
 
 # Disqus Username
 disqusShortname = "kkblog-1"
 
 # Google Analytics UA number
-googleAnalytics = "UA-XXXXXXXX-X"
+googleAnalytics = "UA-153788833-1"
 
 # Copyright of your post
 copyright = "© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce."
 
 # Initial site menu, you can extend menu with content.
-[[menu.main]]
-  name = "Home"
-  weight = 10
-  identifier = "home"
-  url = "/"
+[params]
+    author = "KK"
+    info = "~ Happy Coding ~"
+    description = "KK's personal websites"
+    keywords = "blog,developer,personal,python,golang,linux,machine learning"
+    avatarurl = "images/avatar.png"
+
+    favicon_32 = "/icons/icon-32x32.png"
+    favicon_16 = "/icons/icon-16x16.png"
+
+    custom_css = ["css/custom.css"]
+
+    dateformat = "01/02/2006"
+
+    hidecredits = false
+    hidecopyright = false
+
+    rtl = false
+    katex  = true
+
+[[params.social]]
+    name = "Github"
+    icon = "fab fa-github fa-2x"
+    weight = 1
+    url = "https://github.com/johndoe/"
+[[params.social]]
+    name = "Stack Overflow"
+    icon = "fab fa-stack-overflow fa-2x"
+    weight = 2
+    url = "https://stackoverflow.com/users/2251785/hunger"
+[[params.social]]
+    name = "Email"
+    icon = "fas fa-envelope fa-2x"
+    weight = 3
+    url = "bebound # gmail.com"
+[[params.social]]
+    name = "RSS"
+    icon = "fas fa-rss fa-2x"
+    weight = 4
+    url = "/post/index.xml"
+
+
 
 [[menu.main]]
-  name = "Works"
-  weight = 20
-  identifier = "works"
-  url = "https://github.com/bebound"
+  name = "Blog"
+  weight = 1
+  url = "/posts/"
 
 [[menu.main]]
   name = "Tags"
-  weight = 30
-  identifier = "tags"
+  weight = 2
   url = "/tags/"
 
+[[menu.main]]
+  name = "About"
+  weight = 3
+  url = "/about/"
 
-# Add your own params here
-[params]
-  author = "KK"
-  bg = "images/grey-prism.svg"
-  avatar = "images/avatar.png"
-  seotitle = "KK's blog"
-  subtitle = "~ Happy Coding ~"
-  # description = "Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites fun again."
-  paginate = 10
-
-  # Choose your social networks
-  email = "bebound gm@il.com"
-  github = "bebound"
-  rss = "/post/index.xml"
-  # twitter = "twitter_username"
-  # linkedin = "linkedin_username"
-  # weibo = "weibo_username"
-  # wechat= "images/qrcode.jpg"  # Replace with your wechat qrcode image
-  # facebook = "facebook_username"
-  # google = "googlplus_id_number"
-  # instagram = "instagram_username"
-  # youtube = "youtube_username"
-  # vimeo = "vimeo_username"
-  # medium = "medium_username"
-  # quora = "quora_username"
-  # pinterest = "pinterest_username"
-  # dribbble = "dribbble_username"
-  # behance = "behance_username"
-  # jsfiddle = "jsfiddle_username"
-  # codepen = "codepen_username"
-  # zhihu = "zhihu_username"
-  # douban = "douban_username"
-  # bilibili = "bilibili_id_number"
-  # stackoverflow = "laozhu"
-  # codesandbox = "melaozhu"
-  # npm = "laozhu"
-  # reddit = "melaozhu"
-
-  # Overrid theme styles in this file
-  # customStyle = "styles/custom.scss"
-
-  # Changyan Comments (China Only)
-  # changyan = false
-  # changyanId = "cyt3toRiB"
-  # changyanConf = "prod_0908b1cb9a581501753cce1ed074dbe3"
-
-  # Google Webmaster
-  # https://www.google.com/webmasters/
-  # googleSiteVerification = "_moDmnnBNVLBN1rzNxyGUGdPHE20YgbmrtzLIbxaWFc"
-
-  # Bing Webmaster
-  # https://www.bing.com/toolbox/webmaster/
-  # msValidate = "22596E34341DD1D17D6022C44647E587"
-
-  # Baidu Webmaster (China Only)
-  # https://zhanzhang.baidu.com/
-  # baiduSiteVerification = "MZ23SPxxfa"
-
-  # Sogou Webmaster (China Only)
-  # http://zhanzhang.sogou.com/
-  # sogouSiteVerification = "m2jktMQTZm"
-
-  # 360 Webmaster (China Only)
-  # http://zhanzhang.so.com/
-  # soSiteVerification = "b7ab3b4c2edbc856642004d1b8c27a91"
-
-  # Baidu Tongji (China Only)
-  # https://tongji.baidu.com/
-  # baiduTongji = "e21dc1e8a592188271b615159dc88af7"
-
-  # ICP Number (China Only)
-  # ICP = "苏ICP备16005986号-2"
