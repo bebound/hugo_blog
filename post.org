@@ -774,7 +774,7 @@ Using a linear layer to predict the output.
 8. [[https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html][Transformer: A Novel Neural Network Architecture for Language Understanding]]
 
 *** DONE Near-duplicate with SimHash                              :SimHash:
-CLOSED: [2019-11-24 Sun 23:35]
+CLOSED: [2019-12-04 Wed 00:16]
    :PROPERTIES:
    :EXPORT_FILE_NAME: near-duplicate-with-simhash
    :END:
