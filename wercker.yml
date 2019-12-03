@@ -7,7 +7,6 @@ build:
         code: |
             git submodule update --init --recursive
     - arjen/hugo-build:
-        version: "0.58"
         theme: hugo-coder
 deploy:
   steps:
