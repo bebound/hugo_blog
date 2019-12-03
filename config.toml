@@ -1,4 +1,4 @@
-baseURL = "Https://fromkk.com"
+baseURL = "Https://www.fromkk.com"
 languageCode = "en"
 title = "KK's Blog"
 theme = "hugo-coder"
