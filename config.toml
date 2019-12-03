@@ -60,7 +60,7 @@ copyright = "© This post is licensed under a Creative Commons Attribution-NonCo
     name = "RSS"
     icon = "fas fa-rss fa-2x"
     weight = 4
-    url = "/post/index.xml"
+    url = "/posts/index.xml"
 
 
 
@@ -78,4 +78,7 @@ copyright = "© This post is licensed under a Creative Commons Attribution-NonCo
   name = "About"
   weight = 3
   url = "/about/"
-
+[[menu.main]]
+  name = "RSS"
+  weight = 4
+  url = "/posts/index.xml"
