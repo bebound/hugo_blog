@@ -39,7 +39,7 @@ copyright = "© This post is licensed under a Creative Commons Attribution-NonCo
     hidecopyright = false
 
     rtl = false
-    katex  = true
+    math  = true
 
 [[params.social]]
     name = "Github"
