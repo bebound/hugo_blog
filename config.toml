@@ -1,6 +1,6 @@
 baseURL = "Https://www.fromkk.com"
 languageCode = "en"
-title = "KK's Blog"
+title = "KK's Blog (fromkk)"
 theme = "hugo-coder"
 enableRobotsTXT = true
 
@@ -24,8 +24,8 @@ copyright = "© This post is licensed under a Creative Commons Attribution-NonCo
 [params]
     author = "KK"
     info = "~ Happy Coding ~"
-    description = "KK's personal websites"
-    keywords = "blog,developer,personal,python,golang,linux,machine learning"
+    description = "KK's personal blog, fromkk"
+    keywords = "fromkk,blog,developer,personal,python,golang,linux,machine learning"
     avatarurl = "images/avatar.png"
 
     favicon_32 = "/icons/icon-32x32.png"
