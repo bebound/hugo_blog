@@ -55,7 +55,7 @@ copyright = "© This post is licensed under a Creative Commons Attribution-NonCo
     name = "Email"
     icon = "fas fa-envelope fa-2x"
     weight = 3
-    url = "mailto:bebound gm@il.com"
+    url = "mailto:bebound@gmail.com"
 [[params.social]]
     name = "RSS"
     icon = "fas fa-rss fa-2x"
