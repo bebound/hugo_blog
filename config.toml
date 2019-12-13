@@ -45,7 +45,7 @@ copyright = "© This post is licensed under a Creative Commons Attribution-NonCo
     name = "Github"
     icon = "fab fa-github fa-2x"
     weight = 1
-    url = "https://github.com/johndoe/"
+    url = "https://github.com/bebound/"
 [[params.social]]
     name = "Stack Overflow"
     icon = "fab fa-stack-overflow fa-2x"
