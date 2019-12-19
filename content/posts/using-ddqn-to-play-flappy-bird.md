@@ -2,7 +2,7 @@
 title = "Using Dueling DQN to Play Flappy Bird"
 author = ["KK"]
 date = 2019-04-14T17:10:00+08:00
-lastmod = 2019-11-29T00:29:06+08:00
+lastmod = 2019-12-18T00:11:40+08:00
 tags = ["Machine Learning"]
 draft = false
 noauthor = true
@@ -24,7 +24,7 @@ First it use the difference of two frame as input in the tutorial, not only it l
 
 Second, small replay memory. If the memory is too small, the agent will forget the strategy it has token in some state. I'm not sure whether `10000` memory is big enough, but I suggest using a higher value.
 
-Third, the parameters. `learning_rate`, `target_update_interval` may cause fluctuation. Here is a example on [stackoverflow](https://stackoverflow.com/questions/49837204/performance-fluctuates-as-it-is-trained-with-dqn). I also met this problem when training cartpole agent. The reward stops growing after 1000 episode.
+Third, the parameters. `learning_rate`, `target_update_interval` may cause fluctuation. Here is a example on [Stack Overflow](https://stackoverflow.com/questions/49837204/performance-fluctuates-as-it-is-trained-with-dqn). I also met this problem when training cartpole agent. The reward stops growing after 1000 episode.
 
 {{< figure src="/images/ddqn_cartpole_fluctuate.png" width="400" >}}
 

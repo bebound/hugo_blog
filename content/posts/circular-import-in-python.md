@@ -2,7 +2,7 @@
 title = "Circular Import in Python"
 author = ["KK"]
 date = 2019-03-10T10:59:00+08:00
-lastmod = 2019-11-29T00:29:09+08:00
+lastmod = 2019-12-18T00:11:20+08:00
 tags = ["Python"]
 draft = false
 noauthor = true
@@ -75,7 +75,7 @@ In `X.py` line 5, Python add `Y` into `sys.modules` and start execute code in `Y
 ## Ref: {#ref}
 
 1.  [Python Circular Imports](https://stackabuse.com/python-circular-imports/)
-2.  [StackOverflow: Python Cirluar Importing](https://stackoverflow.com/questions/22187279/python-circular-importing)
-3.  [StackOverflow: Circular imports in Python](https://stackoverflow.com/questions/744373/circular-or-cyclic-imports-in-python)
+2.  [Python Cirluar Importing](https://stackoverflow.com/questions/22187279/python-circular-importing)
+3.  [Circular imports in Python](https://stackoverflow.com/questions/744373/circular-or-cyclic-imports-in-python)
 4.  [Effective Python: 59 Specific Ways to Write Better Python](https://www.amazon.com/Effective-Python-Specific-Software-Development/dp/0134034287)
 5.  [Python doc: The import system](https://docs.python.org/3/reference/import.html)
