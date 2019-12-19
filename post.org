@@ -443,7 +443,7 @@ First it use the difference of two frame as input in the tutorial, not only it l
 
 Second, small replay memory. If the memory is too small, the agent will forget the strategy it has token in some state. I'm not sure whether =10000= memory is big enough, but I suggest using a higher value.
 
-Third, the parameters. =learning_rate=, =target_update_interval= may cause fluctuation. Here is a example on [[https://stackoverflow.com/questions/49837204/performance-fluctuates-as-it-is-trained-with-dqn][stackoverflow]]. I also met this problem when training cartpole agent. The reward stops growing after 1000 episode.
+Third, the parameters. =learning_rate=, =target_update_interval= may cause fluctuation. Here is a example on [[https://stackoverflow.com/questions/49837204/performance-fluctuates-as-it-is-trained-with-dqn][Stack Overflow]]. I also met this problem when training cartpole agent. The reward stops growing after 1000 episode.
 
 #+attr_html: :width 400
 [[file:/images/ddqn_cartpole_fluctuate.png]]
@@ -587,8 +587,7 @@ $s_t$ and $h_i$ are source hidden states and target hidden state, the shape is =
 $$\begin{aligned}
 c_t&=\sum_{i=1}^n \alpha_{t,s}h_i \\
 \alpha_{t,s}&= \frac{\exp(score(s_t,h_i))}{\sum_{i=1}^n \exp(score(s_t,h_i))}
-\end{aligned}
-$$
+\end{aligned}$$
 
 **** Global(Soft) VS Local(Hard)
 
@@ -1338,8 +1337,8 @@ In =X.py= line 5, Python add =Y= into =sys.modules= and start execute code in =Y
 
 **** Ref:
 1. [[https://stackabuse.com/python-circular-imports/][Python Circular Imports]]
-2. [[https://stackoverflow.com/questions/22187279/python-circular-importing][StackOverflow: Python Cirluar Importing]]
-3. [[https://stackoverflow.com/questions/744373/circular-or-cyclic-imports-in-python][StackOverflow: Circular imports in Python]] 
+2. [[https://stackoverflow.com/questions/22187279/python-circular-importing][Python Cirluar Importing]]
+3. [[https://stackoverflow.com/questions/744373/circular-or-cyclic-imports-in-python][Circular imports in Python]] 
 4. [[https://www.amazon.com/Effective-Python-Specific-Software-Development/dp/0134034287][Effective Python: 59 Specific Ways to Write Better Python]]
 5. [[https://docs.python.org/3/reference/import.html][Python doc: The import system]]
 
@@ -1398,6 +1397,129 @@ By default, torchtext will add =<unk>= in vocab, if =sequential=True=, it will a
   vec = INPUT.process([s])
 #+end_src
 
+** Go                                                                   :Go:
+*** DONE Difference between Value and Pointer variable in Defer in Go :Defer:
+CLOSED: [2019-12-19 Thu 22:33]
+   :PROPERTIES:
+   :EXPORT_FILE_NAME: difference-between-value-and-pointer-variable-in-defer-in-go
+   :END:
+
+=defer= is a useful function to do cleanup, as it will execute in LIFO order before the surrounding function returns. If you don't know how it works, sometimes the execution result may confuse you.
+
+**** How it Works and Why Value or Pointer Receiver Matters
+
+I found an interesting code on [[https://stackoverflow.com/questions/28893586/golang-defer-clarification][Stack Overflow]]:
+
+#+begin_src go
+type X struct {
+    S string
+}
+
+func (x X) Close() {
+    fmt.Println("Value-Closing", x.S)
+}
+
+func (x *X) CloseP() {
+    fmt.Println("Pointer-Closing", x.S)
+}
+
+func main() {
+    x := X{"Value-X First"}
+    defer x.Close()
+    x = X{"Value-X Second"}
+    defer x.Close()
+
+    x2 := X{"Value-X2 First"}
+    defer x2.CloseP()
+    x2 = X{"Value-X2 Second"}
+    defer x2.CloseP()
+
+    xp := &X{"Pointer-X First"}
+    defer xp.Close()
+    xp = &X{"Pointer-X Second"}
+    defer xp.Close()
+
+    xp2 := &X{"Pointer-X2 First"}
+    defer xp2.CloseP()
+    xp2 = &X{"Pointer-X2 Second"}
+    defer xp2.CloseP()
+}
+#+end_src
+
+The output is:
+
+#+begin_src text -n
+Pointer-Closing Pointer-X2 Second
+Pointer-Closing Pointer-X2 First
+Value-Closing Pointer-X Second
+Value-Closing Pointer-X First
+Pointer-Closing Value-X2 Second
+Pointer-Closing Value-X2 Second
+Value-Closing Value-X Second
+Value-Closing Value-X First
+#+end_src
+
+Take a look at line 5-6, why =Pointer-Closing Value-X2 Second= print twice? According to [[https://golang.org/doc/effective_go.html#defer][Effective Go]], "*The arguments to the deferred function (which include the receiver if the function is a method) are evaluated when the defer executes, not when the call executes.*". And the function's parameters will *saved anew* when evaluated.
+
+As =x2= is value and the defer function =CloseP='s receiver is a pointer, once defer is called, it will create a pointer which point to =x2= as function's caller. In the following defer, it will create a pointer which point to =x2= again. Although =x2.S= change to "Second", =x2='s address never changes. Finally, when these two defer is called, the same content was printed again.
+
+**** How to Exit Program and Run all Defer
+
+From [[https://golang.org/pkg/runtime/#Goexit][Golang Runtime]]:
+#+begin_quote
+=runtime.Goexit()= terminates the goroutine that calls it. No other goroutine is affected. Goexit runs all deferred calls before terminating the goroutine. Because Goexit is not a panic, any recover calls in those deferred functions will return nil.
+
+Calling Goexit from the main goroutine terminates that goroutine without func main returning. Since func main has not returned, the program continues execution of other goroutines. If all other goroutines exit, the program crashes.
+#+end_quote
+
+If you want the program to exit normally, just add =defer os.Exit(0)= at the top of =main= function. Here is the example code:
+#+begin_src go
+package main
+
+import (
+	"fmt"
+	"os"
+	"runtime"
+	"time"
+)
+
+func subGoroutine() {
+	defer fmt.Println("exit sub routine")
+	for {
+		fmt.Println("sub goroutine running")
+		time.Sleep(1 * time.Second)
+	}
+}
+
+func main() {
+	defer os.Exit(0)
+	defer fmt.Println("calling os.Exit")
+
+	go subGoroutine()
+
+	time.Sleep(2 * time.Second)
+	runtime.Goexit()
+}
+#+end_src
+
+Output:
+#+begin_src
+sub goroutine running
+sub goroutine running
+sub goroutine running
+calling os.Exit
+
+Process finished with exit code 0
+#+end_src
+
+The defer code in =subGoroutine= will not execute.
+
+**** Ref:
+1. [[https://draveness.me/golang/keyword/golang-defer.html][面向信仰编程 defer]]
+2. [[https://stackoverflow.com/questions/28893586/golang-defer-clarification][Golang defer clarification]]
+3. [[https://stackoverflow.com/questions/27629380/how-to-exit-a-go-program-honoring-deferred-calls/39755730][How to exit a go program honoring deferred calls?]]
+4. [[https://golang.org/doc/effective_go.html#defer][Effective Go]]
+5. [[https://golang.org/pkg/runtime/#Goexit][Golang Runtime]]
 ** Misc
 *** DONE Some Useful Shell Tools                                      :Shell:
 CLOSED: [2017-05-07 Sun 15:34]
