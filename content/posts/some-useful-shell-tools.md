@@ -2,7 +2,7 @@
 title = "Some Useful Shell Tools"
 author = ["KK"]
 date = 2017-05-07T15:34:00+08:00
-lastmod = 2019-11-29T00:29:10+08:00
+lastmod = 2019-12-19T23:26:09+08:00
 tags = ["Shell"]
 draft = false
 noauthor = true
@@ -61,6 +61,8 @@ Magnificent app which corrects your previous console command.
 More concise and user-friendly man pages. (This screenshot uses [powerlevel10k](https://github.com/romkatv/powerlevel10k) theme)
 
 {{< figure src="/images/shell_tldr.png" width="600" >}}
+
+---
 
 -   update 19-11-18
 
