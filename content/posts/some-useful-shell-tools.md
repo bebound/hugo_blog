@@ -2,7 +2,7 @@
 title = "Some Useful Shell Tools"
 author = ["KK"]
 date = 2017-05-07T15:34:00+08:00
-lastmod = 2019-12-19T23:26:09+08:00
+lastmod = 2020-03-14T18:02:41+08:00
 tags = ["Shell"]
 draft = false
 noauthor = true
@@ -27,14 +27,15 @@ A zsh configuration framework. Provides auto completion, prompt theme and lots o
 Help you to navigate between folders and launch application.
 
 Here are the official usage example:
-\`\`\`
-  v def conf       =>     vim /some/awkward/path/to/type/default.conf
-  j abc            =>     cd /hell/of/a/awkward/path/to/get/to/abcdef
-  m movie          =>     mplayer /whatever/whatever/whatever/awesome\_movie.mp4
-  o eng paper      =>     xdg-open /you/dont/remember/where/english\_paper.pdf
-  vim \`f rc lo\`    =>     vim /etc/rc.local
-  vim \`f rc conf\`  =>     vim /etc/rc.conf
-\`\`\`
+
+```nil
+v def conf       =>     vim /some/awkward/path/to/type/default.conf
+j abc            =>     cd /hell/of/a/awkward/path/to/get/to/abcdef
+m movie          =>     mplayer /whatever/whatever/whatever/awesome_movie.mp4
+o eng paper      =>     xdg-open /you/dont/remember/where/english_paper.pdf
+vim `f rc lo`    =>     vim /etc/rc.local
+vim `f rc conf`  =>     vim /etc/rc.conf
+```
 
 
 ## [pt](https://github.com/monochromegane/the%5Fplatinum%5Fsearcher) {#pt}

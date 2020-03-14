@@ -2,7 +2,7 @@
 title = "Enable C Extension for gensim on Windows"
 author = ["KK"]
 date = 2017-06-10T14:43:00+08:00
-lastmod = 2019-11-29T00:29:07+08:00
+lastmod = 2020-03-14T18:03:24+08:00
 tags = ["Python"]
 draft = false
 noauthor = true
@@ -26,7 +26,8 @@ I tried to install mingw and add it into the path, but it's not working.
 Finally, I tried to install [Visual C++ Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017) and it works.
 
 If this output a none `-1` digit, then it's fine.
-\`\`\`python3
+
+```python3
 from gensim.models import word2vec
-print(word2vec.FAST\_VERSION)
-\`\`\`
+print(word2vec.FAST_VERSION)
+```
