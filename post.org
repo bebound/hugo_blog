@@ -1524,7 +1524,9 @@ def super(cls, inst):
 
 When running this line =super(C, self).__init__()=, self is =C='s instance, mro is:
 
-=[<class '__main__.C'>, <class '__main__.A'>, <class '__main__.B'>, <class '__main__.Base'>, <class 'object'>]=
+#+begin_src 
+[<class '__main__.C'>, <class '__main__.A'>, <class '__main__.B'>, <class '__main__.Base'>, <class 'object'>]
+#+end_src
 
 So it returns =A=, and A will execute =__init__()=, then calling =super(A, self).__init__()=, end enter =B='s =__init__()=. (=C='s instance will pass as =self= in the calling chain.)
 
@@ -1932,7 +1934,7 @@ Process gRPC or process packet from Zipkin(port 9411).
 
 **** Jaeger Query
 Listen gRPC and HTTP request from 16686.
-*** Time boundary in InfluxDB Group by Time Statement
+*** TODO Time boundary in InfluxDB Group by Time Statement
 
 5min-30min group by time(12m)
 

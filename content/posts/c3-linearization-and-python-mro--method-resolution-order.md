@@ -2,7 +2,7 @@
 title = "C3 Linearization and Python MRO(Method Resolution Order)"
 author = ["KK"]
 date = 2020-03-14T17:37:00+08:00
-lastmod = 2020-03-14T18:05:32+08:00
+lastmod = 2020-03-14T18:08:21+08:00
 tags = ["Python", "MRO"]
 draft = false
 noauthor = true
@@ -138,7 +138,9 @@ def super(cls, inst):
 
 When running this line `super(C, self).__init__()`, self is `C`'s instance, mro is:
 
-`[<class '__main__.C'>, <class '__main__.A'>, <class '__main__.B'>, <class '__main__.Base'>, <class 'object'>]`
+```nil
+[<class '__main__.C'>, <class '__main__.A'>, <class '__main__.B'>, <class '__main__.Base'>, <class 'object'>]
+```
 
 So it returns `A`, and A will execute `__init__()`, then calling `super(A, self).__init__()`, end enter `B`'s `__init__()`. (`C`'s instance will pass as `self` in the calling chain.)
 
