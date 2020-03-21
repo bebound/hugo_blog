@@ -1,8 +1,8 @@
 +++
 title = "Import custom package or module in PySpark"
 author = ["KK"]
-lastmod = 2020-03-05T19:43:14+08:00
-tags = ["Python"]
+lastmod = 2020-03-22T00:24:10+08:00
+tags = ["Python", "Spark"]
 draft = false
 noauthor = true
 nocomment = true
@@ -25,7 +25,7 @@ When submit spark job, add `--py-files=kk.zip` parameter. `kk.zip` will be distr
 
 Then you can use `import kk` in your main script file.
 
-For more information about Python's zip file import, check this link: [zipimport](https://docs.python.org/3.8/library/zipimport.html)
+This utilize Python's zip import feature. For more information, check this link: [zipimport](https://docs.python.org/3.8/library/zipimport.html)
 
 
 ## Using addPyFile in main script {#using-addpyfile-in-main-script}

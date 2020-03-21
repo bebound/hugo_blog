@@ -1538,7 +1538,7 @@ So it returns =A=, and A will execute =__init__()=, then calling =super(A, self)
 5. [[https://en.wikipedia.org/wiki/C3_linearization][C3 linearization]]
 
    
-*** Import custom package or module in PySpark
+*** Import custom package or module in PySpark                      :Spark:
    :PROPERTIES:
    :EXPORT_FILE_NAME: import-custom-package-or-module-in-pyspark
    :END:
@@ -1555,7 +1555,7 @@ When submit spark job, add =--py-files=kk.zip= parameter. =kk.zip= will be distr
 
 Then you can use =import kk= in your main script file.
 
-For more information about Python's zip file import, check this link: [[https://docs.python.org/3.8/library/zipimport.html][zipimport]] 
+This utilize Python's zip import feature. For more information, check this link: [[https://docs.python.org/3.8/library/zipimport.html][zipimport]] 
  
 
 **** Using addPyFile in main script
@@ -1934,7 +1934,8 @@ Process gRPC or process packet from Zipkin(port 9411).
 
 **** Jaeger Query
 Listen gRPC and HTTP request from 16686.
-*** TODO Time boundary in InfluxDB Group by Time Statement
+
+*** TODO Time boundary in InfluxDB Group by Time Statement       :InfluxDB:
 
 5min-30min group by time(12m)
 
@@ -1954,5 +1955,6 @@ what happens if resample every 1m, group by time(5m) at 00:04
 
 in 30:00, select 45:00-30:00 or 30:00-30:00?
 because 45:00-30:00 will pollute data, as 30:00-00:00 only contains 45:00-00:00 data???
+
 
 
