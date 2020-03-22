@@ -2,7 +2,7 @@
 title = "Semi-supervised text classification using doc2vec and label spreading"
 author = ["KK"]
 date = 2017-09-10T15:29:00+08:00
-lastmod = 2019-11-29T00:29:05+08:00
+lastmod = 2020-03-22T20:27:16+08:00
 tags = ["Machine Learning", "doc2vec"]
 draft = false
 noauthor = true
@@ -33,7 +33,7 @@ Keyword based classification is a simple but effective method. Extracting the ta
 Finally, we can use the keywords to classify the text and get the train data.
 
 
-## Classification by `doc2vec` and Label Spreading {#classification-by-doc2vec-and-label-spreading}
+## Classification by doc2vec and Label Spreading {#classification-by-doc2vec-and-label-spreading}
 
 Keyword-based classification sometimes produces the wrong result, as it can't using the semantic information in the text. Fortunately, Google has open sourced `word2vec`, which can be used to produce semantically meaningful word embeddings. Furthermore, sentences can also be converted to vectors by using `doc2vec`. Sentences which has closed meaning also have short vector distance.
 
