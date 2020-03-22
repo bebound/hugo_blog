@@ -25,7 +25,7 @@ copyright = "© This post is licensed under a Creative Commons Attribution-NonCo
     author = "KK"
     info = "~ Happy Coding ~"
     description = "KK's personal blog, fromkk"
-    keywords = "fromkk,blog,developer,personal,python,golang,linux,machine learning"
+    keywords = "fromkk,blog,kk blog,developer,personal,python,golang,go,linux,machine learning"
     avatarurl = "images/avatar.png"
 
     favicon_32 = "/icons/icon-32x32.png"
