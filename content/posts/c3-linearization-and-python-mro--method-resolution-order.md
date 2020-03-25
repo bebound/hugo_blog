@@ -2,7 +2,7 @@
 title = "C3 Linearization and Python MRO(Method Resolution Order)"
 author = ["KK"]
 date = 2020-03-14T17:37:00+08:00
-lastmod = 2020-03-14T18:08:21+08:00
+lastmod = 2020-03-26T00:31:24+08:00
 tags = ["Python", "MRO"]
 draft = false
 noauthor = true

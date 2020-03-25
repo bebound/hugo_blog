@@ -2,7 +2,7 @@
 title = "CSRF in Django"
 author = ["KK"]
 date = 2018-11-07T13:58:00+08:00
-lastmod = 2019-11-29T00:29:07+08:00
+lastmod = 2020-03-26T00:42:35+08:00
 tags = ["Python", "Django"]
 draft = false
 noauthor = true
@@ -47,6 +47,8 @@ $.ajax({
 
 
 ### Multiple AJAX request {#multiple-ajax-request}
+
+Extracting `csrftoken` from cookie and add it to header for each `ajax` request.
 
 ```js
 function getCookie(name) {

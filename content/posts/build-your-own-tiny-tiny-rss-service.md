@@ -2,7 +2,7 @@
 title = "Build Your Own Tiny Tiny RSS Service"
 author = ["KK"]
 date = 2019-06-10T00:25:00+08:00
-lastmod = 2019-11-29T00:29:10+08:00
+lastmod = 2020-03-26T00:39:22+08:00
 draft = false
 noauthor = true
 nocomment = true
@@ -151,6 +151,10 @@ docker-compose up -d
 [Reeder 4](https://reederapp.com) works great on my iPad. It's smooth and fast, and is worth every penny.
 
 If you want a free APP, I suggest [Fiery Feeds](http://cocoacake.net/apps/fiery/). I stopped using it after ver 2.2, as it's so lagging. If this issue was fixed, I thought it was the biggest competitor for Reeder 4. For more alternative, read this article: [The Best RSS App for iPhone and iPad](https://thesweetsetup.com/apps/best-rss-app-ipad/).
+
+-   update 20-03-25:
+
+You can find the latest document [here](https://ttrss.henry.wang).
 
 
 ## Ref: {#ref}

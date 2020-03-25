@@ -2,7 +2,7 @@
 title = "TextCNN with PyTorch and Torchtext on Colab"
 author = ["KK"]
 date = 2018-12-03T15:47:00+08:00
-lastmod = 2019-11-29T00:29:05+08:00
+lastmod = 2020-03-25T22:46:13+08:00
 tags = ["Machine Learning", "TextCNN"]
 draft = false
 noauthor = true
@@ -75,7 +75,6 @@ LABEL.build_vocab(train,val,test)
 
 train_iter, val_iter, test_iter = data.BucketIterator.splits(
     (train, val, test), batch_sizes=(128, 256, 256),shuffle=True)
-
 ```
 
 `Field` defines how to process text, here is the most common parameters:

@@ -2,7 +2,7 @@
 title = "Torchtext snippets"
 author = ["KK"]
 date = 2019-07-01T21:28:00+08:00
-lastmod = 2019-11-29T00:29:09+08:00
+lastmod = 2020-03-26T00:28:14+08:00
 tags = ["Python", "torchtext", "PyTorch"]
 draft = false
 noauthor = true
@@ -16,9 +16,13 @@ noread = true
 
 `data.Field` parameters is [here](https://torchtext.readthedocs.io/en/latest/data.html#torchtext.data.Field).
 
+When calling `build_vocab`, torchtext will add `<unk>` in vocabulary list. Set `unk_token=None` if you want to remove it. If `sequential=True` (default), it will add `<pad>` in vocab. `<unk>` and `<pad>` will add at the beginning of vocabulary list by default.
+
+`LabelField` is similar to Field, but it will set `sequential=False`, `unk_token=None` and `is_target=Ture`
+
 ```python
 INPUT = data.Field(lower=True, batch_first=True)
-TAG = data.Field(batch_first=True, unk_token=None, is_target=True)
+TAG = data.LabelField()
 
 train, val, test = data.TabularDataset.splits(path=base_dir.as_posix(), train='train_data.csv',
                                                 validation='val_data.csv', test='test_data.csv',
@@ -58,10 +62,10 @@ TAG.build_vocab(train, val, test)
 
 ## Check vocab sizes {#check-vocab-sizes}
 
-By default, torchtext will add `<unk>` in vocab, if `sequential=True`, it will add `<pad>` in vocab. You can view vocab index by `vocab.itos`.
+You can view vocab index by `vocab.itos`.
 
 ```python
-tag_size = len(TAG.vocab) - 1
+tag_size = len(TAG.vocab)
 ```
 
 

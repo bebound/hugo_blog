@@ -2,7 +2,7 @@
 title = "Deploy Nikola Org Mode on Travis"
 author = ["KK"]
 date = 2018-11-03T21:20:00+08:00
-lastmod = 2019-11-29T00:29:07+08:00
+lastmod = 2020-03-26T00:40:06+08:00
 tags = ["Python", "Nikola", "Org Mode"]
 draft = false
 noauthor = true
