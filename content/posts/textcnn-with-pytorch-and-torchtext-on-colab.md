@@ -2,7 +2,7 @@
 title = "TextCNN with PyTorch and Torchtext on Colab"
 author = ["KK"]
 date = 2018-12-03T15:47:00+08:00
-lastmod = 2020-03-25T22:46:13+08:00
+lastmod = 2020-03-26T01:00:42+08:00
 tags = ["Machine Learning", "TextCNN"]
 draft = false
 noauthor = true
@@ -141,7 +141,7 @@ for epoch in range(1, args['epochs']+1):
         optimizer.step()
 ```
 
-You can found `textcnn.ipynb` [here](https://github.com/bebound/textcnn).
+You can found `textcnn.ipynb` on [GitHub](https://github.com/bebound/textcnn) or [Colab](https://colab.research.google.com/drive/1iZE5O0aBEOEhkWNpARqK5u151qrlwJq-#scrollTo=qR-sHoABrMg3&uniqifier=2).
 
 
 ## Ref: {#ref}
