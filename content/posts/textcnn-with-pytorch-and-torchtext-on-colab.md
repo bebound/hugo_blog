@@ -2,7 +2,7 @@
 title = "TextCNN with PyTorch and Torchtext on Colab"
 author = ["KK"]
 date = 2018-12-03T15:47:00+08:00
-lastmod = 2020-03-26T01:00:42+08:00
+lastmod = 2020-03-26T21:22:08+08:00
 tags = ["Machine Learning", "TextCNN"]
 draft = false
 noauthor = true
@@ -66,7 +66,7 @@ Second, convert text into word index, so each sentence become a vector for train
 ```python
 
 TEXT = data.Field(lower=True,batch_first=True)
-LABEL = data.Field(sequential=False)
+LABEL = data.LabelField()
 
 train, val, test = datasets.SST.splits(TEXT, LABEL, 'data/',fine_grained=True)
 
@@ -106,7 +106,7 @@ Now, we can start to train the model. First we wrap some parameters into `args`,
 args={}
 args['vocb_size']=len(TEXT.vocab)
 args['dim']=300
-args['n_class']=len(LABEL.vocab)-1
+args['n_class']=len(LABEL.vocab)
 args['embedding_matrix']=TEXT.vocab.vectors
 args['lr']=0.001
 args['momentum']=0.8
