@@ -2,6 +2,7 @@
 #+AUTHOR: KK
 #+HUGO_BASE_DIR: ./
 #+hugo_auto_set_lastmod: t
+#+OPTIONS: ^:nil
 #+STARTUP: latexpreview
 
 * Posts
@@ -102,10 +103,13 @@ CLOSED: [2018-01-05 Fri 15:14]
    :PROPERTIES:
    :EXPORT_FILE_NAME: models-and-architechtures-in-word2vec
    :END:
+   
+Generally, =word2vec= is a language model to predict the words probability based on the context. When build the model, it create word embedding for each word, and word embedding is widely used in many NLP tasks.
+
 **** Models
 ***** CBOW (Continuous Bag of Words)
 
-Use the context to predict the probability of current word.
+Use the context to predict the probability of current word. (In the picture, the word is encoded with one-hot encoding, $W_{V*N}$ is word embedding, and $W_{V*N}^{'}$ in hidden layer is same as $\hat{\upsilon}$ in following equations)
 #+attr_html: :width 400
 [[file:/images/doc2vec_cbow.png]]
 
@@ -155,18 +159,18 @@ minimize J &=-\log P(\omega_{c-m},...,\omega_{c-1},\omega_{c+1},...\omega_{c+m}\
 
 **** Architectures
 
-Minimize $J$ is expensive, as the summation is over $\lvert V \rvert$. There are two ways to reduce the computation. Hierarchical Softmax and Negative Sampling.
+Minimize $J$ is expensive, you need to calculate the probability of each word in vocabulary list. There are two ways to reduce the computation. Hierarchical Softmax and Negative Sampling.
 
 ***** Hierarchical Softmax
 
-Encode words into a huffman tree, then each word has a Huffman code. The probability of it's probability $P(w\lvert Context(\omega))$ can change to choose the right path from root the the leaf node, each node is a binary classification. Suppose code $0$ is a positive label, $1$ is negative label. If the probability of a positive classification is 
+Encode words into a huffman tree, then each word has a Huffman code. The probability of it's probability $P(w\lvert Context(\omega))$ can change to choose the path from root to the leaf node, each node is a binary classification. Suppose code $0$ is a positive label, $1$ is negative label. If the probability of a positive classification is 
 $$\sigma(X^T_\omega \theta)=\frac{1}{1+e^{-X^T_\omega}}$$
 
 Then the probability of negative classification is
 $$1-\sigma(X^T_\omega \theta)$$
 #+attr_html: :width 400
 [[file:/images/doc2vec_hierarchical_softmax.png]]
-足球's Huffman code is $1001$, then it's probability in each node are
+=足球='s Huffman code is $1001$, then it's probability in each node are
 
 $$\begin{aligned}
 p(d_2^\omega\lvert X_\omega,\theta^\omega_1&=1-\sigma(X^T_\omega \theta^\omega_1))\\
@@ -183,9 +187,11 @@ Generally,
 
 $$p(\omega\lvert Context(\omega))=\prod_{j=2}^{l\omega}p(d^\omega_j\lvert X_\omega,\theta^\omega_{j-1})$$
 
+This reduce the calculation complexity to $log(n)$ instead of $n$
+
 ***** Negative Sampling
 
-Choose some negative sample, add the probability of the negative word into loss function. Maximize the positive words' probability and minimize the negative words' probability.
+This method will choose some negative sample, then add the probability of the negative word into loss function. The optimisation target becomes maximise the positive words' probability and minimise the negative words' probability.
 
 Let $P(D=0 \lvert \omega,c)$ be the probability that $(\omega,c)$ did not come from the corpus data. Then the objective function will be
 
@@ -263,13 +269,13 @@ Keyword based classification is a simple but effective method. Extracting the ta
 
 1. Find some most common words to classify the text.
 2. Use this equation to calculate the score of each word appears in the text.
-   $$ score(i) = \frac{count(i)}{all_{count(i)}^{0.3}}$$
-   which $all_{count(i)}$ is the word $i$'s word count in all corpus, and $count(i)$ is the word $i$'s word count in positive corpus.
+   $$ score(i) = \frac{count(i)}{all\_count(i)^{0.3}}$$
+   where $all\_count(i)$ is the word $i$'s word count in all corpus, and $count(i)$ is the word $i$'s word count in positive corpus.
 3. Check the top words, add it to the final keyword list. Repeat this process.
 
 Finally, we can use the keywords to classify the text and get the train data. 
 
-***** Classification by =doc2vec= and Label Spreading
+***** Classification by doc2vec and Label Spreading
 Keyword-based classification sometimes produces the wrong result, as it can't using the semantic information in the text. Fortunately, Google has open sourced =word2vec=, which can be used to produce semantically meaningful word embeddings. Furthermore, sentences can also be converted to vectors by using =doc2vec=. Sentences which has closed meaning also have short vector distance.
 
 So the problem is how to classify these vectors.
@@ -336,16 +342,16 @@ Second, convert text into word index, so each sentence become a vector for train
 
 #+BEGIN_SRC python
 
-TEXT = data.Field(lower=True,batch_first=True)
-LABEL = data.Field(sequential=False)
+  TEXT = data.Field(lower=True,batch_first=True)
+  LABEL = data.LabelField()
 
-train, val, test = datasets.SST.splits(TEXT, LABEL, 'data/',fine_grained=True)
+  train, val, test = datasets.SST.splits(TEXT, LABEL, 'data/',fine_grained=True)
 
-TEXT.build_vocab(train, vectors="glove.840B.300d")
-LABEL.build_vocab(train,val,test)
+  TEXT.build_vocab(train, vectors="glove.840B.300d")
+  LABEL.build_vocab(train,val,test)
 
-train_iter, val_iter, test_iter = data.BucketIterator.splits(
-    (train, val, test), batch_sizes=(128, 256, 256),shuffle=True)
+  train_iter, val_iter, test_iter = data.BucketIterator.splits(
+      (train, val, test), batch_sizes=(128, 256, 256),shuffle=True)
 
 #+END_SRC
 
@@ -363,7 +369,7 @@ batch_first – Whether to produce tensors with the batch dimension first. Defau
 
 =datasets.SST.splits= will load the =SST= datasets, and split into train, validation, and test Dataset objects.
 
-=build_vocab= will create the Vocab object for Field, which contains the information to convert word into word index and vice versa. Also, the word embedding will save as =Field.Vocab.vectors=. =vectors= contains all of the word embedding. Torchtext can download some pretrained vectors automatically, such as =glove.840B.300d=, =fasttext.en.300d=. You can also load your vectors in this way, =xxx.vec= should be the standard word2vec format.
+~build_vocab~ will create the Vocab object for Field, which contains the information to convert word into word index and vice versa. Also, the word embedding will save as ~Field.Vocab.vectors~. =vectors= contains all of the word embedding. Torchtext can download some pretrained vectors automatically, such as =glove.840B.300d=, =fasttext.en.300d=. You can also load your vectors in this way, =xxx.vec= should be the standard word2vec format.
 #+BEGIN_SRC python
 from torchtext.vocab import Vectors
 
@@ -371,7 +377,7 @@ vectors = Vectors(name='xxx.vec', cache='./')
 TEXT.build_vocab(train, val, test, vectors=vectors)
 #+END_SRC
 
-=data.BucketIterator.splits= will returns iterators that loads batches of data from datasets, and the text in same batch has similar lengths.
+~data.BucketIterator.splits~ will returns iterators that loads batches of data from datasets, and the text in same batch has similar lengths.
 
 
 Now, we can start to train the model. First we wrap some parameters into =args=, it contains settings like output class, learning rate, log interval and so on.
@@ -380,7 +386,7 @@ Now, we can start to train the model. First we wrap some parameters into =args=,
 args={}
 args['vocb_size']=len(TEXT.vocab)
 args['dim']=300
-args['n_class']=len(LABEL.vocab)-1
+args['n_class']=len(LABEL.vocab)
 args['embedding_matrix']=TEXT.vocab.vectors
 args['lr']=0.001
 args['momentum']=0.8
@@ -416,7 +422,7 @@ Finally, we can train the model.
           optimizer.step()
 #+END_SRC
 
-You can found =textcnn.ipynb= [[https://github.com/bebound/textcnn][here]].
+You can found =textcnn.ipynb= on [[https://github.com/bebound/textcnn][GitHub]] or [[https://colab.research.google.com/drive/1iZE5O0aBEOEhkWNpARqK5u151qrlwJq-#scrollTo=qR-sHoABrMg3&uniqifier=2][Colab]].
 
 
 **** Ref:
@@ -1031,6 +1037,8 @@ $.ajax({
 
 ***** Multiple AJAX request
 
+Extracting =csrftoken= from cookie and add it to header for each =ajax= request.
+
 #+BEGIN_SRC js
 function getCookie(name) {
     var cookieValue = null;
@@ -1103,7 +1111,7 @@ In the =install= section, add these code:
 
 The default emacs doesn't contains =htmlize= package. So add =git clone https://github.com/hniksic/emacs-htmlize ~/emacs-htmlize= into =before_install= section.
 
-Finally, modify =conf.el= for Travis Emacs, add GitHub repo to =load-path=: =(add-to-list 'load-path "~/emacs-htmlize/")=
+Finally, modify =conf.el= for Travis Emacs, add GitHub repo to =load-path=: ~(add-to-list 'load-path "~/emacs-htmlize/")~
 
 Voila, the org file should show up.
 
@@ -1350,9 +1358,14 @@ CLOSED: [2019-07-01 Mon 21:28]
    :END:
 **** Load separate files
 =data.Field= parameters is [[https://torchtext.readthedocs.io/en/latest/data.html#torchtext.data.Field][here]].
+
+When calling =build_vocab=, torchtext will add =<unk>= in vocabulary list. Set ~unk_token=None~ if you want to remove it. If ~sequential=True~ (default), it will add =<pad>= in vocab. =<unk>= and =<pad>= will add at the beginning of vocabulary list by default.
+
+=LabelField= is similar to Field, but it will set ~sequential=False~, ~unk_token=None~ and ~is_target=Ture~
+
 #+begin_src python
   INPUT = data.Field(lower=True, batch_first=True)
-  TAG = data.Field(batch_first=True, unk_token=None, is_target=True)
+  TAG = data.LabelField()
 
   train, val, test = data.TabularDataset.splits(path=base_dir.as_posix(), train='train_data.csv',
                                                   validation='val_data.csv', test='test_data.csv',
@@ -1380,9 +1393,9 @@ train_iter, val_iter, test_iter = data.BucketIterator.splits(
   TAG.build_vocab(train, val, test)
 #+end_src
 **** Check vocab sizes
-By default, torchtext will add =<unk>= in vocab, if =sequential=True=, it will add =<pad>= in vocab. You can view vocab index by =vocab.itos=.
+You can view vocab index by ~vocab.itos~.
 #+begin_src python
-  tag_size = len(TAG.vocab) - 1
+  tag_size = len(TAG.vocab)
 #+end_src
 **** Use field vector in model
 #+begin_src python
@@ -1514,7 +1527,7 @@ leave A
 leave C
 #+end_src
 
-=super= works like this, it will get =inst='s MRO, find =cls='s index, return next class in MRO. (In python3, =super(A,self)= can be write as =super()=)
+=super= works like this, it will get =inst='s MRO, find =cls='s index, return next class in MRO. (In python3, ~super(A,self)~ can be write as ~super()~)
 
 #+begin_src python3
 def super(cls, inst):
@@ -1522,13 +1535,13 @@ def super(cls, inst):
     return mro[mro.index(cls) + 1]
 #+end_src
 
-When running this line =super(C, self).__init__()=, self is =C='s instance, mro is:
+When running this line ~super(C, self).__init__()~, self is =C='s instance, mro is:
 
 #+begin_src 
 [<class '__main__.C'>, <class '__main__.A'>, <class '__main__.B'>, <class '__main__.Base'>, <class 'object'>]
 #+end_src
 
-So it returns =A=, and A will execute =__init__()=, then calling =super(A, self).__init__()=, end enter =B='s =__init__()=. (=C='s instance will pass as =self= in the calling chain.)
+So it returns =A=, and A will execute ~__init__()~, then calling ~super(A, self).__init__()~, end enter =B='s ~__init__()~. (=C='s instance will pass as =self= in the calling chain.)
 
 **** Ref: 
 1. [[https://www.python.org/download/releases/2.3/mro/][The Python 2.3 Method Resolution Order]]
@@ -1560,7 +1573,7 @@ This utilize Python's zip import feature. For more information, check this link:
 
 **** Using addPyFile in main script
 
-You can also upload zip file to hdfs, and using =sc.addPyFile('hdfs://kk.zip')= after =SparkContext= is initialized.
+You can also upload zip file to hdfs, and using ~sc.addPyFile('hdfs://kk.zip')~ after =SparkContext= is initialized.
 
 This has the same effect as =--py-files=, but your import statement must be after this line.
 
@@ -1634,12 +1647,12 @@ As =x2= is value and the defer function =CloseP='s receiver is a pointer, once d
 
 From [[https://golang.org/pkg/runtime/#Goexit][Golang Runtime]]:
 #+begin_quote
-=runtime.Goexit()= terminates the goroutine that calls it. No other goroutine is affected. Goexit runs all deferred calls before terminating the goroutine. Because Goexit is not a panic, any recover calls in those deferred functions will return nil.
+~runtime.Goexit()~ terminates the goroutine that calls it. No other goroutine is affected. Goexit runs all deferred calls before terminating the goroutine. Because Goexit is not a panic, any recover calls in those deferred functions will return nil.
 
 Calling Goexit from the main goroutine terminates that goroutine without func main returning. Since func main has not returned, the program continues execution of other goroutines. If all other goroutines exit, the program crashes.
 #+end_quote
 
-If you want the program to exit normally, just add =defer os.Exit(0)= at the top of =main= function. Here is the example code:
+If you want the program to exit normally, just add ~defer os.Exit(0)~ at the top of =main= function. Here is the example code:
 #+begin_src go
 package main
 
@@ -1698,6 +1711,7 @@ Here are some shell tools I use, which can boost your productivity.
 A zsh configuration framework. Provides auto completion, prompt theme and lots of modules to work with other useful tools. I extremely love the =agnoster= theme.
 #+attr_html: :width 400
 [[file:/images/shell_agnoster.png]]
+
 **** [[https://github.com/clvv/fasd][Fasd]]
 Help you to navigate between folders and launch application.
 
@@ -1710,18 +1724,22 @@ Here are the official usage example:
   vim `f rc lo`    =>     vim /etc/rc.local
   vim `f rc conf`  =>     vim /etc/rc.conf
 #+end_src
+
 **** [[https://github.com/monochromegane/the_platinum_searcher][pt]]
 A fast code search tool similar to =ack=.
+
 **** [[https://github.com/junegunn/fzf][fzf]] 
 A great fuzzy finder, it can also integrate with vim by [[https://github.com/junegunn/fzf.vim][fzf.vim]]
 
 #+attr_html: :width 400
 [[file:/images/shell_fzf.gif]]
+
 **** [[https://github.com/nvbn/thefuck][thefuck]] 
 Magnificent app which corrects your previous console command.
 
 #+attr_html: :width 400
 [[file:/images/shell_thefuck.gif]]
+
 **** [[https://github.com/tldr-pages/tldr][tldr]]
 More concise and user-friendly man pages. (This screenshot uses [[https://github.com/romkatv/powerlevel10k][powerlevel10k]] theme)
 
@@ -1735,6 +1753,7 @@ More concise and user-friendly man pages. (This screenshot uses [[https://github
   Add tldr
   
   [[https://github.com/romkatv/powerlevel10k][powerlevel10k]] theme is a fancy ZSH theme
+  
 *** DONE Start
 CLOSED: [2017-04-18 Tue 15:46]
    :PROPERTIES:
@@ -1761,11 +1780,11 @@ If you like the fancy spacemacs icon, install it with cask: =brew cask install e
 **** Install Tex
 - Download and install BasicTeX.pkg [[http://www.tug.org/mactex/morepackages.html][here]].
 - Add =/Library/TeX/texbin= to PATH.
-- Install =dvisvgm= by =sudo tlmgr update --self && sudo tlmgr install dvisvgm collection-fontsrecommended=
+- Install =dvisvgm= by ~sudo tlmgr update --self && sudo tlmgr install dvisvgm collection-fontsrecommended~
 
 **** Emacs settings
-- Add TeX related bin to path: =(setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin"))=
-- Tell Org Mode to create svg images: =(setq org-latex-create-formula-image-program 'dvisvgm)=
+- Add TeX related bin to path: ~(setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin"))~
+- Tell Org Mode to create svg images: ~(setq org-latex-create-formula-image-program 'dvisvgm)~
 
 Now you can see the rendered LaTeX equation by calling =org-preview-latex-fragment= or using shortcut =,Tx=. 
 
@@ -1775,9 +1794,9 @@ If you want to load LaTeX previews automatically at startup, add this at the beg
 
 - update 19-07-31
 
-  =_= and =...= are not displayed in Emacs, as some fonts are missing. =tlmgr install collection-fontsrecommended= should fix this.
+  =_= and =...= are not displayed in Emacs, as some fonts are missing. ~tlmgr install collection-fontsrecommended~ should fix this.
 
-  =Org Preview Latex= buffer also warns =processing of PostScript specials is disabled (Ghostscript not found)=, remove this message by =brew install ghostscript=.
+  =Org Preview Latex= buffer also warns =processing of PostScript specials is disabled (Ghostscript not found)=, remove this message by ~brew install ghostscript~.
 
 *** DONE Build Your Own Tiny Tiny RSS Service
 CLOSED: [2019-06-10 Mon 00:25]
@@ -1913,6 +1932,12 @@ docker-compose up -d
 
 If you want a free APP, I suggest [[http://cocoacake.net/apps/fiery/][Fiery Feeds]]. I stopped using it after ver 2.2, as it's so lagging. If this issue was fixed, I thought it was the biggest competitor for Reeder 4. For more alternative, read this article: [[https://thesweetsetup.com/apps/best-rss-app-ipad/][The Best RSS App for iPhone and iPad]].
 
+
+- update 20-03-25:
+
+You can find the latest document [[https://ttrss.henry.wang][here]].
+
+
 **** Ref:
 1. [[https://henry.wang/2018/04/25/ttrss-docker-plugins-guide.html][A ttrss setup guide - Start your own RSS aggregator today]]
 *** DONE Jaeger Code Structure                                     :Jaeger:
@@ -1936,25 +1961,95 @@ Process gRPC or process packet from Zipkin(port 9411).
 Listen gRPC and HTTP request from 16686.
 
 *** TODO Time boundary in InfluxDB Group by Time Statement       :InfluxDB:
+   :PROPERTIES:
+   :EXPORT_FILE_NAME: time-boundary-in-influxdb-group-by-time-statement
+   :END:
+These days I  use InfluxDB to save some time series data. I love these features it provides:
+****** High Performance
+According to to it's [[https://docs.influxdata.com/influxdb/v1.7/guides/hardware_sizing/#single-node-or-cluster][hardware guide]], a single node will support more than 750k point write per second, 100 moderate queries per second and 10M series cardinality.
 
-5min-30min group by time(12m)
+****** Continuous Queries
+Simple aggregation can be done by InfluxDB's continuous queries.
 
-6:00-8:00 group by time(7h)
+****** Overwrite Duplicated Points
+If you submit a new point with same measurements, tag set and timestamp, the new data will overwrite the old one.
 
-time boundary: for 0-24h, begin with most recent hour, for>1d, begin with timestamp 0, so use 1w or 1month instead.
 
-time(12m,offset)
+**** Preset Time Boundary
+InfluxDB is well documented, but the [[https://docs.influxdata.com/influxdb/v1.7/query_language/data_exploration/#basic-group-by-time-syntax][group by time]] section is not very clear. It says it will group data by ==preset time boundary=. But the example it use is too simple and doesn't explain it very well.
 
-cqs and group by
+In the official example, when using =group by time(12m)==, the time boundary is =00:12=, =00:24=. When using =group by time(30m)=, the time boundary becomes =00:00=, =00:30=. It seems that the time boundary start from the nearest hour plus x times time interval, that's *not* correct. If you using =group by time(7m)=, the returned time boundary is *not* =00:07=, =00:14=
 
-resample in cqs
+Here a example:
 
-what happens if resample for 45m group by time(30m)?
+If the data is:
+#+begin_src 
+{'time': '2020-01-01T00:02:00Z', 'value': 10}
+{'time': '2020-01-01T00:04:00Z', 'value': 8}
+{'time': '2020-01-01T00:05:00Z', 'value': 21}
+{'time': '2020-01-01T00:07:00Z', 'value': 33}
+{'time': '2020-01-02T00:05:00Z', 'value': 9}
+{'time': '2020-01-03T10:05:00Z', 'value': 4}
+#+end_src
 
-what happens if resample every 1m, group by time(5m) at 00:04
+Execute ~select sum(value) from data where time>='2020-01-01 00:00:00' and time<'2020-01-04 00:00:00' group by time(7m) fill(none)~ will output: 
 
-in 30:00, select 45:00-30:00 or 30:00-30:00?
-because 45:00-30:00 will pollute data, as 30:00-00:00 only contains 45:00-00:00 data???
+#+begin_src
+{'time': '2019-12-31T23:58:00Z', 'sum': 18}
+{'time': '2020-01-01T00:05:00Z', 'sum': 54}
+{'time': '2020-01-02T00:00:00Z', 'sum': 9}
+{'time': '2020-01-03T10:04:00Z', 'sum': 4}
+#+end_src
 
+Note that the time boundary begins at =12-31 23:58=, not =01-01 00:00=. What cause this?
+
+InfluxDB using timestamp 0 (1970-01-01T00:00:00Z) as start time, and for each timestamp that is dividable by the group by interval, it create a boundary. So in this sql, the boundary should be timestamp 0, timestamp 420, timestamp 840 etc. =2019-12-31 23:58:00= convert to timestamp =1577836680=, it's dividable by =420=, so this is the nearest time boundary among the given data.
+
+When you use =gourp by time(1w)=, you will also meet this problem: the result time begins with =Thursday= rather than =Monday=. As =1970-01-01= is Thursday.
+
+So when you use =group by time= statement, you'd better use =30s=, =1m=, =5m=, =10m= as interval, which are factors of =1h=, so the result always begin at =xx:00=.
+
+Some times you want to calculate the sum of last recent 5m data every minute, by using =group by time(5m)=, you only get 1 result every 5 minute. To achieve this, you can use the =offset= parameter in =group by time= statement. For example, =group by time(5m,1m)= with move the time boundary 1 minute forward, the result will be =xx:01=, =xx:06=. you can create 5 continuous queries with offset from 0 to 4.
+
+More example can be found in this [[https://github.com/bebound/influx_time_boundary][repo]].
+
+**** Group by in Continuous Queries
+By reading the [[https://docs.influxdata.com/influxdb/v1.7/query_language/continuous_queries/#advanced-syntax][official resample document]], the =resample every <interval> for <interval>= can override the continuous queries execute interval and the time range of query statement.
+
+The example in official document the interval is always a multiple of =group by time(m)=. I tries different values, here is the result.
+
+***** Every Interval
+
+=every= interval can be any value regardless of =group by time= interval. The CQ will execute at the time boundary of =every= interval.
+
+***** For Interval
+=for= interval can be greater or equal to =group by time(xx)=. If it is less than group by interval, influx will raise an error like this: ~ERR: error parsing query: FOR duration must be >= GROUP BY time duration: must be a minimum of 20s, got 5s~
+
+***** Start Time and End Time in CQs
+Here is a simple example, =every 10 s for 45s group by time(20s)=
+
+| execute time | selected start time | selected end time | real start time | real end time |
+|     16:00:30 |            15:59:45 |          16:00:30 |        16:00:00 |      16:00:40 |
+|     16:00:40 |            15:59:55 |          16:00:40 |        16:00:00 |      16:00:40 |
+|     16:00:50 |            16:00:05 |          16:00:50 |        16:00:20 |      16:01:00 |
+|     16:01:00 |            16:00:15 |          16:01:00 |        16:00:20 |      16:01:00 |
+
+We can see that, the execute interval is always 10s, but the start time and end time in CQ not equals to =now()-45s=-=now()=. It still based on =group by time='s time boundary, but the start time must >= selected start time and end time is also >= selected end time.
+
+[[file:/images/influx_time_boundary.png]]
+
+Here is another example, =every 5s for 10s group by time(10s)=
+| execute time | selected start time | selected end time | real start time | real end time |
+|     16:00:00 |            15:59:50 |          16:00:00 |        16:59:50 |      16:00:00 |
+|     16:00:05 |            15:59:55 |          16:00:05 |        16:00:00 |      16:00:10 |
+|     16:00:10 |            16:00:00 |          16:00:10 |        16:00:00 |      16:00:10 |
+|     16:00:15 |            16:00:05 |          16:00:15 |        16:00:10 |      16:00:20 |
+
+
+I guess the reason why start time is always >= selected start time is to prevent pollute previous data. If the aggregated data is not enough, it will overwrite the correct data generated before. If there is not enough data in end time clause, it will be correct in the future.
+
+**** Ref:
+1. [[https://docs.influxdata.com/influxdb/v1.7/query_language/data_exploration/#basic-group-by-time-syntax][group by time syntax]]
+2. [[https://docs.influxdata.com/influxdb/v1.7/query_language/continuous_queries/#advanced-syntax][continuous queries advanced syntax]]
 
 
