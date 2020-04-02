@@ -1,8 +1,8 @@
 +++
-title = "Torchtext snippets"
+title = "Torchtext Snippets"
 author = ["KK"]
 date = 2019-07-01T21:28:00+08:00
-lastmod = 2020-03-26T00:28:14+08:00
+lastmod = 2020-04-02T21:08:27+08:00
 tags = ["Python", "torchtext", "PyTorch"]
 draft = false
 noauthor = true

@@ -1,8 +1,8 @@
 +++
-title = "Time boundary in InfluxDB Group by Time Statement"
+title = "Time Boundary in InfluxDB Group by Time Statement"
 author = ["KK"]
 date = 2020-03-29T22:30:00+08:00
-lastmod = 2020-03-29T22:37:09+08:00
+lastmod = 2020-04-02T21:07:35+08:00
 tags = ["InfluxDB"]
 draft = false
 noauthor = true

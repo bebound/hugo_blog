@@ -1,9 +1,9 @@
 +++
-title = "Semi-supervised text classification using doc2vec and label spreading"
+title = "Semi-supervised Text Classification Using doc2vec and Label Spreading"
 author = ["KK"]
 date = 2017-09-10T15:29:00+08:00
-lastmod = 2020-03-22T22:05:28+08:00
-tags = ["Machine Learning", "doc2vec"]
+lastmod = 2020-04-02T21:09:25+08:00
+tags = ["Machine Learning", "doc2vec", "word2vec"]
 draft = false
 noauthor = true
 nocomment = true

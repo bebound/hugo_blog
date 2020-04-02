@@ -1,8 +1,8 @@
 +++
-title = "Different types of Attention"
+title = "Different Types of Attention"
 author = ["KK"]
 date = 2019-07-15T00:16:00+08:00
-lastmod = 2019-11-29T00:29:06+08:00
+lastmod = 2020-04-02T21:08:18+08:00
 tags = ["Machine Learning"]
 draft = false
 noauthor = true
@@ -17,8 +17,7 @@ noread = true
 \\[\begin{aligned}
 c\_t&=\sum\_{i=1}^n \alpha\_{t,s}h\_i \\\\\\
 \alpha\_{t,s}&= \frac{\exp(score(s\_t,h\_i))}{\sum\_{i=1}^n \exp(score(s\_t,h\_i))}
-\end{aligned}
-\\]
+\end{aligned}\\]
 
 
 ## Global(Soft) VS Local(Hard) {#global--soft--vs-local--hard}
