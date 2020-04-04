@@ -201,7 +201,7 @@ where $\theta$ is the parameters of the model($\upsilon$ and $u$).
 
 
 ---
-- update 20-04-04
+- update 04-04-20
 
 I found this two articles pretty useful: [[https://rohanvarma.me/Word2Vec/][Language Models, Word2Vec, and Efficient Softmax Approximations]] and [[https://towardsdatascience.com/word2vec-from-scratch-with-numpy-8786ddd49e72][Word2vec from Scratch with NumPy]].
 
@@ -210,7 +210,7 @@ I found this two articles pretty useful: [[https://rohanvarma.me/Word2Vec/][Lang
 2. [CS 224D: Deep Learning for NLP Lecture Notes: Part I](http://cs224d.stanford.edu/lecture_notes/notes1.pdf)
 3. [word2vec 中的数学原理详解（一）目录和前言](http://blog.csdn.net/itplus/article/details/37969519)
 
-*** DONE Parameters in dov2vec                                      :doc2vec:
+*** DONE Parameters in doc2vec                           :doc2vec:word2vec:
 CLOSED: [2017-08-03 Thu 15:20]
    :PROPERTIES:
    :EXPORT_FILE_NAME: parameters-in-dov2vec
@@ -572,19 +572,19 @@ I've uploaded code to this [[https://github.com/bebound/flappy-bird-dqn][repo]].
 10. [[https://github.com/dennybritz/reinforcement-learning/issues/30][DQN solution results peak at ~35 reward]]
 
 ---
-- Update 19-04-26
+- Update 26-04-19
 
   Colab's GPU has upgrade to Tesla T4 from K80, now it becomes my best bet.
 
-- Update 19-05-07
+- Update 07-05-19
 
   TensorBoard is now natively supported in PyTorch after version 1.1
 
-- Update 19-07-26
+- Update 26-07-19
 
   If you run out of RAM in Colab, it will show up an option to double the RAM.
   
-- Update 19-08-13
+- Update 13-08-19
 
   Upload video, update code.
 
@@ -1646,7 +1646,7 @@ Value-Closing Value-X First
 
 Take a look at line 5-6, why =Pointer-Closing Value-X2 Second= was printed twice? According to [[https://golang.org/doc/effective_go.html#defer][Effective Go]], "*The arguments to the deferred function (which include the receiver if the function is a method) are evaluated when the defer executes, not when the call executes.*". And the function's parameters will *saved anew* when evaluated.
 
-As =x2= is value and the defer function =CloseP='s receiver is a pointer, once defer is called, it will create a pointer which point to =x2= as function's caller. In the following defer, it will create a pointer which point to =x2= again. Although =x2.S= change to "Second", =x2='s address never changes. Finally, when these two defer is called, the same content was printed again.
+As =x2= is value and the defer function =CloseP='s receiver is a pointer, once =defer= executes, it will create a pointer which points to =x2= as function's caller. In the following defer, it will create a pointer which point to =x2= again. Although =x2.S= change to "Second", =x2='s address never changes. Finally, when these two defer is called, the same log was printed again.
 
 **** How to Exit Program and Run all Defer
 
@@ -1795,7 +1795,7 @@ Now you can see the rendered LaTeX equation by calling =org-preview-latex-fragme
 If you want to load LaTeX previews automatically at startup, add this at the beginning of org file: =#+STARTUP: latexpreview=.
 
 ---
-- update 19-07-31
+- update 31-07-19
 
   =_= and =...= are not displayed in Emacs, as some fonts are missing. ~tlmgr install collection-fontsrecommended~ should fix this.
 
@@ -1936,7 +1936,7 @@ docker-compose up -d
 If you want a free APP, I suggest [[http://cocoacake.net/apps/fiery/][Fiery Feeds]]. I stopped using it after ver 2.2, as it's so lagging. If this issue was fixed, I thought it was the biggest competitor for Reeder 4. For more alternative, read this article: [[https://thesweetsetup.com/apps/best-rss-app-ipad/][The Best RSS App for iPhone and iPad]].
 
 
-- update 20-03-25:
+- update 25-03-20:
 
 You can find the latest document [[https://ttrss.henry.wang][here]].
 

@@ -2,7 +2,7 @@
 title = "Difference between Value and Pointer variable in Defer in Go"
 author = ["KK"]
 date = 2019-12-19T22:33:00+08:00
-lastmod = 2019-12-19T23:19:42+08:00
+lastmod = 2020-04-04T23:37:40+08:00
 tags = ["Go", "Defer"]
 draft = false
 noauthor = true
@@ -70,7 +70,7 @@ Value-Closing Value-X First
 
 Take a look at line 5-6, why `Pointer-Closing Value-X2 Second` was printed twice? According to [Effective Go](https://golang.org/doc/effective%5Fgo.html#defer), "**The arguments to the deferred function (which include the receiver if the function is a method) are evaluated when the defer executes, not when the call executes.**". And the function's parameters will **saved anew** when evaluated.
 
-As `x2` is value and the defer function `CloseP`'s receiver is a pointer, once defer is called, it will create a pointer which point to `x2` as function's caller. In the following defer, it will create a pointer which point to `x2` again. Although `x2.S` change to "Second", `x2`'s address never changes. Finally, when these two defer is called, the same content was printed again.
+As `x2` is value and the defer function `CloseP`'s receiver is a pointer, once `defer` executes, it will create a pointer which points to `x2` as function's caller. In the following defer, it will create a pointer which point to `x2` again. Although `x2.S` change to "Second", `x2`'s address never changes. Finally, when these two defer is called, the same log was printed again.
 
 
 ## How to Exit Program and Run all Defer {#how-to-exit-program-and-run-all-defer}

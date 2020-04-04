@@ -1,9 +1,9 @@
 +++
-title = "Parameters in dov2vec"
+title = "Parameters in doc2vec"
 author = ["KK"]
 date = 2017-08-03T15:20:00+08:00
-lastmod = 2019-11-29T00:29:04+08:00
-tags = ["Machine Learning", "doc2vec"]
+lastmod = 2020-04-04T23:28:56+08:00
+tags = ["Machine Learning", "doc2vec", "word2vec"]
 draft = false
 noauthor = true
 nocomment = true
