@@ -2,7 +2,7 @@
 title = "Models and Architectures in Word2vec"
 author = ["KK"]
 date = 2018-01-05T15:14:00+08:00
-lastmod = 2020-03-26T23:20:50+08:00
+lastmod = 2020-04-04T23:11:28+08:00
 tags = ["Machine Learning", "word2vec"]
 draft = false
 noauthor = true
@@ -20,7 +20,7 @@ Generally, `word2vec` is a language model to predict the words probability based
 
 ### CBOW (Continuous Bag of Words) {#cbow--continuous-bag-of-words}
 
-Use the context to predict the probability of current word. (In the picture, the word is encoded with one-hot encoding, \\(W\_{V\*N}\\) is word embedding, and \\(W\_{V\*N}^{'}\\) in hidden layer is same as \\(\hat{\upsilon}\\) in following equations)
+Use the context to predict the probability of current word. (In the picture, the word is encoded with one-hot encoding, \\(W\_{V\*N}\\) is word embedding, and \\(W\_{V\*N}^{'}\\), the output weight matrix in hidden layer, is same as \\(\hat{\upsilon}\\) in following equations)
 
 {{< figure src="/images/doc2vec_cbow.png" width="400" >}}
 
@@ -111,6 +111,12 @@ Let \\(P(D=0 \lvert \omega,c)\\) be the probability that \\((\omega,c)\\) did no
 \\[\theta = \text{argmax} \prod\_{(\omega,c)\in D} P(D=1\lvert \omega,c,\theta) \prod\_{(\omega,c)\in \tilde{D}} P(D=0\lvert \omega,c,\theta)\\]
 
 where \\(\theta\\) is the parameters of the model(\\(\upsilon\\) and \\(u\\)).
+
+---
+
+-   update 20-04-04
+
+I found this two articles pretty useful: [Language Models, Word2Vec, and Efficient Softmax Approximations](https://rohanvarma.me/Word2Vec/) and [Word2vec from Scratch with NumPy](https://towardsdatascience.com/word2vec-from-scratch-with-numpy-8786ddd49e72).
 
 
 ## Ref: {#ref}

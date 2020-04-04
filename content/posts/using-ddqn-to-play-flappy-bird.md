@@ -2,7 +2,7 @@
 title = "Using Dueling DQN to Play Flappy Bird"
 author = ["KK"]
 date = 2019-04-14T17:10:00+08:00
-lastmod = 2019-12-18T00:11:40+08:00
+lastmod = 2020-04-04T22:55:40+08:00
 tags = ["Machine Learning"]
 draft = false
 noauthor = true

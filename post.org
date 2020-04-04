@@ -109,7 +109,7 @@ Generally, =word2vec= is a language model to predict the words probability based
 **** Models
 ***** CBOW (Continuous Bag of Words)
 
-Use the context to predict the probability of current word. (In the picture, the word is encoded with one-hot encoding, $W_{V*N}$ is word embedding, and $W_{V*N}^{'}$ in hidden layer is same as $\hat{\upsilon}$ in following equations)
+Use the context to predict the probability of current word. (In the picture, the word is encoded with one-hot encoding, $W_{V*N}$ is word embedding, and $W_{V*N}^{'}$, the output weight matrix in hidden layer, is same as $\hat{\upsilon}$ in following equations)
 #+attr_html: :width 400
 [[file:/images/doc2vec_cbow.png]]
 
@@ -198,6 +198,12 @@ Let $P(D=0 \lvert \omega,c)$ be the probability that $(\omega,c)$ did not come f
 $$\theta = \text{argmax} \prod_{(\omega,c)\in D} P(D=1\lvert \omega,c,\theta) \prod_{(\omega,c)\in \tilde{D}} P(D=0\lvert \omega,c,\theta)$$
 
 where $\theta$ is the parameters of the model($\upsilon$ and $u$).
+
+
+---
+- update 20-04-04
+
+I found this two articles pretty useful: [[https://rohanvarma.me/Word2Vec/][Language Models, Word2Vec, and Efficient Softmax Approximations]] and [[https://towardsdatascience.com/word2vec-from-scratch-with-numpy-8786ddd49e72][Word2vec from Scratch with NumPy]].
 
 **** Ref:
 1. [word2vec原理推导与代码分析](http://www.hankcs.com/nlp/word2vec.html)
@@ -565,8 +571,7 @@ I've uploaded code to this [[https://github.com/bebound/flappy-bird-dqn][repo]].
 9. [[https://github.com/susantamoh84/Deep-Reinforcement-Learning-Hands-On/][Deep-Reinforcement-Learning-Hands-On]]
 10. [[https://github.com/dennybritz/reinforcement-learning/issues/30][DQN solution results peak at ~35 reward]]
 
------
-
+---
 - Update 19-04-26
 
   Colab's GPU has upgrade to Tesla T4 from K80, now it becomes my best bet.
@@ -854,11 +859,11 @@ Iterating over all document and compare with target simhash value is a time cons
 
 If the hash value is a 64-bit vector, and we want to find the document which is 2-bit differs with the target. Then we can divided the vector to 4 part: $A$, $B$, $C$ and $D$. Then we know that at least two part should be the identical.
 
-Suppose part $A$ and $B$ is identical, if we have sorted the hash by $ABCD$ order, we can easily find all hash that $AB$ part is identical. Then we can compare the rest part $B$ and $C$ and find hash vectors that differs from target at most 2 bit. If you have 8B($2^{33}$) document and documents are distributed uniformly at random, on average, you only need to compare $2^{33-32}=2$ fingerprints.
+Suppose part $A$ and $B$ is identical, if we have sorted the hash by $ABCD$ order, we can easily find all hash that $AB$ part is identical. Then we can compare the rest part $B$ and $C$ and find hash vectors that differs from target at most 2 bit. If you have 8B($2^{34}$) document and documents are distributed uniformly at random, on average, you only need to compare $2^{34-32}=4$ fingerprints.
 
 [[file:/images/simhash_query1.png]]
 
-Besides $AB$, $AC$, $AD$, $BC$, $BD$ and $CD$ may also be identical. So you need to keep $C_4^2=6$ sorted list, and compare 2 fingerprints in each list. You don't need to compare 8B documents anymore, that's a great improvement.
+Besides $AB$, $AC$, $AD$, $BC$, $BD$ and $CD$ may also be identical. So you need to keep $C_4^2=6$ sorted list, and compare 4 fingerprints in each list. You don't need to compare 8B documents anymore, that's a great improvement.
 
 [[file:/images/simhash_query2.png]]
 
@@ -1174,20 +1179,20 @@ CLOSED: [2017-06-10 Sat 14:43]
    :PROPERTIES:
    :EXPORT_FILE_NAME: enable-c-extension-for-gensim-on-windows
    :END:
-These days, I’m working on some text classification works, and I use =gensim=’s =doc2vec= function.
+These days, I’m working on some text classification works, and I use =gensim= ’s =doc2vec= function.
 
 When using gensim, it shows this warning message:
-#+begin_src
-C extension not loaded for Word2Vec, training will be slow.
-#+end_src
 
-I search this on Internet and found that gensim has rewrite some part of the code using `cython` rather than `numpy` to get better performance. A compiler is required to enable this feature.
+
+=C extension not loaded for Word2Vec, training will be slow.=
+
+I search this on Internet and found that gensim has rewrite some part of the code using =cython= rather than =numpy= to get better performance. A compiler is required to enable this feature.
 
 I tried to install mingw and add it into the path, but it's not working.
 
 Finally, I tried to install [[https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017][Visual C++ Build Tools]] and it works.
 
-If this output a none =-1= digit, then it's fine.
+If this output is not =-1=, then it's fine.
 #+begin_src python3
 from gensim.models import word2vec
 print(word2vec.FAST_VERSION)
@@ -1746,8 +1751,7 @@ More concise and user-friendly man pages. (This screenshot uses [[https://github
 #+attr_html: :width 600
 [[file:/images/shell_tldr.png]]
 
------
-
+---
 - update 19-11-18
   
   Add tldr
@@ -1790,13 +1794,12 @@ Now you can see the rendered LaTeX equation by calling =org-preview-latex-fragme
 
 If you want to load LaTeX previews automatically at startup, add this at the beginning of org file: =#+STARTUP: latexpreview=.
 
------
-
+---
 - update 19-07-31
 
   =_= and =...= are not displayed in Emacs, as some fonts are missing. ~tlmgr install collection-fontsrecommended~ should fix this.
 
-  =Org Preview Latex= buffer also warns =processing of PostScript specials is disabled (Ghostscript not found)=, remove this message by ~brew install ghostscript~.
+  If =Org Preview Latex= buffer output warn =processing of PostScript specials is disabled (Ghostscript not found)=, run ~brew install ghostscript~.
 
 *** DONE Build Your Own Tiny Tiny RSS Service
 CLOSED: [2019-06-10 Mon 00:25]
@@ -1960,7 +1963,8 @@ Process gRPC or process packet from Zipkin(port 9411).
 **** Jaeger Query
 Listen gRPC and HTTP request from 16686.
 
-*** TODO Time boundary in InfluxDB Group by Time Statement       :InfluxDB:
+*** DONE Time boundary in InfluxDB Group by Time Statement       :InfluxDB:
+CLOSED: [2020-03-29 Sun 22:30]
    :PROPERTIES:
    :EXPORT_FILE_NAME: time-boundary-in-influxdb-group-by-time-statement
    :END:
