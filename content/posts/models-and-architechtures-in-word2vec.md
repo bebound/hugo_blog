@@ -2,7 +2,7 @@
 title = "Models and Architectures in Word2vec"
 author = ["KK"]
 date = 2018-01-05T15:14:00+08:00
-lastmod = 2020-04-04T23:11:28+08:00
+lastmod = 2020-04-04T23:14:59+08:00
 tags = ["Machine Learning", "word2vec"]
 draft = false
 noauthor = true
@@ -114,7 +114,7 @@ where \\(\theta\\) is the parameters of the model(\\(\upsilon\\) and \\(u\\)).
 
 ---
 
--   update 20-04-04
+-   update 04-04-20
 
 I found this two articles pretty useful: [Language Models, Word2Vec, and Efficient Softmax Approximations](https://rohanvarma.me/Word2Vec/) and [Word2vec from Scratch with NumPy](https://towardsdatascience.com/word2vec-from-scratch-with-numpy-8786ddd49e72).
 

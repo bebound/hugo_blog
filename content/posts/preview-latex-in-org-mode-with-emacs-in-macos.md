@@ -2,7 +2,7 @@
 title = "Preview LaTeX in Org Mode with Emacs in MacOS"
 author = ["KK"]
 date = 2019-05-12T20:26:00+08:00
-lastmod = 2020-04-04T22:58:22+08:00
+lastmod = 2020-04-04T23:13:36+08:00
 tags = ["Emacs", "Org Mode", "LaTeX"]
 draft = false
 noauthor = true
@@ -42,7 +42,7 @@ If you want to load LaTeX previews automatically at startup, add this at the beg
 
 ---
 
--   update 19-07-31
+-   update 31-07-19
 
     `_` and `...` are not displayed in Emacs, as some fonts are missing. `tlmgr install collection-fontsrecommended` should fix this.
 

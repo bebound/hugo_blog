@@ -2,7 +2,7 @@
 title = "Using Dueling DQN to Play Flappy Bird"
 author = ["KK"]
 date = 2019-04-14T17:10:00+08:00
-lastmod = 2020-04-04T22:55:40+08:00
+lastmod = 2020-04-04T23:12:56+08:00
 tags = ["Machine Learning"]
 draft = false
 noauthor = true
@@ -142,18 +142,18 @@ I've uploaded code to this [repo](https://github.com/bebound/flappy-bird-dqn).
 
 ---
 
--   Update 19-04-26
+-   Update 26-04-19
 
     Colab's GPU has upgrade to Tesla T4 from K80, now it becomes my best bet.
 
--   Update 19-05-07
+-   Update 07-05-19
 
     TensorBoard is now natively supported in PyTorch after version 1.1
 
--   Update 19-07-26
+-   Update 26-07-19
 
     If you run out of RAM in Colab, it will show up an option to double the RAM.
 
--   Update 19-08-13
+-   Update 13-08-19
 
     Upload video, update code.
