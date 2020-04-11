@@ -2,7 +2,7 @@
 title = "C-m, RET and Return Key in Emacs"
 author = ["KK"]
 date = 2020-04-11T21:23:00+08:00
-lastmod = 2020-04-11T21:50:01+08:00
+lastmod = 2020-04-11T21:50:55+08:00
 tags = ["Emacs"]
 draft = false
 noauthor = true
@@ -46,3 +46,4 @@ In the fixed version, `dotspacemacs-major-mode-emacs-leader-key` bind to `M-<ret
 1.  [M-RET no longer org mode prefix in GUI](https://github.com/syl20bnr/spacemacs/issues/13374)
 2.  [Difference between the physical “RET” key and the command 'newline in the minibuffer](https://emacs.stackexchange.com/questions/14943/difference-between-the-physical-ret-key-and-the-command-newline-in-the-minibu)
 3.  [Emacs中的 return, RET, Enter, Ctrl-m解析](http://www.zhangley.com/article/emacs-ret/)
+4.  [How to turn off alternative Enter with Ctrl+M in Linux](https://stackoverflow.com/questions/2298811/how-to-turn-off-alternative-enter-with-ctrlm-in-linux/)

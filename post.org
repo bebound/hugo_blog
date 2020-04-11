@@ -2094,3 +2094,4 @@ In the fixed version, =dotspacemacs-major-mode-emacs-leader-key= bind to =M-<ret
 1. [[https://github.com/syl20bnr/spacemacs/issues/13374][M-RET no longer org mode prefix in GUI]]
 2. [[https://emacs.stackexchange.com/questions/14943/difference-between-the-physical-ret-key-and-the-command-newline-in-the-minibu][Difference between the physical “RET” key and the command 'newline in the minibuffer]]
 3. [[http://www.zhangley.com/article/emacs-ret/][Emacs中的 return, RET, Enter, Ctrl-m解析]]
+4. [[https://stackoverflow.com/questions/2298811/how-to-turn-off-alternative-enter-with-ctrlm-in-linux/][How to turn off alternative Enter with Ctrl+M in Linux]]
