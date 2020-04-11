@@ -2,7 +2,7 @@
 title = "C-m, RET and Return Key in Emacs"
 author = ["KK"]
 date = 2020-04-11T21:23:00+08:00
-lastmod = 2020-04-11T21:43:24+08:00
+lastmod = 2020-04-11T21:50:01+08:00
 tags = ["Emacs"]
 draft = false
 noauthor = true
@@ -16,7 +16,7 @@ I use Emacs to write blog. In the recent update, I found `M-RET` no longer behav
 
 SO I opened this [issue](https://github.com/syl20bnr/spacemacs/issues/13374), with the help of these friends, the issue has been fixed. Here is the cause of the bug.
 
-In Emacs, `RET` is not a key in keyboard, it is `C-m` (press ctrl and m) key. Pressing `<Enter>` / `<Return>` key actually sends `<return>` to Emacs, and Emacs automatically maps `<return>` to `RET`.
+In Emacs, `RET` is not a key in keyboard, it is same as `C-m` (press ctrl and m) key. Pressing `<Enter>` / `<Return>` key actually sends `<return>` to Emacs, and Emacs automatically maps `<return>` to `RET`.
 
 This can be proved: type `SPC h d k <Enter>` in spacemacs, it will output `RET (translated from <return>) runs the command org-open-at-point, which is an
 interactive compiled Lisp function in ‘org.el’.`
@@ -34,7 +34,7 @@ These two keys were binded to `org-meta-return`.
 
 The unfixed Spacemacs configuration file binds `C-M-m` as `dotspacemacs-major-mode-emacs-leader-key`.
 
-In terminal, the `<Enter>` is the same as `C-m`, they send same ASCII character to Emacs. Emacs can't distinguish `<Enter>` and `C-m`, they will be treat as `C-m`. So press meta return will trigger leader key.
+In terminal, the `<Enter>` is the same as `C-m`, both of them send ASCII 13 character. So press meta return will trigger leader key.
 
 In GUI, the `<Enter>` key will send `<return>` to Emacs. Org mode has explicitly bind `M-<return>` to `org-meta-return`, so `org-meta-return` is triggered. In other mode, the `M-<return>` key binding is not defined, so `<return>` will translate to `RET`, then trigger leader key.
 
