@@ -2,7 +2,7 @@
 title = "Python Dictionary Implementation"
 author = ["KK"]
 date = 2019-02-17T21:48:00+08:00
-lastmod = 2019-11-29T00:29:08+08:00
+lastmod = 2020-04-18T14:35:55+08:00
 tags = ["Python"]
 draft = false
 noauthor = true
@@ -22,11 +22,15 @@ noread = true
 
 ## Resizing {#resizing}
 
-When elements size is below 50000, the table size will increase by a factor of 4 based on used slots. Otherwise, it will increase by a factor of 2.
+When elements size is below 50000, the table size will increase by a factor of 4 based on used slots. Otherwise, it will increase by a factor of 2. The dictionary size is always \\(2^{n}\\).
 
-So the table size increase like this: 8->8\*2/3\*4=24->24\*2/3\*4=64->...
+| dict size | resize when elements in dict | new table size |
+|-----------|------------------------------|----------------|
+| 8         | 6                            | 32             |
+| 32        | 22                           | 128            |
+| 128       | 86                           | 512            |
 
-Removing item from dictionary doesn't lead to shrink table. The value of the item will marks as null but not empty. To prevent early stopping when looking for other element.
+Removing item from dictionary doesn't lead to shrink table. The value of the item will marks as null but not empty. When looking up element in dictionary, it will keep probing once find this special mark. So deleting element from Python will not decrease the memory using. If you really want to do so, you can create a new dictionary from old one and delete old one.
 
 
 ## Probing {#probing}
@@ -37,7 +41,7 @@ The travel order can be calculated by this formula: `j = ((5*j) + 1) mod 2**i`, 
 
 For example, if table size is 8, and the calculate slot index is 2, then the traversal order should be:
 
-`2 -> (5*2+1) mod 8 = 3 -> (5*3+1) mod 8 = 0 -> (5*0+1) mod 8 = 1 -> 6 -> 7 -> 4 -> 5 -> 2`
+`2` -> `(5*2+1) mod 8 = 3` -> `(5*3+1) mod 8 = 0` -> `(5*0+1) mod 8 = 1` -> `6` -> `7` -> `4` -> `5` -> `2`
 
 CPython changed this formula by adding `perturb` and `PERTURB_SHIFT` variables, where `perturb` is hash value and `PERTURB_SHIFT` is 5. By adding `PERTURB_SHIFT`, the probe sequence depends on every bit in the hash code, and the collision probability is decreased. And `perturb` will eventually becomes to 0, this ensures that all of the slots will be checked.
 

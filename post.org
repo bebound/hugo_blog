@@ -1234,11 +1234,15 @@ CLOSED: [2019-02-17 Sun 21:48]
 4. When getting item from dictionary, both =hash= and =key= must be equal.
 
 **** Resizing
-When elements size is below 50000, the table size will increase by a factor of 4 based on used slots. Otherwise, it will increase by a factor of 2.
+When elements size is below 50000, the table size will increase by a factor of 4 based on used slots. Otherwise, it will increase by a factor of 2. The dictionary size is always $2^{n}$.
 
-So the table size increase like this: 8->8*2/3*4=24->24*2/3*4=64->...
+| dict size | resize when elements in dict | new table size |
+|         8 |                            6 |             32 |
+|        32 |                           22 |            128 |
+|       128 |                           86 |            512 |
 
-Removing item from dictionary doesn't lead to shrink table. The value of the item will marks as null but not empty. To prevent early stopping when looking for other element.
+
+Removing item from dictionary doesn't lead to shrink table. The value of the item will marks as null but not empty. When looking up element in dictionary, it will keep probing once find this special mark. So deleting element from Python will not decrease the memory using. If you really want to do so, you can the items in the old dictionary to create a new one.
 **** Probing
 CPython used a modified *random probing* algorithm to choose the empty slot. This algorithm can traval all of the slots in a pseudo random order.
 
